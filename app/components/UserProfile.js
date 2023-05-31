@@ -38,13 +38,8 @@ function UserProfile() {
           ? FORM_EDIT_MODE
           : FORM_VIEW_MODE,
     });
-    // this.setState({
-    //   [formId]:
-    //     this.state[formId] === FORM_VIEW_MODE ? FORM_EDIT_MODE : FORM_VIEW_MODE,
-    // });
   };
 
-//   console.log("Profile props", props);
   return (
     <CoreGrid>
       <CoreCard gridProps={{ gridSize: { sm: 8 } }}>
@@ -203,23 +198,5 @@ function UserProfile() {
     </CoreGrid>
   );
 }
-
-// const mapStateToProps = (state) => {
-//     return {
-//         addresses   : state.profile.addresses,
-//         auth        : state.auth,
-//         basic       : state.profile.basic,
-//         contact     : state.profile.contact,
-//         departments : [],
-//         educations  : state.profile.educations,
-//         experiences : state.profile.experiences,
-//         navData     : state.auth.navData,
-//         registration: state.profile.registration
-//     };
-// };
-
-// const mapDispatchToProps = () => {
-//     return {};
-// };
 
 export default UserProfile;
