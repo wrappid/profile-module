@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { nativeUseNavigate } from "@wrappid/styled-components";
+import { coreUseNavigate } from "@wrappid/core";
 
 import { apiRequestAction } from "@wrappid/core";
 import {
@@ -40,7 +40,7 @@ export const PROFILE_COMPLETENESS = "pc_";
 
 export default function ProfileCompletenessCard() {
   const dispatch = useDispatch();
-  const navigate = nativeUseNavigate();
+  const navigate = coreUseNavigate();
   const auth = useSelector((state) => state.auth);
   const { uid = undefined, role } = auth;
   const { completeness } = useSelector((state) => state.profile);

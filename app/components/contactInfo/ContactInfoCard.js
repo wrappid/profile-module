@@ -8,13 +8,11 @@ import {
     CoreCardHeader,
     CoreClasses
 } from "@wrappid/core";
-/**
- * @todo must import from core
- */
-// import { nativeUseNavigate } from "@wrappid/styled-components";
+
+import { coreUseNavigate } from "@wrappid/core";
 
 export default function ContactInfoCard() {
-    // const navigate = nativeUseNavigate();
+    const navigate = coreUseNavigate();
     // -- const contactInfo = useSelector((state) => state.profile.contact);
     // -- const { phone, email, phoneVerified, emailVerified } = contactInfo;
 

@@ -20,7 +20,7 @@
   "author": "wrappid",
   "license": "ISC",
   "devDependencies": {
-    "@wrappid/core": "^0.0.25",
+    "@wrappid/core": "^0.0.92",
     "@wrappid/styles": "^0.0.14",
     "eslint": "^8.40.0",
     "eslint-plugin-etc": "^2.0.2",
