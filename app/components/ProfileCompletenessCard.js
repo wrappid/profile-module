@@ -32,8 +32,7 @@ import {
   CoreBox,
   CoreCard,
   CoreCardContent,
-  CoreCardHeader,
-  CoreButton,
+  CoreCardHeader
 } from "@wrappid/core";
 
 export const PROFILE_COMPLETENESS = "pc_";
@@ -189,7 +188,9 @@ export default function ProfileCompletenessCard() {
         <CoreDivider />
 
         <CoreCardContent>
-          <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
+          <CoreTypographyBody2 
+          styleClasses={[CoreClasses.MARGIN.MB2]}
+          >
             Missing Information:
           </CoreTypographyBody2>
 
@@ -198,7 +199,7 @@ export default function ProfileCompletenessCard() {
               <CoreBox
                 key={`missingData-${index}`}
                 styleClasses={[
-                  CoreClasses.DISPLAY.INLINE_BLOCK,
+                  // CoreClasses.DISPLAY.INLINE_BLOCK,
                   CoreClasses.MARGIN.M1,
                 ]}
               >
@@ -214,7 +215,9 @@ export default function ProfileCompletenessCard() {
 
           <CoreDivider />
 
-          <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
+          <CoreTypographyBody2 
+          styleClasses={[CoreClasses.MARGIN.MB2]}
+          >
             Provided Information:
           </CoreTypographyBody2>
 
@@ -223,7 +226,7 @@ export default function ProfileCompletenessCard() {
               <CoreBox
                 key={`providedData-${index}`}
                 styleClasses={[
-                  CoreClasses.DISPLAY.INLINE_BLOCK,
+                  // CoreClasses.DISPLAY.INLINE_BLOCK,
                   CoreClasses.MARGIN.M1,
                 ]}
               >
