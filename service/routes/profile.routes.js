@@ -6,7 +6,7 @@ const profileController = require("../controllers/profile.controller");
 
 const profileRouter = express.Router();
 
-profileRouter.get("/", profileController.getRegistrationInfo);
+profileRouter.get("/rx/registrationInfo", profileController.getRegistrationInfo);
 
 
 module.exports = profileRouter;
