@@ -3,7 +3,7 @@ import {
     CoreCardHeader
 } from "@wrappid/core";
 
-export default function EducationCard(props) {
+export default function educationCard(props) {
     const {
         degree, school, location, board, startDate, endDate 
     } = props;

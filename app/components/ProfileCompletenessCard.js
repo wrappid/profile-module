@@ -1,9 +1,7 @@
 import React from "react";
 
 import { useDispatch, useSelector } from "react-redux";
-import { coreUseNavigate } from "@wrappid/core";
 
-import { apiRequestAction } from "@wrappid/core";
 import {
   PROFILE_COMPLETENESS_CHECKLIST_ERROR,
   PROFILE_COMPLETENESS_CHECKLIST_SUCCESS,
@@ -12,7 +10,6 @@ import {
   PROFILE_COMPLETENESS_REPORT_UPDATE,
   PROFILE_COMPLETENESS_SUCCESS,
 } from "../types/profileTypes";
-import { HTTP } from "@wrappid/core";
 import {
   PROFILE_COMPLETENESS_API,
   PROFILE_COMPLETENESS_CHECKLIST_API,
@@ -20,19 +17,24 @@ import {
 // import { getLabel } from "../../utils/stringUtils";
 
 import {
+  urls,
+  HTTP,
+  apiRequestAction,
+  coreUseNavigate,
   CoreClasses,
   CoreBadge,
   CoreChip,
   CoreDivider,
   CoreIcon,
   CoreTypographyBody2,
+  CoreTypographyBody1,
   CoreCircularProgress,
   CoreContainedButton,
   CoreIconButton,
   CoreBox,
   CoreCard,
   CoreCardContent,
-  CoreCardHeader
+  CoreCardHeader,
 } from "@wrappid/core";
 
 export const PROFILE_COMPLETENESS = "pc_";
@@ -188,9 +190,7 @@ export default function ProfileCompletenessCard() {
         <CoreDivider />
 
         <CoreCardContent>
-          <CoreTypographyBody2 
-          styleClasses={[CoreClasses.MARGIN.MB2]}
-          >
+          <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
             Missing Information:
           </CoreTypographyBody2>
 
@@ -204,10 +204,12 @@ export default function ProfileCompletenessCard() {
                 ]}
               >
                 <CoreBadge
+                  // styleClasses={[CoreClasses.MARGIN.ML5]}
                   badgeContent={report?.missingData[data]}
                   color="error"
                 >
                   <CoreChip label={data} size="small" />
+                  {/* <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
                 </CoreBadge>
               </CoreBox>
             );
@@ -215,9 +217,7 @@ export default function ProfileCompletenessCard() {
 
           <CoreDivider />
 
-          <CoreTypographyBody2 
-          styleClasses={[CoreClasses.MARGIN.MB2]}
-          >
+          <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
             Provided Information:
           </CoreTypographyBody2>
 
@@ -234,7 +234,14 @@ export default function ProfileCompletenessCard() {
                   badgeContent={report?.providedData[data]}
                   color="success"
                 >
-                  <CoreChip label={data} size="small" />
+                  <CoreChip
+                    styleClasses={[
+                      CoreClasses.MARGIN.M1,
+                    ]}
+                    label={data}
+                    size="small"
+                  />
+                  {/* <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
                 </CoreBadge>
               </CoreBox>
             );
@@ -243,13 +250,13 @@ export default function ProfileCompletenessCard() {
           <CoreBox
             styleClasses={[
               CoreClasses.MARGIN.MT2,
-              CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
+              // CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
             ]}
           >
             <CoreContainedButton
               label="Complete Profile"
               OnClick={() => {
-                // navigate(`/${urls.PROFILE}`);
+                navigate(`/${urls.PROFILE}`);
               }}
             />
           </CoreBox>

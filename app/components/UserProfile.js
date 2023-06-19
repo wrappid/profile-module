@@ -10,7 +10,7 @@ import {
   FORM_IDS,
   FORM_VIEW_MODE,
 } from "@wrappid/core";
-import { connect, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 
 // -- import RssFeed from "../utility/RssFeed";
 
@@ -32,11 +32,9 @@ function UserProfile() {
 
   const ToggleMode = (formId) => {
     setFormsMode({
-        ...formsMode,
+      ...formsMode,
       [formId]:
-        formsMode[formId] === FORM_VIEW_MODE
-          ? FORM_EDIT_MODE
-          : FORM_VIEW_MODE,
+        formsMode[formId] === FORM_VIEW_MODE ? FORM_EDIT_MODE : FORM_VIEW_MODE,
     });
   };
 
@@ -108,9 +106,7 @@ function UserProfile() {
               )}
 
             {auth?.role?.role &&
-              auth?.role?.role.toLowerCase() === "doctor" && (
-                <CoreDivider />
-              )}
+              auth?.role?.role.toLowerCase() === "doctor" && <CoreDivider />}
 
             {auth?.role?.role &&
               auth?.role?.role.toLowerCase() !== "patient" && (

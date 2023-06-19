@@ -3,7 +3,7 @@ import {
     CoreCardHeader
 } from "@wrappid/core";
 
-export default function ExperienceCard(props) {
+export default function experienceCard(props) {
     const { designation, organization, location, startDate, endDate } = props;
 
     return (

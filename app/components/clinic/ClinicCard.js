@@ -5,7 +5,7 @@ import {
     CoreClasses
 } from "@wrappid/core";
 
-export default function ClinicCard(props) {
+export default function clinicCard(props) {
     const {
         clinicLogo,
         fullName,
