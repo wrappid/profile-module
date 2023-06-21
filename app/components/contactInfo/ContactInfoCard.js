@@ -2,6 +2,7 @@ import {
   CoreIcon,
   CoreLabel,
   CoreTypographyBody1,
+  CoreTypographyBody2,
   CoreTypographyCaption,
   CoreIconButton,
   CoreBox,
@@ -44,35 +45,35 @@ export default function contactInfoCard(props) {
       <CoreGrid>
         <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
         <CoreLabel>Primary Phone</CoreLabel>
-        <CoreTypographyCaption>
+        <CoreTypographyBody2>
           {phone ? phone : "Not given"}
-        </CoreTypographyCaption>
+        </CoreTypographyBody2>
 
         {/* -- <RxPhoneLink phone={phone} verified={phoneVerified} /> */}
         </CoreBox>
 
         <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
         <CoreLabel>Primary Email</CoreLabel>
-        <CoreTypographyCaption>
+        <CoreTypographyBody2>
           {email ? email : "Not given"}
-        </CoreTypographyCaption>
+        </CoreTypographyBody2>
 
         {/* -- <RxEmailLink email={email} verified={emailVerified} /> */}
         </CoreBox>
 
         <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
         <CoreLabel>Profile Link</CoreLabel>
-        <CoreTypographyCaption>
+        <CoreTypographyBody2>
           {profileLink ? profileLink : "Not given"}
-        </CoreTypographyCaption>
+        </CoreTypographyBody2>
 
         </CoreBox>
 
         <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
         <CoreLabel>Website</CoreLabel>
-        <CoreTypographyCaption>
+        <CoreTypographyBody2>
           {website ? website : "Not given"}
-        </CoreTypographyCaption>
+        </CoreTypographyBody2>
 
         {/* -- <RxEmailLink email={email} verified={emailVerified} /> */}
         </CoreBox>
