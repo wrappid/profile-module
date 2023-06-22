@@ -1,14 +1,14 @@
 import BasicInfoCard from "./components/basicInfo/BasicInfoCard";
 import ProfileBasicSkeleton from "./components/basicInfo/ProfileBasicSkeleton";
-import ClinicCard from "./components/clinic/ClinicCard";
+import clinicCard from "./components/clinic/ClinicCard";
 import ProfileClinicSkeleton from "./components/clinic/ProfileClinicSkeleton";
-import ContactInfoCard from "./components/contactInfo/ContactInfoCard";
+import contactInfoCard from "./components/contactInfo/ContactInfoCard";
 import ProfileContactSkeleton from "./components/contactInfo/ProfileContactSkeleton";
-import EducationCard from "./components/education/EducationCard";
+import educationCard from "./components/education/EducationCard";
 import ProfileEducationSkeleton from "./components/education/ProfileEducationSkeleton";
-import ExperienceCard from "./components/experience/ExperienceCard";
+import experienceCard from "./components/experience/ExperienceCard";
 import ProfileExperienceSkeleton from "./components/experience/ProfileExperienceSkeleton";
-import RegistrationCard from "./components/registration/RegistrationCard";
+import registrationCard from "./components/registration/RegistrationCard";
 import ProfileRegistrationCard from "./components/registration/ProfileRegistrationSkeleton";
 import UserProfile from "./components/UserProfile";
 
@@ -19,32 +19,32 @@ export const ComponentRegistry = {
   ProfileBasicSkeleton: {
     comp: ProfileBasicSkeleton,
   },
-  ClinicCard: {
-    comp: ClinicCard,
+  clinicCard: {
+    comp: clinicCard,
   },
   ProfileClinicSkeleton: {
     comp: ProfileClinicSkeleton,
   },
-  ContactInfoCard: {
-    comp: ContactInfoCard,
+  contactInfoCard: {
+    comp: contactInfoCard,
   },
   ProfileContactSkeleton: {
     comp: ProfileContactSkeleton,
   },
-  EducationCard: {
-    comp: EducationCard,
+  educationCard: {
+    comp: educationCard,
   },
   ProfileEducationSkeleton: {
     comp: ProfileEducationSkeleton,
   },
-  ExperienceCard: {
-    comp: ExperienceCard,
+  experienceCard: {
+    comp: experienceCard,
   },
   ProfileExperienceSkeleton: {
     comp: ProfileExperienceSkeleton,
   },
-  RegistrationCard: {
-    comp: RegistrationCard,
+  registrationCard: {
+    comp: registrationCard,
   },
   ProfileRegistrationCard: {
     comp: ProfileRegistrationCard,
