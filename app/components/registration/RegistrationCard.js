@@ -1,44 +1,44 @@
 import {
-    CoreLabel,
-    CoreTypographyBody2,
-    CoreGrid,
-    CoreLink
+  CoreLabel,
+  CoreTypographyBody2,
+  CoreGrid,
+  CoreLink
 } from "@wrappid/core";
 
 export default function registrationCard(props) {
-    const {
-        regNo = "",
-        regDate = "",
-        departmentId = { id: "", label: "" },
-        registrationDocument = "",
-    } = props;
+  const {
+    regNo = "",
+    regDate = "",
+    departmentId = { id: "", label: "" },
+    registrationDocument = "",
+  } = props;
 
-    // eslint-disable-next-line no-console
-    console.log("PROFILE REGISTRAION CARD", props);
+  // eslint-disable-next-line no-console
+  console.log("PROFILE REGISTRAION CARD", props);
 
-    return (
-        <CoreGrid>
-            <CoreLabel>Specialization</CoreLabel>
+  return (
+    <CoreGrid>
+      <CoreLabel>Specialization</CoreLabel>
 
-            <CoreTypographyBody2>{departmentId?.label || "Not given"}</CoreTypographyBody2>
+      <CoreTypographyBody2>{departmentId?.label || "Not given"}</CoreTypographyBody2>
 
-            <CoreLabel>Registration Number</CoreLabel>
+      <CoreLabel>Registration Number</CoreLabel>
 
-            <CoreTypographyBody2>{regNo || "Not given"}</CoreTypographyBody2>
+      <CoreTypographyBody2>{regNo || "Not given"}</CoreTypographyBody2>
 
-            <CoreLabel>Registration Date</CoreLabel>
+      <CoreLabel>Registration Date</CoreLabel>
 
-            <CoreTypographyBody2>{regDate ? 
-                regDate
-                : "Not given"}</CoreTypographyBody2>
+      <CoreTypographyBody2>{regDate ? 
+        regDate
+        : "Not given"}</CoreTypographyBody2>
 
-            <CoreLabel>Registration Document</CoreLabel>
+      <CoreLabel>Registration Document</CoreLabel>
 
-            {registrationDocument ? (
-                <CoreLink href={registrationDocument}>Download</CoreLink>
-            ) : (
-                <CoreTypographyBody2>{"Not given"}</CoreTypographyBody2>
-            )}
-        </CoreGrid>
-    );
+      {registrationDocument ? (
+        <CoreLink href={registrationDocument}>Download</CoreLink>
+      ) : (
+        <CoreTypographyBody2>{"Not given"}</CoreTypographyBody2>
+      )}
+    </CoreGrid>
+  );
 }

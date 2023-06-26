@@ -5,21 +5,21 @@ import {
   CoreTypographySubtitle1,
   CoreBox,
   CoreGrid,
-  CoreClasses,
+  CoreClasses
 } from "@wrappid/core";
+
 import { getAge /**, getFullName  */ } from "../utils/helper";
 
 export default function BasicInfoCard(props) {
-  const { firstName, middleName, lastName, gender, dob, bio, photo } = props;
+  const {
+    firstName, middleName, lastName, gender, dob, bio, photo 
+  } = props;
 
   return (
     <CoreGrid styleClasses={[]}>
       <CoreBox
         gridProps={{ gridSize: { md: 2, xs: 12 } }}
-        styleClasses={[
-          CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER,
-          CoreClasses.BORDER.BORDER_PRIMARY,
-        ]}
+        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.BORDER.BORDER_PRIMARY]}
       >
         <CoreAvatar
           styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_LARGE]}

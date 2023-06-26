@@ -23,50 +23,50 @@ import {
   GET_PROFILE_REGISTRATION_ERROR,
   GET_PROFILE_REGISTRATION_LOADING,
   GET_PROFILE_REGISTRATION_SUCCESS,
-  LOGOUT_SUCCESS,
+  LOGOUT_SUCCESS
 } from "../types/profileTypes";
 
 const initState = {
   addresses: null,
 
-  addressesError: false,
+  addressesError  : false,
   addressesLoading: false,
   addressesSuccess: false,
-  basic: null,
+  basic           : null,
 
-  basicError: false,
+  basicError  : false,
   basicLoading: false,
   basicSuccess: false,
   completeness: {
     checklist: {},
-    data: {},
-    error: false,
-    reload: false,
-    report: {
-      missingData: {},
+    data     : {},
+    error    : false,
+    reload   : false,
+    report   : {
+      missingData : {},
       providedData: {},
-      quotient: 0,
+      quotient    : 0,
     },
     success: false,
   },
 
-  contact: false,
-  contactError: false,
+  contact       : false,
+  contactError  : false,
   contactLoading: false,
   contactSuccess: false,
 
-  educations: null,
-  educationsError: false,
+  educations       : null,
+  educationsError  : false,
   educationsLoading: false,
   educationsSuccess: false,
 
-  experiences: null,
-  experiencesError: false,
+  experiences       : null,
+  experiencesError  : false,
   experiencesLoading: false,
   experiencesSuccess: false,
 
-  registration: null,
-  registrationError: false,
+  registration       : null,
+  registrationError  : false,
   registrationLoading: false,
   registrationSuccess: false,
 };
@@ -76,8 +76,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_BASIC_LOADING:
       return {
         ...state,
-        basic: null,
-        basicError: false,
+        basic       : null,
+        basicError  : false,
         basicLoading: true,
         basicSuccess: false,
       };
@@ -85,8 +85,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_BASIC_SUCCESS:
       return {
         ...state,
-        basic: action.payload?.data?.data,
-        basicError: false,
+        basic       : action.payload?.data?.data,
+        basicError  : false,
         basicLoading: false,
         basicSuccess: true,
       };
@@ -94,8 +94,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_BASIC_ERROR:
       return {
         ...state,
-        basic: null,
-        basicError: true,
+        basic       : null,
+        basicError  : true,
         basicLoading: false,
         basicSuccess: false,
       };
@@ -103,8 +103,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_REGISTRATION_LOADING:
       return {
         ...state,
-        registration: null,
-        registrationError: false,
+        registration       : null,
+        registrationError  : false,
         registrationLoading: true,
         registrationSuccess: false,
       };
@@ -112,8 +112,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_REGISTRATION_SUCCESS:
       return {
         ...state,
-        registration: action.payload.data,
-        registrationError: false,
+        registration       : action.payload.data,
+        registrationError  : false,
         registrationLoading: false,
         registrationSuccess: true,
       };
@@ -121,8 +121,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_REGISTRATION_ERROR:
       return {
         ...state,
-        registration: null,
-        registrationError: true,
+        registration       : null,
+        registrationError  : true,
         registrationLoading: false,
         registrationSuccess: false,
       };
@@ -130,8 +130,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_ADDRESS_LOADING:
       return {
         ...state,
-        addresses: null,
-        addressesError: false,
+        addresses       : null,
+        addressesError  : false,
         addressesLoading: true,
         addressesSuccess: false,
       };
@@ -139,8 +139,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_ADDRESS_SUCCESS:
       return {
         ...state,
-        addresses: action.payload.data,
-        addressesError: false,
+        addresses       : action.payload.data,
+        addressesError  : false,
         addressesLoading: false,
         addressesSuccess: true,
       };
@@ -148,8 +148,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_ADDRESS_ERROR:
       return {
         ...state,
-        addresses: null,
-        addressesError: true,
+        addresses       : null,
+        addressesError  : true,
         addressesLoading: false,
         addressesSuccess: false,
       };
@@ -157,8 +157,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_EDUCATION_LOADING:
       return {
         ...state,
-        educations: null,
-        educationsError: false,
+        educations       : null,
+        educationsError  : false,
         educationsLoading: true,
         educationsSuccess: false,
       };
@@ -166,8 +166,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_EDUCATION_SUCCESS:
       return {
         ...state,
-        educations: action.payload.data,
-        educationsError: false,
+        educations       : action.payload.data,
+        educationsError  : false,
         educationsLoading: false,
         educationsSuccess: true,
       };
@@ -175,8 +175,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_EDUCATION_ERROR:
       return {
         ...state,
-        educations: null,
-        educationsError: true,
+        educations       : null,
+        educationsError  : true,
         educationsLoading: false,
         educationsSuccess: false,
       };
@@ -184,8 +184,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_EXPERIENCE_LOADING:
       return {
         ...state,
-        experiences: null,
-        experiencesError: false,
+        experiences       : null,
+        experiencesError  : false,
         experiencesLoading: true,
         experiencesSuccess: false,
       };
@@ -193,8 +193,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_EXPERIENCE_SUCCESS:
       return {
         ...state,
-        experiences: action.payload.data,
-        experiencesError: false,
+        experiences       : action.payload.data,
+        experiencesError  : false,
         experiencesLoading: false,
         experiencesSuccess: true,
       };
@@ -202,8 +202,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_EXPERIENCE_ERROR:
       return {
         ...state,
-        experiences: null,
-        experiencesError: true,
+        experiences       : null,
+        experiencesError  : true,
         experiencesLoading: false,
         experiencesSuccess: false,
       };
@@ -211,8 +211,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_CONTACT_LOADING:
       return {
         ...state,
-        contact: null,
-        contactError: false,
+        contact       : null,
+        contactError  : false,
         contactLoading: true,
         contactSuccess: false,
       };
@@ -220,8 +220,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_CONTACT_SUCCESS:
       return {
         ...state,
-        contact: action.payload.data,
-        contactError: false,
+        contact       : action.payload.data,
+        contactError  : false,
         contactLoading: false,
         contactSuccess: true,
       };
@@ -229,8 +229,8 @@ const profileReducer = (state = initState, action) => {
     case GET_PROFILE_CONTACT_ERROR:
       return {
         ...state,
-        contact: null,
-        contactError: true,
+        contact       : null,
+        contactError  : true,
         contactLoading: false,
         contactSuccess: false,
       };
@@ -249,9 +249,9 @@ const profileReducer = (state = initState, action) => {
         ...state,
         completeness: {
           ...state.completeness,
-          data: action?.payload?.data?.data,
-          error: false,
-          reload: false,
+          data   : action?.payload?.data?.data,
+          error  : false,
+          reload : false,
           success: true,
         },
       };
@@ -261,8 +261,8 @@ const profileReducer = (state = initState, action) => {
         ...state,
         completeness: {
           ...state.completeness,
-          data: action?.payload,
-          error: true,
+          data   : action?.payload,
+          error  : true,
           success: false,
         },
       };
@@ -273,8 +273,8 @@ const profileReducer = (state = initState, action) => {
         completeness: {
           ...state.completeness,
           checklist: action?.payload?.data?.data?.extraInfo,
-          error: false,
-          success: true,
+          error    : false,
+          success  : true,
         },
       };
 
@@ -284,8 +284,8 @@ const profileReducer = (state = initState, action) => {
         completeness: {
           ...state.completeness,
           checklist: action?.payload,
-          error: true,
-          success: false,
+          error    : true,
+          success  : false,
         },
       };
 

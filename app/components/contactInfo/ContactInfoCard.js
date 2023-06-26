@@ -14,7 +14,6 @@ import {
 } from "@wrappid/core";
 import { useSelector } from "react-redux";
 
-
 export default function ContactInfoCard(props) {
   const navigate = coreUseNavigate();
   const contactInfo = useSelector((state) => state.profile.contact);
@@ -36,7 +35,7 @@ export default function ContactInfoCard(props) {
           <CoreIconButton
             title={"Edit Contact Info"}
             onClick={() => {
-                navigate("/settings#account");
+              navigate("/settings#account");
             }}
           >
             <CoreIcon>edit_note</CoreIcon>
@@ -46,27 +45,31 @@ export default function ContactInfoCard(props) {
 
       <CoreGrid>
         <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
-            <CoreLabel>Primary Phone</CoreLabel>
-            <CorePhoneLink phone={phone} verified={phoneVerified} />
+          <CoreLabel>Primary Phone</CoreLabel>
+
+          <CorePhoneLink phone={phone} verified={phoneVerified} />
         </CoreBox>
 
         <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
-            <CoreLabel>Primary Email</CoreLabel>
-            <CoreEmailLink email={email} verified={emailVerified} />
+          <CoreLabel>Primary Email</CoreLabel>
+
+          <CoreEmailLink email={email} verified={emailVerified} />
         </CoreBox>
 
         <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
-            <CoreLabel>Profile Link</CoreLabel>
-            <CoreTypographyBody2>
-                {profileLink ? profileLink : "Not given"}
-            </CoreTypographyBody2>
+          <CoreLabel>Profile Link</CoreLabel>
+
+          <CoreTypographyBody2>
+            {profileLink ? profileLink : "Not given"}
+          </CoreTypographyBody2>
         </CoreBox>
 
         <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
-            <CoreLabel>Website</CoreLabel>
-            <CoreTypographyBody2>
-                {website ? website : "Not given"}
-            </CoreTypographyBody2>
+          <CoreLabel>Website</CoreLabel>
+
+          <CoreTypographyBody2>
+            {website ? website : "Not given"}
+          </CoreTypographyBody2>
         </CoreBox>
       </CoreGrid>
     </>

@@ -1,21 +1,5 @@
 import React from "react";
 
-import { useDispatch, useSelector } from "react-redux";
-
-import {
-  PROFILE_COMPLETENESS_CHECKLIST_ERROR,
-  PROFILE_COMPLETENESS_CHECKLIST_SUCCESS,
-  PROFILE_COMPLETENESS_ERROR,
-  PROFILE_COMPLETENESS_RELOAD,
-  PROFILE_COMPLETENESS_REPORT_UPDATE,
-  PROFILE_COMPLETENESS_SUCCESS,
-} from "../types/profileTypes";
-import {
-  PROFILE_COMPLETENESS_API,
-  PROFILE_COMPLETENESS_CHECKLIST_API,
-} from "../constants/api";
-// import { getLabel } from "../../utils/stringUtils";
-
 import {
   urls,
   HTTP,
@@ -27,15 +11,29 @@ import {
   CoreDivider,
   CoreIcon,
   CoreTypographyBody2,
-  CoreTypographyBody1,
   CoreCircularProgress,
   CoreContainedButton,
   CoreIconButton,
   CoreBox,
   CoreCard,
   CoreCardContent,
-  CoreCardHeader,
+  CoreCardHeader
 } from "@wrappid/core";
+import { useDispatch, useSelector } from "react-redux";
+
+import {
+  PROFILE_COMPLETENESS_API,
+  PROFILE_COMPLETENESS_CHECKLIST_API
+} from "../constants/api";
+import {
+  PROFILE_COMPLETENESS_CHECKLIST_ERROR,
+  PROFILE_COMPLETENESS_CHECKLIST_SUCCESS,
+  PROFILE_COMPLETENESS_ERROR,
+  PROFILE_COMPLETENESS_RELOAD,
+  PROFILE_COMPLETENESS_REPORT_UPDATE,
+  PROFILE_COMPLETENESS_SUCCESS
+} from "../types/profileTypes";
+// import { getLabel } from "../../utils/stringUtils";
 
 export const PROFILE_COMPLETENESS = "pc_";
 
@@ -52,9 +50,9 @@ export default function ProfileCompletenessCard() {
     checklist,
     data,
     report = {
-      missingData: {},
+      missingData : {},
       providedData: {},
-      quotient: 0,
+      quotient    : 0,
     },
   } = completeness || {};
 
@@ -146,9 +144,9 @@ export default function ProfileCompletenessCard() {
           // update profile completeness report
           dispatch({
             payload: {
-              missingData: { ...missingData },
+              missingData : { ...missingData },
               providedData: { ...providedData },
-              quotient: completenessQuotient,
+              quotient    : completenessQuotient,
             },
             type: PROFILE_COMPLETENESS_REPORT_UPDATE,
           });
@@ -209,6 +207,7 @@ export default function ProfileCompletenessCard() {
                   color="error"
                 >
                   <CoreChip label={data} size="small" />
+
                   {/* <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
                 </CoreBadge>
               </CoreBox>
@@ -235,12 +234,11 @@ export default function ProfileCompletenessCard() {
                   color="success"
                 >
                   <CoreChip
-                    styleClasses={[
-                      CoreClasses.MARGIN.M1,
-                    ]}
+                    styleClasses={[CoreClasses.MARGIN.M1]}
                     label={data}
                     size="small"
                   />
+
                   {/* <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
                 </CoreBadge>
               </CoreBox>
