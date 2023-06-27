@@ -1,10 +1,11 @@
+/* eslint-disable no-undef */
 const testMiddleware = (req, res, next) => {
-    try {
-        // logger implementation pending
-        next();
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
+  try {
+    // logger implementation pending
+    next();
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
 };
 
 module.exports = testMiddleware;

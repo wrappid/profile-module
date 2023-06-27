@@ -2,8 +2,6 @@ const express = require("express");
 
 const profileController = require("../controllers/profile.controller");
 
-
-
 const profileRouter = express.Router();
 
 profileRouter.get("/rx/registrationInfo", profileController.getRegistrationInfo);
@@ -26,7 +24,6 @@ profileRouter.post("/rx/experience/", profileController.postExperience);
 profileRouter.patch("/rx/experience/:id", profileController.updateEducation);
 profileRouter.patch("/rx/experience/:id", profileController.deleteExperience);
 
-
 profileRouter.post("/person/:id/doctorDetails", profileController.postDoctorsDetails);
 profileRouter.put("/person/:id/doctorDetails", profileController.updateDoctorsDetails);
 profileRouter.put("/person/:id/basicDetails", profileController.updateBasicDetails);
@@ -44,13 +41,7 @@ profileRouter.get("/person/:id/completion", profileController.getProfileCompleti
 profileRouter.post("/role/:id/permissions", profileController.updateRolePermissions);
 profileRouter.get("/rolePermission", profileController.fetchRolePermissions);
 
-
-
-
 module.exports = profileRouter;
-
-
-
 
 // Following apis are present in business module
 

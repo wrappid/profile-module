@@ -1,431 +1,430 @@
+/* eslint-disable no-undef */
 module.exports = (sequelize, DataTypes) => {
   const doctorDetails = sequelize.define("DoctorDetails", {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    regNo: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    regYear: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    regDate: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    regLink: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    extraInfo: {
-      type: DataTypes.JSONB,
-      defaultValue: null,
-    },
-    isActive: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    },
-    yearInfo: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    salutation: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    firstName: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    middleName: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    phoneNo: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    emailId: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    gender: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    bloodGroup: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    parentName: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    birthDate: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    isNewDoctor: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    },
-    checkExistingUser: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    },
-    birthDateStr: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    birthPlace: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    nationality: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    eligbleToVote: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    adharNo: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    uprnNo: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    doctorEducationId: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    college: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    doctorDegree: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    university: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    otherSubject: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    monthOfPass: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    yearOfPassing: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    smcId: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    registrationDate: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    registrationNo: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    smcName: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    homeAddress: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    officeAddress: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    address: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    officeaddress: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    addressLine1: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    addressLine2: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    economicStatus: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    city: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    state: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    country: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    pincode: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    photos: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    doctRegistrationNo: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    universityId_view: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    universityId: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    monthandyearOfPass: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    passoutCollege: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    collegeId: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
-    },
-    stateId: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    catagory: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    catagory_view: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    role: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    registrationDatePrevious: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    registrationNoPrevious: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    smcNamePrevious: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    uprnNoPrevious: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    removedStatus: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    },
-    removedOn: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    restoredStatus: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    },
-    restoredOn: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    remarks: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    regnNo: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    smcIds: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    trasanctionStatus: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
+    _status  : { type: DataTypes.STRING },
     addlqual1: {
-      type: DataTypes.STRING,
       defaultValue: "",
-    },
-    addlqualyear1: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    addlqualuniv1: {
-      type: DataTypes.STRING,
-      defaultValue: "",
+      type        : DataTypes.STRING,
     },
     addlqual2: {
-      type: DataTypes.STRING,
       defaultValue: "",
-    },
-    addlqualyear2: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    addlqualuniv2: {
-      type: DataTypes.STRING,
-      defaultValue: "",
+      type        : DataTypes.STRING,
     },
     addlqual3: {
-      type: DataTypes.STRING,
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    addlqualyear3: {
-      type: DataTypes.STRING,
+    addlqualuniv1: {
       defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    addlqualuniv2: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
     },
     addlqualuniv3: {
-      type: DataTypes.STRING,
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    patientfirstName: {
-      type: DataTypes.STRING,
+    addlqualyear1: {
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    patientmiddleName: {
-      type: DataTypes.STRING,
+    addlqualyear2: {
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    patientlastName: {
-      type: DataTypes.STRING,
+    addlqualyear3: {
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    patientphoneNo: {
-      type: DataTypes.STRING,
+    address: {
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    patientemailId: {
-      type: DataTypes.STRING,
+    addressLine1: {
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    appealBy: {
-      type: DataTypes.STRING,
+    addressLine2: {
       defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    adharNo: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
     },
     altphone: {
-      type: DataTypes.STRING,
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    landLineNo: {
-      type: DataTypes.STRING,
+    appealBy: {
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    patientlandLineNo: {
-      type: DataTypes.STRING,
+    birthDate: {
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    patientaltphone: {
-      type: DataTypes.STRING,
+    birthDateStr: {
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    picName: {
-      type: DataTypes.STRING,
+    birthPlace: {
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    signatureName: {
-      type: DataTypes.STRING,
+    bloodGroup: {
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
-    stateMedicalCouncil: {
-      type: DataTypes.STRING,
+    catagory: {
       defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    catagory_view: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    checkExistingUser: {
+      defaultValue: true,
+      type        : DataTypes.BOOLEAN,
+    },
+    city: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    college: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    collegeId: {
+      defaultValue: 0,
+      type        : DataTypes.INTEGER,
+    },
+    country: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
     },
     countryType: {
-      type: DataTypes.STRING,
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
     dateOfBirth: {
-      type: DataTypes.STRING,
       defaultValue: "",
-    },
-    universityName: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    qualification: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    imrNumber: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    docId: {
-      type: DataTypes.STRING,
-      defaultValue: "",
-    },
-    _status: {
-      type: DataTypes.STRING,
+      type        : DataTypes.STRING,
     },
     deletedAt: {
-      type: "TIMESTAMP",
       allowNull: true,
+      type     : "TIMESTAMP",
+    },
+    docId: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    doctRegistrationNo: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    doctorDegree: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    doctorEducationId: {
+      defaultValue: 0,
+      type        : DataTypes.INTEGER,
+    },
+    economicStatus: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    eligbleToVote: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    emailId: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    extraInfo: {
+      defaultValue: null,
+      type        : DataTypes.JSONB,
+    },
+    firstName: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    gender: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    homeAddress: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    id: {
+      autoIncrement: true,
+      primaryKey   : true,
+      type         : DataTypes.INTEGER,
+    },
+    imrNumber: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    isActive: {
+      defaultValue: true,
+      type        : DataTypes.BOOLEAN,
+    },
+    isNewDoctor: {
+      defaultValue: true,
+      type        : DataTypes.BOOLEAN,
+    },
+    landLineNo: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    lastName: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    middleName: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    monthOfPass: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    monthandyearOfPass: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    nationality: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    officeAddress: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    officeaddress: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    otherSubject: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    parentName: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    passoutCollege: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    patientaltphone: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    patientemailId: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    patientfirstName: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    patientlandLineNo: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    patientlastName: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    patientmiddleName: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    patientphoneNo: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    phoneNo: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    photos: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    picName: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    pincode: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    qualification: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    regDate: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    regLink: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    regNo: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    regYear: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    registrationDate: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    registrationDatePrevious: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    registrationNo: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    registrationNoPrevious: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    regnNo: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    remarks: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    removedOn: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    removedStatus: {
+      defaultValue: true,
+      type        : DataTypes.BOOLEAN,
+    },
+    restoredOn: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    restoredStatus: {
+      defaultValue: true,
+      type        : DataTypes.BOOLEAN,
+    },
+    role: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    salutation: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    signatureName: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    smcId: {
+      defaultValue: 0,
+      type        : DataTypes.INTEGER,
+    },
+    smcIds: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    smcName: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    smcNamePrevious: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    state: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    stateId: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    stateMedicalCouncil: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    trasanctionStatus: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    university: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    universityId: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    universityId_view: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    universityName: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    uprnNo: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    uprnNoPrevious: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    yearInfo: {
+      defaultValue: 0,
+      type        : DataTypes.INTEGER,
+    },
+    yearOfPassing: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
     },
   });
 
   doctorDetails.associate = (models) => {
     doctorDetails.belongsTo(models.Persons, {
+      as        : "Persons",
       foreignKey: "doctorId",
-      as: "Persons",
-      sourceKey: "id",
+      sourceKey : "id",
     });
     doctorDetails.belongsTo(models.Users, {
+      as        : "Owner",
       foreignKey: "createdBy",
-      as: "Owner",
-      sourceKey: "id",
+      sourceKey : "id",
     });
     doctorDetails.belongsTo(models.Users, {
+      as        : "Updater",
       foreignKey: "updatedBy",
-      as: "Updater",
-      sourceKey: "id",
+      sourceKey : "id",
     });
     doctorDetails.belongsTo(models.Users, {
+      as        : "Destroyer",
       foreignKey: "deletedBy",
-      as: "Destroyer",
-      sourceKey: "id",
+      sourceKey : "id",
     });
   };
 
@@ -434,55 +433,53 @@ module.exports = (sequelize, DataTypes) => {
 
 module.exports = (sequelize, DataTypes) => {
   const personDocs = sequelize.define("PersonDocs", {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
-    type: {
-      type: DataTypes.STRING,
-      defaultValue: "",
+    _status  : { type: DataTypes.STRING },
+    deletedAt: {
+      allowNull: true,
+      type     : "TIMESTAMP",
     },
     description: {
-      type: DataTypes.STRING,
       defaultValue: "",
+      type        : DataTypes.STRING,
     },
     docUrl: {
-      type: DataTypes.STRING,
       defaultValue: "",
+      type        : DataTypes.STRING,
+    },
+    id: {
+      autoIncrement: true,
+      primaryKey   : true,
+      type         : DataTypes.INTEGER,
     },
     isActive: {
-      type: DataTypes.BOOLEAN,
       defaultValue: true,
+      type        : DataTypes.BOOLEAN,
     },
-    _status: {
-      type: DataTypes.STRING,
-    },
-    deletedAt: {
-      type: "TIMESTAMP",
-      allowNull: true,
+    type: {
+      defaultValue: "",
+      type        : DataTypes.STRING,
     },
   });
 
   personDocs.associate = (models) => {
     personDocs.belongsTo(models.Persons, {
       foreignKey: "personId",
-      sourceKey: "id",
+      sourceKey : "id",
     });
     personDocs.belongsTo(models.Users, {
+      as        : "Owner",
       foreignKey: "createdBy",
-      as: "Owner",
-      sourceKey: "id",
+      sourceKey : "id",
     });
     personDocs.belongsTo(models.Users, {
+      as        : "Updater",
       foreignKey: "updatedBy",
-      as: "Updater",
-      sourceKey: "id",
+      sourceKey : "id",
     });
     personDocs.belongsTo(models.Users, {
+      as        : "Destroyer",
       foreignKey: "deletedBy",
-      as: "Destroyer",
-      sourceKey: "id",
+      sourceKey : "id",
     });
   };
 

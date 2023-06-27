@@ -34,7 +34,9 @@ export default function clinicCard(props) {
 
           {"\n"}
 
-          <CoreTypographyBody1 variant="span">Contact: {phone}</CoreTypographyBody1>
+          <CoreTypographyBody1 variant="span">
+            Contact: {phone}
+          </CoreTypographyBody1>
         </>
       }
       subheader={

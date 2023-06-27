@@ -1,9 +1,4 @@
-import {
-  CoreSkeleton,
-  CoreBox,
-  CoreGrid,
-  CoreClasses
-} from "@wrappid/core";
+import { CoreSkeleton, CoreBox, CoreGrid, CoreClasses } from "@wrappid/core";
 
 export default function ProfileClinicSkeleton() {
   return (

@@ -20,7 +20,9 @@ export default function registrationCard(props) {
     <CoreGrid>
       <CoreLabel>Specialization</CoreLabel>
 
-      <CoreTypographyBody2>{departmentId?.label || "Not given"}</CoreTypographyBody2>
+      <CoreTypographyBody2>
+        {departmentId?.label || "Not given"}
+      </CoreTypographyBody2>
 
       <CoreLabel>Registration Number</CoreLabel>
 
@@ -28,9 +30,9 @@ export default function registrationCard(props) {
 
       <CoreLabel>Registration Date</CoreLabel>
 
-      <CoreTypographyBody2>{regDate ? 
-        regDate
-        : "Not given"}</CoreTypographyBody2>
+      <CoreTypographyBody2>
+        {regDate ? regDate : "Not given"}
+      </CoreTypographyBody2>
 
       <CoreLabel>Registration Document</CoreLabel>
 

@@ -1,3 +1,4 @@
+/* eslint-disable etc/no-commented-out-code */
 import React from "react";
 
 import {
@@ -33,7 +34,7 @@ import {
   PROFILE_COMPLETENESS_REPORT_UPDATE,
   PROFILE_COMPLETENESS_SUCCESS
 } from "../types/profileTypes";
-// import { getLabel } from "../../utils/stringUtils";
+// -- import { getLabel } from "../../utils/stringUtils";
 
 export const PROFILE_COMPLETENESS = "pc_";
 
@@ -197,7 +198,7 @@ export default function ProfileCompletenessCard() {
               <CoreBox
                 key={`missingData-${index}`}
                 styleClasses={[
-                  // CoreClasses.DISPLAY.INLINE_BLOCK,
+                  // -- CoreClasses.DISPLAY.INLINE_BLOCK,
                   CoreClasses.MARGIN.M1,
                 ]}
               >

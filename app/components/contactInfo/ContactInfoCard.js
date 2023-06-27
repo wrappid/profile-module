@@ -44,19 +44,28 @@ export default function ContactInfoCard(props) {
       />
 
       <CoreGrid>
-        <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
+        <CoreBox
+          gridProps={{ gridSize: { sm: 4 } }}
+          styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
+        >
           <CoreLabel>Primary Phone</CoreLabel>
 
           <CorePhoneLink phone={phone} verified={phoneVerified} />
         </CoreBox>
 
-        <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
+        <CoreBox
+          gridProps={{ gridSize: { sm: 4 } }}
+          styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
+        >
           <CoreLabel>Primary Email</CoreLabel>
 
           <CoreEmailLink email={email} verified={emailVerified} />
         </CoreBox>
 
-        <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
+        <CoreBox
+          gridProps={{ gridSize: { sm: 4 } }}
+          styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
+        >
           <CoreLabel>Profile Link</CoreLabel>
 
           <CoreTypographyBody2>
@@ -64,7 +73,10 @@ export default function ContactInfoCard(props) {
           </CoreTypographyBody2>
         </CoreBox>
 
-        <CoreBox gridProps={{ gridSize: { sm: 4 } }} styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}>
+        <CoreBox
+          gridProps={{ gridSize: { sm: 4 } }}
+          styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
+        >
           <CoreLabel>Website</CoreLabel>
 
           <CoreTypographyBody2>

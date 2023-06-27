@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 import config from "../config/config";
 import {
   GET_PROFILE_BASIC_API,
@@ -23,7 +24,7 @@ import {
   GET_PROFILE_REGISTRATION_LOADING,
   GET_PROFILE_REGISTRATION_SUCCESS
 } from "../types/profileTypes";
-// import { AUTHENTICATION_ERROR } from "../types/commonTypes";
+// -- import { AUTHENTICATION_ERROR } from "../types/commonTypes";
 
 let backendUrl = config.backendUrl;
 
@@ -48,7 +49,7 @@ export const getProfileBasic = (token) => {
               type   : GET_PROFILE_BASIC_SUCCESS,
             });
           } else if (res.status === 403 || res.status === 401) {
-            // dispatch({ type: "AUTHENTICATION_ERROR" });
+            // -- dispatch({ type: "AUTHENTICATION_ERROR" });
           } else {
             dispatch({
               message: data.message,
@@ -90,7 +91,7 @@ export const getProfileRegistration = (token) => {
               type   : GET_PROFILE_REGISTRATION_SUCCESS,
             });
           } else if (res.status === 403 || res.status === 401) {
-            // dispatch({ type: "AUTHENTICATION_ERROR" });
+            // -- dispatch({ type: "AUTHENTICATION_ERROR" });
           } else {
             dispatch({
               message: data.message,
@@ -132,7 +133,7 @@ export const getProfileAddress = (token) => {
               type   : GET_PROFILE_ADDRESS_SUCCESS,
             });
           } else if (res.status === 403 || res.status === 401) {
-            // dispatch({ type: "AUTHENTICATION_ERROR" });
+            // -- dispatch({ type: "AUTHENTICATION_ERROR" });
           } else {
             dispatch({
               message: data.message,
@@ -174,7 +175,7 @@ export const getProfileEducation = (token) => {
               type   : GET_PROFILE_EDUCATION_SUCCESS,
             });
           } else if (res.status === 403 || res.status === 401) {
-            // dispatch({ type: "AUTHENTICATION_ERROR" });
+            // -- dispatch({ type: "AUTHENTICATION_ERROR" });
           } else {
             dispatch({
               message: data.message,
@@ -216,7 +217,7 @@ export const getProfileExperience = (token) => {
               type   : GET_PROFILE_EXPERIENCE_SUCCESS,
             });
           } else if (res.status === 403 || res.status === 401) {
-            // dispatch({ type: "AUTHENTICATION_ERROR" });
+            // -- dispatch({ type: "AUTHENTICATION_ERROR" });
           } else {
             dispatch({
               message: data.message,

@@ -1,7 +1,4 @@
-import {
-  CoreTypographyBody1,
-  CoreCardHeader
-} from "@wrappid/core";
+import { CoreTypographyBody1, CoreCardHeader } from "@wrappid/core";
 
 export default function experienceCard(props) {
   const { designation, organization, location, startDate, endDate } = props;
@@ -20,7 +17,7 @@ export default function experienceCard(props) {
           <CoreTypographyBody1>{location}</CoreTypographyBody1>
 
           <CoreTypographyBody1>
-            {(startDate) + " - " + (endDate, "endDate")}
+            {startDate + " - " + (endDate, "endDate")}
 
             {/* -- {viewFormattedDate(startDate) + " - " + viewFormattedDate(endDate, "endDate")} */}
           </CoreTypographyBody1>

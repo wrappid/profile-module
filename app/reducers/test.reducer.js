@@ -3,7 +3,7 @@ import { TEST_FAILURE, TEST_SUCCESS } from "../types/test.types";
 const initialState = {
   error  : false,
   message: "This is a test module.",
-  success: false
+  success: false,
 };
 
 const testReducer = (state = initialState, action) => {
@@ -11,17 +11,14 @@ const testReducer = (state = initialState, action) => {
     case TEST_SUCCESS:
       return {
         ...state,
-        success: true
+        success: true,
       };
 
     case TEST_FAILURE:
       return {
         ...state,
-        success: true
+        success: true,
       };
-
-    case TEST_FAILURE:
-      return initialState;
 
     default:
       return state;

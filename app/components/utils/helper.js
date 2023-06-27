@@ -1,28 +1,28 @@
 export function getAge(birthDate) {
   let dob = new Date(birthDate);
-    
+
   //extract the year, month, and date from date input
   let dobYear = dob.getYear();
-    
+
   let dobMonth = dob.getMonth();
-    
+
   let dobDate = dob.getDate();
 
   //get the current date from the system
   let now = new Date();
-    
+
   //extract the year, month, and date from current date
   let currentYear = now.getYear();
-    
+
   let currentMonth = now.getMonth();
-    
+
   let currentDate = now.getDate();
 
   //declare a variable to collect the age in year, month, and days
   let age = {};
 
   let dateAge = 0;
-    
+
   let monthAge = 0;
 
   //get years

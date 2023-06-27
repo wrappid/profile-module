@@ -1,3 +1,4 @@
+/* eslint-disable etc/no-commented-out-code */
 import { useState, useEffect } from "react";
 
 import {
@@ -30,6 +31,7 @@ function UserProfile() {
   // componentDidMount
   useEffect(() => {}, []);
 
+  // eslint-disable-next-line no-unused-vars
   const ToggleMode = (formId) => {
     setFormsMode({
       ...formsMode,

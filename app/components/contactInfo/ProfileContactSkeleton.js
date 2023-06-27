@@ -1,8 +1,4 @@
-import {
-  CoreSkeleton,
-  CoreBox,
-  CoreGrid
-} from "@wrappid/core";
+import { CoreSkeleton, CoreBox, CoreGrid } from "@wrappid/core";
 
 export default function ProfileContactSkeleton() {
   return (
