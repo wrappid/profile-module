@@ -1,4 +1,3 @@
-/* eslint-disable etc/no-commented-out-code */
 import { useState, useEffect } from "react";
 
 import {
@@ -25,10 +24,10 @@ function UserProfile() {
     [FORM_IDS.__PROFILE_EXPERIENCE]  : FORM_VIEW_MODE,
   });
 
-  const profile = useSelector((state) => state.profile); //profile, addresses, basic, contact, educations, experiences, registration
-  const auth = useSelector((state) => state.auth); // auth, navData
+  const profile = useSelector((state) => state.profile); // --- profile, addresses, basic, contact, educations, experiences, registration
+  const auth = useSelector((state) => state.auth); // --- auth, navData
 
-  // componentDidMount
+  // --- componentDidMount
   useEffect(() => {}, []);
 
   // eslint-disable-next-line no-unused-vars
@@ -151,7 +150,7 @@ function UserProfile() {
                     JSON.stringify({ personId: profile?.basic?.id })
                   ),
                 }}
-                // afterCreateError={() => {
+                // --- afterCreateError={() => {
                 //   alert("CREATE error hook");
                 // }}
                 // afterEditError={() => {

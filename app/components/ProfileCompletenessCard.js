@@ -1,4 +1,3 @@
-/* eslint-disable etc/no-commented-out-code */
 import React from "react";
 
 import {
@@ -198,7 +197,7 @@ export default function ProfileCompletenessCard() {
               <CoreBox
                 key={`missingData-${index}`}
                 styleClasses={[
-                  // -- CoreClasses.DISPLAY.INLINE_BLOCK,
+                  // --- CoreClasses.DISPLAY.INLINE_BLOCK,
                   CoreClasses.MARGIN.M1,
                 ]}
               >
@@ -209,7 +208,7 @@ export default function ProfileCompletenessCard() {
                 >
                   <CoreChip label={data} size="small" />
 
-                  {/* <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
+                  {/* -- <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
                 </CoreBadge>
               </CoreBox>
             );
@@ -226,7 +225,7 @@ export default function ProfileCompletenessCard() {
               <CoreBox
                 key={`providedData-${index}`}
                 styleClasses={[
-                  // CoreClasses.DISPLAY.INLINE_BLOCK,
+                  // --- CoreClasses.DISPLAY.INLINE_BLOCK,
                   CoreClasses.MARGIN.M1,
                 ]}
               >
@@ -240,7 +239,7 @@ export default function ProfileCompletenessCard() {
                     size="small"
                   />
 
-                  {/* <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
+                  {/* -- <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
                 </CoreBadge>
               </CoreBox>
             );
@@ -249,7 +248,7 @@ export default function ProfileCompletenessCard() {
           <CoreBox
             styleClasses={[
               CoreClasses.MARGIN.MT2,
-              // CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
+              // --- CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
             ]}
           >
             <CoreContainedButton
