@@ -56,7 +56,7 @@ export default function ProfileCompletenessCard() {
     },
   } = completeness || {};
 
-  // -- const [cardOpen, setCardOpen] = React.useState(true);
+  const [cardOpen, setCardOpen] = React.useState(true);
 
   React.useEffect(() => {
     if (!checklist || Object.keys(checklist)?.length === 0) {
@@ -153,7 +153,7 @@ export default function ProfileCompletenessCard() {
         }
 
         if (completenessQuotient === 100) {
-          // -- setCardOpen(false);
+          setCardOpen(false);
         }
       } else if (error) {
         // api call failure
@@ -162,104 +162,108 @@ export default function ProfileCompletenessCard() {
   }, [completeness]);
 
   return (
-    !(completeness?.report?.quotient === 100) && (
-      <CoreCard>
-        <CoreCardHeader
-          avatar={
-            <CoreCircularProgress
-              variant="determinate"
-              value={report?.quotient}
-              // size={100}
+    <>
+      {cardOpen && (
+        !(completeness?.report?.quotient === 100) && (
+          <CoreCard>
+            <CoreCardHeader
+              avatar={
+                <CoreCircularProgress
+                  variant="determinate"
+                  value={report?.quotient}
+                  // size={100}
+                />
+              }
+              title="Setup your Rxefy account"
+              subheader="You still have information missing on your profile"
+              action={
+                <CoreIconButton
+                  onClick={() => {
+                    setCardOpen(false);
+                  }}
+                >
+                  <CoreIcon>clear</CoreIcon>
+                </CoreIconButton>
+              }
             />
-          }
-          title="Setup your Rxefy account"
-          subheader="You still have information missing on your profile"
-          action={
-            <CoreIconButton
-              onClick={() => {
-                // -- setCardOpen(false);
-              }}
-            >
-              <CoreIcon>clear</CoreIcon>
-            </CoreIconButton>
-          }
-        />
-
-        <CoreDivider />
-
-        <CoreCardContent>
-          <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
-            Missing Information:
-          </CoreTypographyBody2>
-
-          {Object.keys(report?.missingData)?.map((data, index) => {
-            return (
+    
+            <CoreDivider />
+    
+            <CoreCardContent>
+              <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
+                Missing Information:
+              </CoreTypographyBody2>
+    
+              {Object.keys(report?.missingData)?.map((data, index) => {
+                return (
+                  <CoreBox
+                    key={`missingData-${index}`}
+                    styleClasses={[
+                      // --- CoreClasses.DISPLAY.INLINE_BLOCK,
+                      CoreClasses.MARGIN.M1,
+                    ]}
+                  >
+                    <CoreBadge
+                      // styleClasses={[CoreClasses.MARGIN.ML5]}
+                      badgeContent={report?.missingData[data]}
+                      color="error"
+                    >
+                      <CoreChip label={data} size="small" />
+    
+                      {/* -- <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
+                    </CoreBadge>
+                  </CoreBox>
+                );
+              })}
+    
+              <CoreDivider />
+    
+              <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
+                Provided Information:
+              </CoreTypographyBody2>
+    
+              {Object.keys(report?.providedData)?.map((data, index) => {
+                return (
+                  <CoreBox
+                    key={`providedData-${index}`}
+                    styleClasses={[
+                      // --- CoreClasses.DISPLAY.INLINE_BLOCK,
+                      CoreClasses.MARGIN.M1,
+                    ]}
+                  >
+                    <CoreBadge
+                      badgeContent={report?.providedData[data]}
+                      color="success"
+                    >
+                      <CoreChip
+                        styleClasses={[CoreClasses.MARGIN.M1]}
+                        label={data}
+                        size="small"
+                      />
+    
+                      {/* -- <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
+                    </CoreBadge>
+                  </CoreBox>
+                );
+              })}
+    
               <CoreBox
-                key={`missingData-${index}`}
                 styleClasses={[
-                  // --- CoreClasses.DISPLAY.INLINE_BLOCK,
-                  CoreClasses.MARGIN.M1,
+                  CoreClasses.MARGIN.MT2,
+                  // --- CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
                 ]}
               >
-                <CoreBadge
-                  // styleClasses={[CoreClasses.MARGIN.ML5]}
-                  badgeContent={report?.missingData[data]}
-                  color="error"
-                >
-                  <CoreChip label={data} size="small" />
-
-                  {/* -- <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
-                </CoreBadge>
+                <CoreContainedButton
+                  label="Complete Profile"
+                  OnClick={() => {
+                    navigate(`/${urls.PROFILE}`);
+                  }}
+                />
               </CoreBox>
-            );
-          })}
-
-          <CoreDivider />
-
-          <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
-            Provided Information:
-          </CoreTypographyBody2>
-
-          {Object.keys(report?.providedData)?.map((data, index) => {
-            return (
-              <CoreBox
-                key={`providedData-${index}`}
-                styleClasses={[
-                  // --- CoreClasses.DISPLAY.INLINE_BLOCK,
-                  CoreClasses.MARGIN.M1,
-                ]}
-              >
-                <CoreBadge
-                  badgeContent={report?.providedData[data]}
-                  color="success"
-                >
-                  <CoreChip
-                    styleClasses={[CoreClasses.MARGIN.M1]}
-                    label={data}
-                    size="small"
-                  />
-
-                  {/* -- <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
-                </CoreBadge>
-              </CoreBox>
-            );
-          })}
-
-          <CoreBox
-            styleClasses={[
-              CoreClasses.MARGIN.MT2,
-              // --- CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
-            ]}
-          >
-            <CoreContainedButton
-              label="Complete Profile"
-              OnClick={() => {
-                navigate(`/${urls.PROFILE}`);
-              }}
-            />
-          </CoreBox>
-        </CoreCardContent>
-      </CoreCard>
-    )
+            </CoreCardContent>
+          </CoreCard>
+        )
+      )}
+    </>
   );
 }
