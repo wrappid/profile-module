@@ -1,4 +1,4 @@
-import { CoreTypographyBody1, CoreCardHeader } from "@wrappid/core";
+import { CoreTypographyBody1, CoreCardHeader, viewFormattedDate } from "@wrappid/core";
 
 export default function educationCard(props) {
   const {
@@ -19,9 +19,9 @@ export default function educationCard(props) {
           <CoreTypographyBody1>{board + ", " + location}</CoreTypographyBody1>
 
           <CoreTypographyBody1>
-            {startDate + " - " + (endDate, "endDate")}
+            {/* -- {startDate + " - " + (endDate, "endDate")} */}
 
-            {/* -- {viewFormattedDate(startDate) + " - " + viewFormattedDate(endDate, "endDate")} */}
+            {viewFormattedDate(startDate) + " - " + viewFormattedDate(endDate, "endDate")}
           </CoreTypographyBody1>
         </>
       }
