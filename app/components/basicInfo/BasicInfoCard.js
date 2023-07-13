@@ -5,7 +5,8 @@ import {
   CoreTypographySubtitle1,
   CoreBox,
   CoreGrid,
-  CoreClasses
+  CoreClasses,
+  getFullName
 } from "@wrappid/core";
 
 import { getAge /**, getFullName  */ } from "../utils/helper";
@@ -28,7 +29,7 @@ export default function BasicInfoCard(props) {
       </CoreBox>
 
       <CoreBox gridProps={{ gridSize: { md: 10, xs: 12 } }} styleClasses={[]}>
-        <CoreH6>{firstName + lastName + middleName}</CoreH6>
+        <CoreH6>{getFullName({firstName, lastName , middleName})}</CoreH6>
 
         <CoreTypographySubtitle1 variant={"subtitle1"}>
           {dob
