@@ -9,6 +9,7 @@ export default function registrationCard(props) {
   const {
     regNo = "",
     regDate = "",
+    degrees="",
     departmentId = { id: "", label: "" },
     registrationDocument = "",
   } = props;
@@ -22,6 +23,12 @@ export default function registrationCard(props) {
 
       <CoreTypographyBody2>
         {departmentId?.label || "Not given"}
+      </CoreTypographyBody2>
+
+      <CoreLabel>Degrees</CoreLabel>
+
+      <CoreTypographyBody2>
+        {degrees || "Not given"}
       </CoreTypographyBody2>
 
       <CoreLabel>Registration Number</CoreLabel>

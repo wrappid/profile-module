@@ -8,6 +8,7 @@ import educationCard from "./components/education/EducationCard";
 import ProfileEducationSkeleton from "./components/education/ProfileEducationSkeleton";
 import experienceCard from "./components/experience/ExperienceCard";
 import ProfileExperienceSkeleton from "./components/experience/ProfileExperienceSkeleton";
+import ProfileRegistrationSkeleton from "./components/registration/ProfileRegistrationSkeleton";
 import ProfileRegistrationCard from "./components/registration/ProfileRegistrationSkeleton";
 import registrationCard from "./components/registration/RegistrationCard";
 import UserProfile from "./components/UserProfile";
@@ -15,6 +16,7 @@ import UserProfile from "./components/UserProfile";
 export const ComponentRegistry = {
   BasicInfoCard            : { comp: BasicInfoCard },
   ProfileBasicSkeleton     : { comp: ProfileBasicSkeleton },
+  ProfileRegistrationSkeleton     : { comp: ProfileRegistrationSkeleton },
   ProfileClinicSkeleton    : { comp: ProfileClinicSkeleton },
   ProfileContactSkeleton   : { comp: ProfileContactSkeleton },
   ProfileEducationSkeleton : { comp: ProfileEducationSkeleton },

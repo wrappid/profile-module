@@ -10,6 +10,8 @@ export default function ProfileRegistrationSkeleton() {
       <CoreSkeleton type="rectangular" height={60} />
 
       <CoreSkeleton type="rectangular" height={60} />
+      
+      <CoreSkeleton type="rectangular" height={60} />
     </>
   );
 }
