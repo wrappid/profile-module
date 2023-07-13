@@ -62,7 +62,7 @@ export default function ContactInfoCard(props) {
           <CoreEmailLink email={email} verified={emailVerified} />
         </CoreBox>
 
-        <CoreBox
+        {/* -- <CoreBox
           gridProps={{ gridSize: { sm: 4 } }}
           styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
         >
@@ -71,9 +71,9 @@ export default function ContactInfoCard(props) {
           <CoreTypographyBody2>
             {profileLink ? profileLink : "Not given"}
           </CoreTypographyBody2>
-        </CoreBox>
+        </CoreBox> */}
 
-        <CoreBox
+        {/* -- <CoreBox
           gridProps={{ gridSize: { sm: 4 } }}
           styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
         >
@@ -82,7 +82,7 @@ export default function ContactInfoCard(props) {
           <CoreTypographyBody2>
             {website ? website : "Not given"}
           </CoreTypographyBody2>
-        </CoreBox>
+        </CoreBox> */}
       </CoreGrid>
     </>
   );
