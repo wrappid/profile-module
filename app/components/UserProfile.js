@@ -41,7 +41,7 @@ function UserProfile() {
 
   return (
     <CoreGrid>
-      <CoreCard gridProps={{ gridSize: { sm: 8 } }}>
+      <CoreCard gridProps={{ gridSize: { sm: 12 } }}>
         <CoreCardContent>
           <CoreGrid coreId="userProfileGrid">
             <CoreForm
@@ -189,9 +189,9 @@ function UserProfile() {
         </CoreCardContent>
       </CoreCard>
 
-      <CoreCard gridProps={{ gridSize: { sm: 4 } }}>
-        <CoreCardContent>{/* -- <RssFeed /> */}</CoreCardContent>
-      </CoreCard>
+      {/* -- <CoreCard gridProps={{ gridSize: { sm: 4 } }}>
+        <CoreCardContent><RssFeed /></CoreCardContent>
+      </CoreCard> */}
     </CoreGrid>
   );
 }
