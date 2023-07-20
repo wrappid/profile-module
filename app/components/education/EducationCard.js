@@ -1,6 +1,6 @@
 import { CoreTypographyBody1, CoreCardHeader, viewFormattedDate } from "@wrappid/core";
 
-export default function educationCard(props) {
+export default function EducationCard(props) {
   const {
     degree, school, location, board, startDate, endDate 
   } = props;

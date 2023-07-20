@@ -1,6 +1,6 @@
 import { CoreTypographyBody1, CoreCardHeader, viewFormattedDate } from "@wrappid/core";
 
-export default function experienceCard(props) {
+export default function ExperienceCard(props) {
   const { designation, organization, location, startDate, endDate } = props;
 
   return (

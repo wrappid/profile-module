@@ -5,7 +5,7 @@ import {
   CoreLink
 } from "@wrappid/core";
 
-export default function registrationCard(props) {
+export default function RegistrationCard(props) {
   const {
     regNo = "",
     regDate = "",
