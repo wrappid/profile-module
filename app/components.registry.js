@@ -9,7 +9,6 @@ import ProfileEducationSkeleton from "./components/education/ProfileEducationSke
 import ExperienceCard from "./components/experience/ExperienceCard";
 import ProfileExperienceSkeleton from "./components/experience/ProfileExperienceSkeleton";
 import ProfileRegistrationSkeleton from "./components/registration/ProfileRegistrationSkeleton";
-import ProfileRegistrationCard from "./components/registration/ProfileRegistrationSkeleton";
 import RegistrationCard from "./components/registration/RegistrationCard";
 import UserProfile from "./components/UserProfile";
 
@@ -20,7 +19,6 @@ export const ComponentRegistry = {
   ProfileContactSkeleton     : { comp: ProfileContactSkeleton },
   ProfileEducationSkeleton   : { comp: ProfileEducationSkeleton },
   ProfileExperienceSkeleton  : { comp: ProfileExperienceSkeleton },
-  ProfileRegistrationCard    : { comp: ProfileRegistrationCard },
   ProfileRegistrationSkeleton: { comp: ProfileRegistrationSkeleton },
   UserProfile                : { comp: UserProfile },
   clinicCard                 : { comp: clinicCard },

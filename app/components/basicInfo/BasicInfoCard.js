@@ -29,7 +29,7 @@ export default function BasicInfoCard(props) {
       </CoreBox>
 
       <CoreBox gridProps={{ gridSize: { md: 10, xs: 12 } }} styleClasses={[]}>
-        <CoreH6>{getFullName({firstName, lastName , middleName})}</CoreH6>
+        <CoreH6>{getFullName({ firstName, lastName, middleName })}</CoreH6>
 
         <CoreTypographySubtitle1 variant={"subtitle1"}>
           {dob

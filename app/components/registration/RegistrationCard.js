@@ -9,7 +9,7 @@ export default function RegistrationCard(props) {
   const {
     regNo = "",
     regDate = "",
-    degrees="",
+    degrees = "",
     departmentId = { id: "", label: "" },
     registrationDocument = "",
   } = props;
