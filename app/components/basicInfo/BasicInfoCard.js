@@ -6,15 +6,41 @@ import {
   CoreBox,
   CoreGrid,
   CoreClasses,
-  getFullName
+  getFullName,
+  CoreIconText,
+  __IconTypes,
+  CoreStack,
+  CoreDivider
 } from "@wrappid/core";
 
 import { getAge /**, getFullName  */ } from "../utils/helper";
+import { useSelector } from "react-redux";
+
 
 export default function BasicInfoCard(props) {
   const {
-    firstName, middleName, lastName, gender, dob, bio, photo 
+    firstName, middleName, lastName, gender, dob, bio, photo
   } = props;
+  //getGender is not showing proper icon, its need to be code properly
+  const getGender = (gender) => {
+    if (typeof gender === 'string') {
+      switch (gender.toLowerCase()) {
+        case 'male':
+          return 'male';
+        case 'female':
+          return 'female';
+        default:
+          return 'question_mark';
+      }
+    } else if (typeof gender === 'object' && gender.label) {
+      return gender.label;
+    } else {
+      return 'question_mark';
+    }
+  };
+
+  const degrees = useSelector((state) => state?.profile?.registration?.degrees);
+
 
   return (
     <CoreGrid styleClasses={[]}>
@@ -31,15 +57,25 @@ export default function BasicInfoCard(props) {
       <CoreBox gridProps={{ gridSize: { md: 10, xs: 12 } }} styleClasses={[]}>
         <CoreH6>{getFullName({ firstName, lastName, middleName })}</CoreH6>
 
-        <CoreTypographySubtitle1 variant={"subtitle1"}>
-          {dob
-            ? gender
-              ? typeof gender === "string"
-                ? gender + ", " + getAge(dob)
-                : gender.label + ", " + getAge(dob)
-              : "N/A, " + getAge(dob)
-            : "N/A, N/A"}
-        </CoreTypographySubtitle1>
+        {/* Display degrees */}
+        <CoreTypographyBody1>{degrees}</CoreTypographyBody1>
+
+
+        <CoreStack
+          direction="row"
+          spacing={1}
+        >
+          <CoreTypographySubtitle1 styleClasses={[CoreClasses.COLOR.TEXT_BLACK]}>
+            <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon="cake" text={getAge(dob)} />
+          </CoreTypographySubtitle1>
+
+          <CoreDivider variant="verticle" />
+
+          <CoreTypographySubtitle1 styleClasses={[CoreClasses.COLOR.TEXT_BLACK]}>
+            <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={getGender(gender)} text={getGender(gender)} />
+          </CoreTypographySubtitle1>
+
+        </CoreStack>
       </CoreBox>
 
       <CoreBox gridProps={{ gridSize: { xs: 12 } }}>
