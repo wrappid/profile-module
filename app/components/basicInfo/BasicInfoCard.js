@@ -2,40 +2,44 @@ import {
   CoreAvatar,
   CoreH6,
   CoreTypographyBody1,
-  CoreTypographySubtitle1,
+  CoreTypographyCaption,
   CoreBox,
   CoreGrid,
   CoreClasses,
   getFullName,
   CoreIconText,
   __IconTypes,
-  CoreStack,
-  CoreDivider
+  CoreStack
 } from "@wrappid/core";
-
-import { getAge /**, getFullName  */ } from "../utils/helper";
 import { useSelector } from "react-redux";
 
+import { getAge /**, getFullName  */ } from "../utils/helper";
 
 export default function BasicInfoCard(props) {
   const {
     firstName, middleName, lastName, gender, dob, bio, photo
   } = props;
-  //getGender is not showing proper icon, its need to be code properly
+
   const getGender = (gender) => {
-    if (typeof gender === 'string') {
-      switch (gender.toLowerCase()) {
-        case 'male':
-          return 'male';
-        case 'female':
-          return 'female';
-        default:
-          return 'question_mark';
-      }
-    } else if (typeof gender === 'object' && gender.label) {
-      return gender.label;
+    let genderTmp = "unknown";
+
+    if (typeof gender === "string") {
+      genderTmp = gender.toLowerCase();
+    } else if (typeof gender === "object") {
+      genderTmp = (gender?.id || gender?.label || "unknown").toLowerCase();
     } else {
-      return 'question_mark';
+      genderTmp = "unknown";
+    }
+
+    switch (genderTmp) {
+      case "male":
+        return "male";
+
+      case "female":
+        return "female";
+
+      default:
+        return "question_mark";
     }
   };
 
@@ -60,19 +64,20 @@ export default function BasicInfoCard(props) {
         {/* Display degrees */}
         <CoreTypographyBody1>{degrees}</CoreTypographyBody1>
 
-
         <CoreStack
           direction="row"
           spacing={1}
+          styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}
         >
-          <CoreTypographySubtitle1 styleClasses={[CoreClasses.COLOR.TEXT_BLACK]}>
-            <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon="cake" text={getAge(dob)} />
-          </CoreTypographySubtitle1>
+          
+          <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon="cake" text={getAge(dob)} />
 
-          <CoreDivider variant="verticle" />
+          <CoreTypographyCaption styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY]}>{" | "}</CoreTypographyCaption>
 
-          <CoreTypographySubtitle1 styleClasses={[CoreClasses.COLOR.TEXT_BLACK]}>
             <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={getGender(gender)} text={getGender(gender)} />
+            <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={getGender(gender)} text={getGender(gender)} />
+          </CoreTypographySubtitle1>
+          <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={getGender(gender)} text={getGender(gender)} />
           </CoreTypographySubtitle1>
 
         </CoreStack>
