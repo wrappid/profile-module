@@ -45,7 +45,6 @@ export default function BasicInfoCard(props) {
 
   const degrees = useSelector((state) => state?.profile?.registration?.degrees);
 
-
   return (
     <CoreGrid styleClasses={[]}>
       <CoreBox
@@ -74,8 +73,6 @@ export default function BasicInfoCard(props) {
 
           <CoreTypographyCaption styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY]}>{" | "}</CoreTypographyCaption>
 
-          <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={getGender(gender)} text={getGender(gender)} />
-          <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={getGender(gender)} text={getGender(gender)} />
           <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={getGender(gender)} text={getGender(gender)} />
 
         </CoreStack>
