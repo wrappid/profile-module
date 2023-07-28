@@ -10,7 +10,8 @@ import {
   CoreClasses,
   coreUseNavigate,
   CorePhoneLink,
-  CoreEmailLink
+  CoreEmailLink,
+  CoreStack
 } from "@wrappid/core";
 import { useSelector } from "react-redux";
 
@@ -50,7 +51,7 @@ export default function ContactInfoCard(props) {
         >
           <CoreLabel>Primary Phone</CoreLabel>
 
-          <CorePhoneLink phone={phone} verified={phoneVerified} />
+          <CorePhoneLink icon="phone" phone={phone} verified={phoneVerified} />
         </CoreBox>
 
         <CoreBox
@@ -68,9 +69,17 @@ export default function ContactInfoCard(props) {
         >
           <CoreLabel>Profile Link</CoreLabel>
 
-          <CoreTypographyBody2>
-            {profileLink ? profileLink : "Not given"}
-          </CoreTypographyBody2>
+          <CoreStack direction="row" spacing={1}>
+            <CoreIcon
+              styleClasses={[profileLink ? CoreClasses.COLOR.TEXT_PRIMARY : CoreClasses.COLOR.TEXT_SECONDARY_DARK]}
+            >
+            link
+            </CoreIcon>
+
+            <CoreTypographyBody2>
+              {profileLink ? profileLink : "Not given"}
+            </CoreTypographyBody2>
+          </CoreStack>
         </CoreBox>
 
         <CoreBox
@@ -79,9 +88,17 @@ export default function ContactInfoCard(props) {
         >
           <CoreLabel>Website</CoreLabel>
 
-          <CoreTypographyBody2>
-            {website ? website : "Not given"}
-          </CoreTypographyBody2>
+          <CoreStack direction="row" spacing={1}>
+            <CoreIcon
+              styleClasses={[website ? CoreClasses.COLOR.TEXT_PRIMARY : CoreClasses.COLOR.TEXT_SECONDARY_DARK]}
+            >
+            language
+            </CoreIcon>
+
+            <CoreTypographyBody2>
+              {website ? website : "Not given"}
+            </CoreTypographyBody2>
+          </CoreStack>
         </CoreBox>
       </CoreGrid>
     </>
