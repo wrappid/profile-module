@@ -1,4 +1,4 @@
-import { CoreTypographyBody1, CoreCardHeader, viewFormattedDate } from "@wrappid/core";
+import { CoreTypographyBody1, CoreTypographyBody2, CoreTypographySubtitle2, CoreCardHeader, viewFormattedDate, CoreClasses } from "@wrappid/core";
 
 export default function EducationCard(props) {
   const {
@@ -9,20 +9,20 @@ export default function EducationCard(props) {
     <CoreCardHeader
       title={
         <>
-          <CoreTypographyBody1>{degree}</CoreTypographyBody1>
+          <CoreTypographyBody1 styleClasses={[CoreClasses.TEXT.TEXT_WEIGHT_BOLD]}>{degree}</CoreTypographyBody1>
         </>
       }
       subheader={
         <>
-          <CoreTypographyBody1>{school}</CoreTypographyBody1>
+          <CoreTypographySubtitle2>{school}</CoreTypographySubtitle2>
 
-          <CoreTypographyBody1>{board + ", " + location}</CoreTypographyBody1>
+          <CoreTypographySubtitle2>{board + ", " + location}</CoreTypographySubtitle2>
 
-          <CoreTypographyBody1>
+          <CoreTypographyBody2>
             {/* -- {startDate + " - " + (endDate, "endDate")} */}
 
             {viewFormattedDate(startDate) + " - " + viewFormattedDate(endDate, "endDate")}
-          </CoreTypographyBody1>
+          </CoreTypographyBody2>
         </>
       }
     />
