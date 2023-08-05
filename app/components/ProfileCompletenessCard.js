@@ -1,7 +1,6 @@
 import React from "react";
 
 import {
-  urls,
   HTTP,
   apiRequestAction,
   coreUseNavigate,
@@ -33,6 +32,7 @@ import {
   PROFILE_COMPLETENESS_REPORT_UPDATE,
   PROFILE_COMPLETENESS_SUCCESS
 } from "../types/profileTypes";
+import { urls } from "../urls.registry";
 // -- import { getLabel } from "../../utils/stringUtils";
 
 export const PROFILE_COMPLETENESS = "pc_";
