@@ -1,23 +1,13 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable id-length */
 
+import { profileBasicgender } from "./functions/asyncselect.functions";
+import { SanBasicEditUrlChange } from "./functions/sanity.functions";
+
 // asyncSelect and formSubmitSanitization
 
 export const FunctionsRegistry = {
-  SanBasicEditUrlChange: (formData, apiMeta, state, others) => {
-    // -- console.log("SANITING", apiMeta, others);
-    if (formData.gender) {
-      formData.gender = formData.gender.id;
-    }
-    if (formData.departmentId) {
-      formData.departmentId = formData.departmentId.id;
-    }
-    return {
-      endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
-      values  : formData,
-    };
-  },
-  //PROFILE EDUCATION SANITIZATION FUNCTIONS
+  SanBasicEditUrlChange   : SanBasicEditUrlChange,
   SanEducationAddUrlChange: (formData, apiMeta, state, others) => {
     // -- console.log("SANITING", apiMeta.endpoint, others);
     return {
@@ -163,23 +153,7 @@ export const FunctionsRegistry = {
     };
   },
       
-  profileBasicgender: {
-    getOptionLabel: (data) => {
-      return data?.label || "";
-    },
-    getOptionValue: (data) => {
-      return typeof data === "string"
-        ? { id: data, label: data }
-        : { id: data?.label || "", label: data?.label || "" };
-    },
-    isOptionEqualToValue: (option, value) => {
-      if (typeof option === typeof value && typeof option === "string") {
-        return option === value;
-      } else {
-        return option?.id === value?.id;
-      }
-    },
-  },
+  profileBasicgender: profileBasicgender,
       
   profileRegistrationSpecilization: {
     getOptionValue: (data) => {
