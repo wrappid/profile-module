@@ -60,8 +60,8 @@ export const ValidationRegistry = {
             "start-end-check",
             "End date should be after start date",
             (val, props) => {
-              // console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
-              console.log("HERER", val);
+              // -- console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
+              // -- console.log("HERER", val);
               if (
                 props.parent.startDate &&
                 val &&

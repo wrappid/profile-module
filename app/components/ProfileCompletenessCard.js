@@ -20,10 +20,8 @@ import {
 } from "@wrappid/core";
 import { useDispatch, useSelector } from "react-redux";
 
-import {
-  PROFILE_COMPLETENESS_API,
-  PROFILE_COMPLETENESS_CHECKLIST_API
-} from "../constants/api";
+import { ApiRegistry } from "../apis.registry";
+import { RouteRegistry } from "../routes.registry";
 import {
   PROFILE_COMPLETENESS_CHECKLIST_ERROR,
   PROFILE_COMPLETENESS_CHECKLIST_SUCCESS,
@@ -32,7 +30,6 @@ import {
   PROFILE_COMPLETENESS_REPORT_UPDATE,
   PROFILE_COMPLETENESS_SUCCESS
 } from "../types/profileTypes";
-import { urls } from "../urls.registry";
 // -- import { getLabel } from "../../utils/stringUtils";
 
 export const PROFILE_COMPLETENESS = "pc_";
@@ -63,7 +60,7 @@ export default function ProfileCompletenessCard() {
       dispatch(
         apiRequestAction(
           HTTP.GET,
-          PROFILE_COMPLETENESS_CHECKLIST_API,
+          ApiRegistry.PROFILE_COMPLETENESS_CHECKLIST_API,
           true,
           {
             _defaultFilter: encodeURIComponent(
@@ -88,7 +85,7 @@ export default function ProfileCompletenessCard() {
       dispatch(
         apiRequestAction(
           HTTP.GET,
-          PROFILE_COMPLETENESS_API,
+          ApiRegistry.PROFILE_COMPLETENESS_API,
           true,
           { _defaultFilter: encodeURIComponent(JSON.stringify({ id: uid })) },
           PROFILE_COMPLETENESS_SUCCESS,
@@ -256,7 +253,7 @@ export default function ProfileCompletenessCard() {
                 <CoreContainedButton
                   label="Complete Profile"
                   OnClick={() => {
-                    navigate(`/${urls.PROFILE}`);
+                    navigate(`/${RouteRegistry.PROFILE}`);
                   }}
                 />
               </CoreBox>

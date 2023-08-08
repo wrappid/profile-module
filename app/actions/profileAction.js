@@ -1,12 +1,6 @@
 /* eslint-disable import/no-unresolved */
+import { ApiRegistry } from "../apis.registry";
 import config from "../config/config";
-import {
-  GET_PROFILE_BASIC_API,
-  GET_PROFILE_CLINIC_API,
-  GET_PROFILE_EDUCATION_API,
-  GET_PROFILE_EXPERIENCE_API,
-  GET_PROFILE_REGISTRATION_API
-} from "../constants/api";
 import {
   GET_PROFILE_ADDRESS_ERROR,
   GET_PROFILE_ADDRESS_LOADING,
@@ -31,7 +25,7 @@ let backendUrl = config.backendUrl;
 export const getProfileBasic = (token) => {
   return (dispatch) => {
     dispatch({ type: GET_PROFILE_BASIC_LOADING });
-    let newUrl = GET_PROFILE_BASIC_API;
+    let newUrl = ApiRegistry.GET_PROFILE_BASIC_API;
 
     fetch(backendUrl + newUrl, {
       headers: {
@@ -73,7 +67,7 @@ export const getProfileBasic = (token) => {
 export const getProfileRegistration = (token) => {
   return (dispatch) => {
     dispatch({ type: GET_PROFILE_REGISTRATION_LOADING });
-    let newUrl = GET_PROFILE_REGISTRATION_API;
+    let newUrl = ApiRegistry.GET_PROFILE_REGISTRATION_API;
 
     fetch(backendUrl + newUrl, {
       headers: {
@@ -115,7 +109,7 @@ export const getProfileRegistration = (token) => {
 export const getProfileAddress = (token) => {
   return (dispatch) => {
     dispatch({ type: GET_PROFILE_ADDRESS_LOADING });
-    let newUrl = GET_PROFILE_CLINIC_API;
+    let newUrl = ApiRegistry.GET_PROFILE_CLINIC_API;
 
     fetch(backendUrl + newUrl, {
       headers: {
@@ -157,7 +151,7 @@ export const getProfileAddress = (token) => {
 export const getProfileEducation = (token) => {
   return (dispatch) => {
     dispatch({ type: GET_PROFILE_EDUCATION_LOADING });
-    let newUrl = GET_PROFILE_EDUCATION_API;
+    let newUrl = ApiRegistry.GET_PROFILE_EDUCATION_API;
 
     fetch(backendUrl + newUrl, {
       headers: {
@@ -199,7 +193,7 @@ export const getProfileEducation = (token) => {
 export const getProfileExperience = (token) => {
   return (dispatch) => {
     dispatch({ type: GET_PROFILE_EXPERIENCE_LOADING });
-    let newUrl = GET_PROFILE_EXPERIENCE_API;
+    let newUrl = ApiRegistry.GET_PROFILE_EXPERIENCE_API;
 
     fetch(backendUrl + newUrl, {
       headers: {
