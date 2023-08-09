@@ -1,4 +1,6 @@
-import { CoreTypographyBody1, CoreTypographyBody2, CoreTypographySubtitle2, CoreCardHeader, viewFormattedDate, CoreClasses } from "@wrappid/core";
+import {
+  CoreTypographyBody1, CoreTypographyBody2, CoreTypographySubtitle2, CoreCardHeader, viewFormattedDate, CoreClasses 
+} from "@wrappid/core";
 
 export default function EducationCard(props) {
   const {
