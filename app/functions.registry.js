@@ -5,7 +5,7 @@ import {
 
 // asyncSelect and formSubmitSanitization
 
-export const FunctionRegistry = {
+export const FunctionsRegistry = {
   SanBasicEditUrlChange   : SanBasicEditUrlChange,
   SanEducationAddUrlChange: SanEducationAddUrlChange,
   

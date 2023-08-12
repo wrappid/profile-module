@@ -12,7 +12,7 @@ import ProfileRegistrationSkeleton from "./components/registration/ProfileRegist
 import RegistrationCard from "./components/registration/RegistrationCard";
 import UserProfile from "./components/UserProfile";
 
-export const ComponentRegistry = {
+export const ComponentsRegistry = {
   BasicInfoCard              : { comp: BasicInfoCard },
   ProfileBasicSkeleton       : { comp: ProfileBasicSkeleton },
   ProfileClinicSkeleton      : { comp: ProfileClinicSkeleton },
