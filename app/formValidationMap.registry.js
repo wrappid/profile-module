@@ -2,7 +2,7 @@ import { getFormikRequiredMessage } from "@wrappid/core";
 import moment from "moment";
 import * as yup from "yup";
 
-export const ValidationRegistry = {
+export const ValidationsRegistry = {
   profileBaic: {
     bio: yup
       .string()
