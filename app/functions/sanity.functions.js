@@ -77,26 +77,6 @@ export const SanProfileBasicRead = (data) => {
   };
 };
 
-export const SanProfileClinicRead = (data) => {
-  // -- console.log("SANITING", apiMeta, others);
-  return data?.rows?.map((m) => {
-    return {
-      addLine1  : m?.addLine1,
-      addLine2  : m?.addLine2,
-      city      : m?.city,
-      clinicLogo: m?.Clinic?.photoUrl,
-      country   : m?.country,
-      district  : m?.district,
-      fullName  : m?.fullName,
-      id        : m?.id,
-      landmark  : m?.landmark,
-      phone     : m?.phone,
-      pin       : m?.pin,
-      state     : m?.state,
-    };
-  });
-};
-
 export const SanProfileExperienceRead = (data) => {
   // -- console.log("SANITING", apiMeta, others);
   return data?.rows?.map((m) => {
@@ -157,3 +137,64 @@ export const SanRegistrationReadUrlChange = (formData, apiMeta, state, others) =
     values   : formData,
   };
 };
+
+
+export function SanClinicAddUrlChange(formData, apiMeta, state, others) {
+  // console.log("SANITING", apiMeta.endpoint, others);
+  formData["addressTypeId"] = state?.common?.addressTypes?.find(
+    (a) => a.type.toLowerCase() === "clinic"
+  )?.id;
+  return {
+    values: formData,
+    endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+  };
+}
+
+export function SanClinicEditUrlChange(formData, apiMeta, state, others) {
+  // console.log("SANITING", apiMeta, others);
+  for (let key in formData) {
+    if (formData[key] === null) {
+      delete formData[key];
+    }
+  }
+  return {
+    values: formData,
+    endpoint: apiMeta.endpoint.replace(":id", others.editing),
+  };
+}
+
+export function SanClinicDeleteUrlChange(formData, apiMeta, state, others) {
+  // console.log("SANITING", apiMeta, others);
+  return {
+    values: formData,
+    endpoint: apiMeta.endpoint.replace(":id", others.deleting),
+  };
+}
+
+export function SanClinicReadUrlChange(formData, apiMeta, state, others) {
+  // console.log("SANITING", apiMeta, others);
+  return {
+    values: formData,
+    endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
+  };
+}
+
+export function SanProfileClinicRead(data) {
+  // console.log("SANITING", apiMeta, others);
+  return data?.rows?.map((m) => {
+    return {
+      id: m?.id,
+      clinicLogo: m?.Clinic?.photoUrl,
+      fullName: m?.fullName,
+      addLine1: m?.addLine1,
+      addLine2: m?.addLine2,
+      country: m?.country,
+      state: m?.state,
+      district: m?.district,
+      city: m?.city,
+      pin: m?.pin,
+      landmark: m?.landmark,
+      phone: m?.phone,
+    };
+  });
+}

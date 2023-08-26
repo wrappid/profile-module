@@ -1,6 +1,7 @@
 import { profileBasicgender, profileRegistrationSpecilization } from "./functions/asyncselect.functions";
+import { getCity, getDistrict, getState } from "./functions/form.dependency.function";
 import {
-  SanBasicEditUrlChange, SanEducationAddUrlChange, SanEducationEditUrlChange, SanEducationReadUrlChange, SanExperienceAddUrlChange, SanExperienceEditUrlChange, SanExperienceReadUrlChange, SanProfileBasicRead, SanProfileClinicRead, SanProfileEducationRead, SanProfileExperienceRead, SanProfileRegistrationRead, SanRegistrationReadUrlChange 
+  SanBasicEditUrlChange, SanClinicAddUrlChange, SanClinicDeleteUrlChange, SanClinicEditUrlChange, SanClinicReadUrlChange, SanEducationAddUrlChange, SanEducationEditUrlChange, SanEducationReadUrlChange, SanExperienceAddUrlChange, SanExperienceEditUrlChange, SanExperienceReadUrlChange, SanProfileBasicRead, SanProfileClinicRead, SanProfileEducationRead, SanProfileExperienceRead, SanProfileRegistrationRead, SanRegistrationReadUrlChange 
 } from "./functions/sanity.functions";
 
 // asyncSelect and formSubmitSanitization
@@ -23,6 +24,10 @@ export const FunctionsRegistry = {
   SanProfileBasicRead: SanProfileBasicRead,
     
   SanProfileClinicRead: SanProfileClinicRead,
+  SanClinicAddUrlChange: SanClinicAddUrlChange,
+  SanClinicEditUrlChange: SanClinicEditUrlChange,
+  SanClinicDeleteUrlChange: SanClinicDeleteUrlChange,
+  SanClinicReadUrlChange: SanClinicReadUrlChange,
       
   SanProfileEducationRead: SanProfileEducationRead,
       
@@ -35,4 +40,12 @@ export const FunctionsRegistry = {
   profileBasicgender: profileBasicgender,
       
   profileRegistrationSpecilization: profileRegistrationSpecilization,
+
+  
+  getState:getState ,
+  
+  getDistrict:getDistrict ,
+  
+  getCity:getCity
+  
 };
