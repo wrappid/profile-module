@@ -3,7 +3,19 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 
-const testFunctions = require("../functions/test.functions");
+const profileFunction = require("../functions/profile.function")
+
+module.exports.getContactInfo = async (req, res) => {
+  try{
+    let {status, ...restData} = await profileFunction.getContactInfoFunc(req, res);
+    res.status(status).json(...restData);
+  }catch(error){
+    console.error("Error:: ", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
 
 /**
  * 
@@ -62,45 +74,6 @@ module.exports.getRegistrationInfo = async (req, res) => {
   }
 };
 
-module.exports.getContactInfo = async (req, res) => {
-  try {
-    let personId = req.user.personId;
-    let exists = await db.PersonContacts.findOne({
-      where: {
-        data    : req.body.data.toString(),
-        personId: personId,
-      },
-    });
-
-    if (exists) {
-      console.log("Contact already exists", exists.id);
-      res.status(500).json({ message: "Contact already exists" });
-    } else {
-      let createdContact = await db.PersonContacts.create({
-        ...req.body,
-        _status : entityStatus.ACTIVE,
-        personId: personId,
-        type    : isNaN(req.body.data)
-          ? constant.contact.EMAIL
-          : constant.contact.PHONE,
-      });
-
-      console.log(
-        "Person contact created, id:",
-        createdContact.id,
-        ", Person Id: ",
-        personId
-      );
-      res.status(200).json({ message: "Contact info created successfully" });
-    }
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({
-      error  : err,
-      message: "Contact info create error",
-    });
-  }
-};
 
 module.exports.postContact = async (req, res) => {
   try {

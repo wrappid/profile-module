@@ -1,11 +1,8 @@
-const testController = require("./controllers/test.controller");
-
+const profileController = require("./controllers/profile.controller");
+const { CoreMiddlewaresRegistry } = require("@wrappid/service-core");
+const {getContactInfo} = require("./validations/profile.validation");
 const controllersRegistry = {
-    "testGetAllFunc": testController.testGetAllFunc,
-    "testGetFunc": testController.testGetFunc,
-    "testPostFunc": testController.testPostFunc,
-    "testPutFunc": testController.testPutFunc,
-    "testPatchFunc": testController.testPatchFunc,
+    getContactInfo : [CoreMiddlewaresRegistry.validation(getContactInfo),profileController.getContactInfo]
 };
 
 exports.controllersRegistry = controllersRegistry;
