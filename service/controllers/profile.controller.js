@@ -8,13 +8,22 @@ const profileFunction = require("../functions/profile.function")
 module.exports.getContactInfo = async (req, res) => {
   try{
     let {status, ...restData} = await profileFunction.getContactInfoFunc(req, res);
-    res.status(status).json(...restData);
+    res.status(status).json(restData);
   }catch(error){
     console.error("Error:: ", error);
     res.status(500).json({ message: error.message });
   }
 };
 
+module.exports.getAddressType = async (req, res) => {
+  try{
+    let {status, ...restData} = await profileFunction.getAddressTypeFunc(req, res);
+    res.status(status).json(restData);
+  }catch(error){
+    console.error("Error:: ", error);
+    res.status(500).json({ message: error.message });
+  }
+};
 
 
 /**
