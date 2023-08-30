@@ -63,7 +63,10 @@ export default function ContactInfoCard(props) {
           <CoreEmailLink email={email} verified={emailVerified} />
         </CoreBox>
 
-        <CoreBox
+        {/**
+         * @todo Removing as of now for quick release
+         */}
+        {/* -- <CoreBox
           gridProps={{ gridSize: { sm: 3 } }}
           styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
         >
@@ -99,7 +102,7 @@ export default function ContactInfoCard(props) {
               {website ? website : "Not given"}
             </CoreTypographyBody2>
           </CoreStack>
-        </CoreBox>
+        </CoreBox> */}
       </CoreGrid>
     </>
   );

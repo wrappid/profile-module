@@ -20,7 +20,7 @@ export default function BasicInfoCard(props) {
     firstName, middleName, lastName, gender, dob, bio, photo
   } = props;
 
-  const getGender = (gender) => {
+  const getGender = (gender, iconFlag = false) => {
     let genderTmp = "unknown";
 
     if (typeof gender === "string") {
@@ -30,6 +30,8 @@ export default function BasicInfoCard(props) {
     } else {
       genderTmp = "unknown";
     }
+
+    if (!iconFlag) return genderTmp && genderTmp.trim() !== "" ? genderTmp : "unknown";
 
     switch (genderTmp) {
       case "male":
@@ -73,7 +75,7 @@ export default function BasicInfoCard(props) {
 
           <CoreTypographyCaption styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY]}>{" | "}</CoreTypographyCaption>
 
-          <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={getGender(gender)} text={getGender(gender)} />
+          <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={getGender(gender, true)} text={getGender(gender)} />
 
         </CoreStack>
       </CoreBox>
