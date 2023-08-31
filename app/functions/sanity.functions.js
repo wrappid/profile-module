@@ -3,7 +3,7 @@
 export const SanBasicEditUrlChange = (formData, apiMeta, state, others) => {
   // -- console.log("SANITING", apiMeta, others);
   if (formData.gender) {
-    formData.gender = formData.gender.id;
+    formData.gender = formData?.gender?.toLowerCase();
   }
   if (formData.departmentId) {
     formData.departmentId = formData.departmentId.id;

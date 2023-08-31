@@ -37,7 +37,9 @@ export const FunctionsRegistry = {
       
   SanRegistrationReadUrlChange: SanRegistrationReadUrlChange,
       
-  profileBasicgender: profileBasicgender,
+  __PROFILEBASICGENDER_GET_OPTION_VALUE: profileBasicgender.getOptionValue,
+  __PROFILEBASICGENDER_GET_OPTION_LABEL: profileBasicgender.getOptionLabel,
+  __PROFILEBASICGENDER_IS_OPTIONS_EQUAL_TO_VALUE: profileBasicgender.isOptionEqualToValue,
       
   profileRegistrationSpecilization: profileRegistrationSpecilization,
 

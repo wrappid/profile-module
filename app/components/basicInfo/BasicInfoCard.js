@@ -31,7 +31,14 @@ export default function BasicInfoCard(props) {
       genderTmp = "unknown";
     }
 
-    if (!iconFlag) return genderTmp && genderTmp.trim() !== "" ? genderTmp : "unknown";
+    if (!iconFlag) {
+      return genderTmp && genderTmp.trim() !== ""
+        ? genderTmp
+          .replace(/\w\S*/g, function (txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+          })
+        : "N/A";
+    }
 
     switch (genderTmp) {
       case "male":

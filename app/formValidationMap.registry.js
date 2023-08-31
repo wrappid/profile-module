@@ -14,6 +14,7 @@ export const ValidationsRegistry = {
       ),
     dob: yup
       .date()
+      .required(getFormikRequiredMessage("dateOfBirth"))
       .min(moment().subtract(115, "years"), "MIN_AGE")
       .max(moment().endOf("day").subtract(18, "years"), "Min age should be 18"),
     firstName: yup
@@ -21,7 +22,7 @@ export const ValidationsRegistry = {
       .trim()
       .required(getFormikRequiredMessage("firstName"))
       .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-    gender  : yup.object().required("Gender is required"),
+    gender  : yup.string().required("Gender is required"),
     lastName: yup
       .string()
       .trim()
