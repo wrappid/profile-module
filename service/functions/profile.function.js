@@ -48,4 +48,24 @@ const getAddressTypeFunc = async (req, res) => {
   }
 };
 
-module.exports = { getContactInfoFunc, getAddressTypeFunc };
+const getDepartmentFunc = async (req, res) => {
+  try {
+    // var isValidJOI = await authenticateJOI(req, "departmentGET", ["query"]);
+    let data = await databaseActions.findAll("application", "Departments", {
+      where: { ...req.query },
+    });
+    if (data.length > 1) {
+      console.log("Departments fetched successfully");
+      return {
+        status: 200,
+        message: "Departments fetched successfully",
+        data,
+      };
+    }
+  } catch (err) {
+    console.log(err);
+    throw err;
+  }
+};
+
+module.exports = { getContactInfoFunc, getAddressTypeFunc, getDepartmentFunc };

@@ -11,4 +11,16 @@ const getAddressTypeSchema = {
   query: yup.object({}).noUnknown().strict(),
 };
 
-  module.exports = {getContactInfo,getAddressTypeSchema};
+
+const departmentGET = {
+  body: yup.object({}).noUnknown().strict(),
+  params: yup.object({}).noUnknown().strict(),
+  query: yup
+    .object({
+      isActive: yup.boolean(),
+    })
+    .noUnknown()
+    .strict(),
+};
+
+  module.exports = {getContactInfo,getAddressTypeSchema,departmentGET};
