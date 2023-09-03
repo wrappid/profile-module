@@ -16,7 +16,11 @@ import {
   CoreBox,
   CoreCard,
   CoreCardContent,
-  CoreCardHeader
+  CoreCardHeader,
+  APP_PLATFORM,
+  WEB_PLATFORM,
+  detectPlatform,
+  CoreAvatar
 } from "@wrappid/core";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -47,13 +51,20 @@ export default function ProfileCompletenessCard() {
     checklist,
     data,
     report = {
-      missingData : {},
+      missingData: {},
       providedData: {},
-      quotient    : 0,
+      quotient: 0,
     },
   } = completeness || {};
 
   const [cardOpen, setCardOpen] = React.useState(true);
+
+  // platform detection
+  const [platform, setPlatform] = React.useState(WEB_PLATFORM);
+  React.useEffect(() => {
+    setPlatform(detectPlatform());
+  }, []);
+
 
   React.useEffect(() => {
     if (!checklist || Object.keys(checklist)?.length === 0) {
@@ -141,9 +152,9 @@ export default function ProfileCompletenessCard() {
           // update profile completeness report
           dispatch({
             payload: {
-              missingData : { ...missingData },
+              missingData: { ...missingData },
               providedData: { ...providedData },
-              quotient    : completenessQuotient,
+              quotient: completenessQuotient,
             },
             type: PROFILE_COMPLETENESS_REPORT_UPDATE,
           });
@@ -168,7 +179,7 @@ export default function ProfileCompletenessCard() {
                 <CoreCircularProgress
                   variant="determinate"
                   value={report?.quotient}
-                  // size={100}
+                // size={100}
                 />
               }
               title="Setup your Rxefy account"
@@ -183,14 +194,14 @@ export default function ProfileCompletenessCard() {
                 </CoreIconButton>
               }
             />
-    
+
             <CoreDivider />
-    
+
             <CoreCardContent>
               <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
                 Missing Information:
               </CoreTypographyBody2>
-    
+
               {Object.keys(report?.missingData)?.map((data, index) => {
                 return (
                   <CoreBox
@@ -200,25 +211,19 @@ export default function ProfileCompletenessCard() {
                       CoreClasses.MARGIN.M1,
                     ]}
                   >
-                    <CoreBadge
-                      // styleClasses={[CoreClasses.MARGIN.ML5]}
-                      badgeContent={report?.missingData[data]}
-                      color="error"
-                    >
-                      <CoreChip label={data} size="small" />
-    
-                      {/* -- <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
-                    </CoreBadge>
+                    <CoreChip avatar={
+                        <CoreAvatar styleClasses={[CoreClasses.COLOR.TEXT_WHITE, CoreClasses.BG.BG_ERROR]} label={report?.missingData[data]} />
+                      } label={data} size="small" />
                   </CoreBox>
                 );
               })}
-    
+
               <CoreDivider />
-    
+
               <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
                 Provided Information:
               </CoreTypographyBody2>
-    
+
               {Object.keys(report?.providedData)?.map((data, index) => {
                 return (
                   <CoreBox
@@ -228,22 +233,13 @@ export default function ProfileCompletenessCard() {
                       CoreClasses.MARGIN.M1,
                     ]}
                   >
-                    <CoreBadge
-                      badgeContent={report?.providedData[data]}
-                      color="success"
-                    >
-                      <CoreChip
-                        styleClasses={[CoreClasses.MARGIN.M1]}
-                        label={data}
-                        size="small"
-                      />
-    
-                      {/* -- <CoreTypographyBody1>{data}</CoreTypographyBody1> */}
-                    </CoreBadge>
+                    <CoreChip avatar={
+                      <CoreAvatar styleClasses={[CoreClasses.COLOR.TEXT_WHITE, CoreClasses.BG.BG_SUCCESS]} label={report?.providedData[data]} />
+                    } label={data} size="small" />
                   </CoreBox>
                 );
               })}
-    
+
               <CoreBox
                 styleClasses={[
                   CoreClasses.MARGIN.MT2,
