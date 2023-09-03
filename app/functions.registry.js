@@ -1,4 +1,4 @@
-import { masterDataMap, profileRegistrationSpecilization } from "./functions/asyncselect.functions";
+import { profileRegistrationSpecilization } from "./functions/asyncselect.functions";
 import { getCity, getDistrict, getState } from "./functions/form.dependency.function";
 import {
   SanBasicEditUrlChange, SanClinicAddUrlChange, SanClinicDeleteUrlChange, SanClinicEditUrlChange, SanClinicReadUrlChange, SanEducationAddUrlChange, SanEducationEditUrlChange, SanEducationReadUrlChange, SanExperienceAddUrlChange, SanExperienceEditUrlChange, SanExperienceReadUrlChange, SanProfileBasicRead, SanProfileClinicRead, SanProfileEducationRead, SanProfileExperienceRead, SanProfileRegistrationRead, SanRegistrationReadUrlChange 
@@ -37,16 +37,12 @@ export const FunctionsRegistry = {
       
   SanRegistrationReadUrlChange: SanRegistrationReadUrlChange,
       
-  __PROFILEBASICGENDER_GET_OPTION_LABEL         : masterDataMap.getOptionLabel,
-  __PROFILEBASICGENDER_GET_OPTION_VALUE         : masterDataMap.getOptionValue,
-  __PROFILEBASICGENDER_IS_OPTIONS_EQUAL_TO_VALUE: masterDataMap.isOptionEqualToValue,
-      
   getCity: getCity,
+  
+  getDepartmentsValue: profileRegistrationSpecilization.getOptionValue,
   
   getDistrict: getDistrict,
   
-  getState: getState,
-  
-  profileRegistrationSpecilization: profileRegistrationSpecilization
+  getState: getState
   
 };

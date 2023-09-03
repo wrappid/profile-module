@@ -146,7 +146,7 @@ export const ValidationsRegistry = {
       .required("Start date is required"),
   },
   profileRegistration: {
-    departmentId: yup.object().required("Department is required"),
+    departmentId: yup.string().required("Department is required"),
     regDate     : yup
       .date()
       .max(new Date(), "Registration date must be today or earlier than today")
