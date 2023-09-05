@@ -5,9 +5,9 @@ export const SanBasicEditUrlChange = (formData, apiMeta, state, others) => {
   if (formData.gender) {
     formData.gender = formData?.gender?.toLowerCase();
   }
-  if (formData.departmentId) {
-    formData.departmentId = formData.departmentId.id;
-  }
+  // if (formData.departmentId) {
+  //   formData.departmentId = formData.departmentId;
+  // }
   return {
     endpoint: apiMeta.endpoint.replace(":id", state?.profile?.basic?.id),
     values  : formData,
@@ -108,13 +108,30 @@ export const SanProfileEducationRead = (data) => {
 };
 
 export const SanProfileRegistrationRead = (data, otherData) => {
-  return {
-    degrees             : data.degrees ? data.degrees : "",
-    departmentId        : data.departmentId,
-    regDate             : data.regDate ? data.regDate : "",
-    regNo               : data.regNo ? data.regNo : "",
-    registrationDocument: data.registrationDocument,
-  };
+  console.log("Registration SANITING", otherData?.AllDepartments);
+  if (data && data.departmentId) {
+    let dept = otherData?.AllDepartments?.find(
+      (d) => d.id === data.departmentId
+    );
+
+    return {
+      departmentId: dept
+        ? { id: dept.id, label: dept.name }
+        : { id: "", label: "" },
+      regDate             : data.regDate ? data.regDate : "",
+      regNo               : data.regNo ? data.regNo : "",
+      registrationDocument: data.registrationDocument,
+    };
+  } else {
+    return { departmentId: { id: "", label: "" }, regDate: "", regNo: "" };
+  }
+  // return {
+  //   degrees             : data?.degrees || "",
+  //   departmentId        : data?.departmentId || "",
+  //   regDate             : data?.regDate || "",
+  //   regNo               : data?.regNo || "",
+  //   registrationDocument: data?.registrationDocument || "",
+  // };
 };
 
 export const SanRegistrationReadUrlChange = (formData, apiMeta, state, others) => {

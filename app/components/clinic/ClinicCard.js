@@ -4,10 +4,13 @@ import {
   CoreCardHeader,
   CoreClasses,
   CoreIconText,
-  __IconTypes
+  __IconTypes,
+  CoreGrid,
+  CoreBox,
+  CoreH6
 } from "@wrappid/core";
 
-export default function clinicCard(props) {
+export default function ClinicCard(props) {
   const {
     clinicLogo,
     fullName,
@@ -40,19 +43,15 @@ export default function clinicCard(props) {
   )}`;
 
   return (
-    <CoreCardHeader
-      avatar={
-        <CoreAvatar
-          src={clinicLogo || "no_image.png"}
-          styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_MEDIUM]}
-        />
-      }
-      title={
-        <>
-          <CoreTypographyBody1>{fullName}</CoreTypographyBody1>
-
-          {"\n"}
-
+    <CoreGrid>
+      <CoreAvatar
+        gridProps={{gridSize: { xs: 4, sm: 4, md: 2 }}}  
+        variant="square"
+        src={clinicLogo || "no_image.png"}
+        styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_LARGE]}
+      />
+      <CoreBox gridProps={{gridSize: { xs: 8, sm: 8, md: 10 }}}>
+          <CoreH6>{fullName}</CoreH6>
           <CoreTypographyBody1 variant="span">
             <CoreIconText
               link={true}
@@ -60,10 +59,6 @@ export default function clinicCard(props) {
               icon="phone"
               text={phone} />
           </CoreTypographyBody1>
-        </>
-      }
-      subheader={
-        <>
           <CoreTypographyBody1 varient="span">
             <CoreIconText
               link={true}
@@ -72,8 +67,7 @@ export default function clinicCard(props) {
               icon="location_on"
               text={formattedAddress}/>
           </CoreTypographyBody1>
-        </>
-      }
-    />
+      </CoreBox>
+    </CoreGrid>
   );
 }
