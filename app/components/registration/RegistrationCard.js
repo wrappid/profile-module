@@ -4,15 +4,18 @@ import {
   CoreGrid,
   CoreLink
 } from "@wrappid/core";
+import { useSelector } from "react-redux";
 
 export default function RegistrationCard(props) {
   const {
     regNo = "",
     regDate = "",
     degrees = "",
-    departmentId = { id: "", label: "" },
+    departmentId,
     registrationDocument = "",
   } = props;
+
+  const departments = useSelector(state => state?.common?.departments);
 
   // eslint-disable-next-line no-console
   console.log("PROFILE REGISTRAION CARD", props);
@@ -22,7 +25,7 @@ export default function RegistrationCard(props) {
       <CoreLabel>Specialization</CoreLabel>
 
       <CoreTypographyBody2>
-        {departmentId?.label || "Not given"}
+        {departments?.find(dept => dept?.id === departmentId)?.name || "Not Given"}
       </CoreTypographyBody2>
 
       <CoreLabel>Degrees</CoreLabel>

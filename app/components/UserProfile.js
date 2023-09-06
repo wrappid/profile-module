@@ -26,6 +26,8 @@ function UserProfile() {
 
   const profile = useSelector((state) => state.profile); // --- profile, addresses, basic, contact, educations, experiences, registration
   const auth = useSelector((state) => state.auth); // --- auth, navData
+  const state = useSelector((state) => state); // --- auth, navData
+  console.log("STATE", state)
 
   // --- componentDidMount
   useEffect(() => {}, []);
