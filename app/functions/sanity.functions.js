@@ -113,8 +113,8 @@ export const SanProfileRegistrationRead = (data, otherData) => {
 
 export const SanRegistrationReadUrlChange = (formData, apiMeta, state, others) => {
   return {
-    endpoint : apiMeta.endpoint,
-    values   : formData,
+    endpoint: apiMeta.endpoint,
+    values  : formData,
   };
 };
 

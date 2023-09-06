@@ -1,6 +1,6 @@
 import BasicInfoCard from "./components/basicInfo/BasicInfoCard";
 import ProfileBasicSkeleton from "./components/basicInfo/ProfileBasicSkeleton";
-import clinicCard from "./components/clinic/ClinicCard";
+import ClinicCard from "./components/clinic/ClinicCard";
 import ProfileClinicSkeleton from "./components/clinic/ProfileClinicSkeleton";
 import ContactInfoCard from "./components/contactInfo/ContactInfoCard";
 import ProfileContactSkeleton from "./components/contactInfo/ProfileContactSkeleton";
@@ -21,7 +21,7 @@ export const ComponentsRegistry = {
   ProfileExperienceSkeleton  : { comp: ProfileExperienceSkeleton },
   ProfileRegistrationSkeleton: { comp: ProfileRegistrationSkeleton },
   UserProfile                : { comp: UserProfile },
-  clinicCard                 : { comp: clinicCard },
+  clinicCard                 : { comp: ClinicCard },
   contactInfoCard            : { comp: ContactInfoCard },
   educationCard              : { comp: EducationCard },
   experienceCard             : { comp: ExperienceCard },
