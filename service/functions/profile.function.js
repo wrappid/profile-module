@@ -364,7 +364,7 @@ const putRegistrationDetailsFunc = async (req, res) => {
   }
 };
 
-const postUpdateEducationFunc = async (req, res) => {
+const postAddEducationFunc = async (req, res) => {
   try {
     var data = req.body;
     var personId = req.params.id;

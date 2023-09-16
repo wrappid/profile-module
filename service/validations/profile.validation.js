@@ -76,7 +76,7 @@ const putRegistrationDetails = yup.object({
 });
 
 
-const postUpdateEducation = yup.object({
+const postAddEducation = yup.object({
   type: yup.string().max(50),
   degree: yup.string().max(50),
   school: yup.string().max(150),
@@ -95,4 +95,4 @@ const postUpdateEducation = yup.object({
 
 
 
-module.exports = { getContactInfo, getAddressTypeSchema, departmentGET, getPersonContacts, getRegistrationInfo, putBasicDetails, putRegistrationDetails, postUpdateEducation };
+module.exports = { getContactInfo, getAddressTypeSchema, departmentGET, getPersonContacts, getRegistrationInfo, putBasicDetails, putRegistrationDetails, postAddEducation };
