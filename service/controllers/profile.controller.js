@@ -227,7 +227,7 @@ module.exports.putRegistrationDetails = async (req, res) => {
 
 module.exports.postUpdateEducation = async (req, res) => {
   try{
-    let result = await profileFunction.postUpdateEducationFunc(req, res);
+    let result = await profileFunction.postAddEducationFunc(req, res);
     let { status, message, data } = result;
     res.status(status).json({message: message, data 
   });
