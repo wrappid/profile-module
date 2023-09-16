@@ -76,4 +76,23 @@ const putRegistrationDetails = yup.object({
 });
 
 
-module.exports = { getContactInfo, getAddressTypeSchema, departmentGET, getPersonContacts, getRegistrationInfo ,putBasicDetails, putRegistrationDetails};
+const postUpdateEducation = yup.object({
+  type: yup.string().max(50),
+  degree: yup.string().max(50),
+  school: yup.string().max(150),
+  location: yup.string().max(150),
+  board: yup.string().max(150),
+  field: yup.string().max(150),
+  startMonth: yup.string().max(150),
+  startYear: yup.string().max(150),
+  endMonth: yup.string().max(150),
+  endYear: yup.string().max(150),
+  startDate: yup.string(),
+  endDate: yup.string().nullable(),
+});
+// .noUnknown()
+// .strict();
+
+
+
+module.exports = { getContactInfo, getAddressTypeSchema, departmentGET, getPersonContacts, getRegistrationInfo, putBasicDetails, putRegistrationDetails, postUpdateEducation };

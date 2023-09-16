@@ -1,11 +1,7 @@
-const { databaseActions, databaseProvider } = require("@wrappid/service-core");
+const { databaseActions, databaseProvider, coreConstant } = require("@wrappid/service-core");
 let multer = require("multer");
 const multerS3 = require("multer-s3");
 const upload = require("./profile.helper").upload;
-
-
-
-
 
 const getContactInfoFunc = async (req, res) => {
   try {
@@ -75,23 +71,26 @@ const getDepartmentFunc = async (req, res) => {
   }
 };
 
-
 const getPersonContactsFunc = async (req, res) => {
   try {
     let person = await databaseActions.findOne("application", "Persons", {
       where: {
-        userId: req.user.userId
-      }
-    })
-    let personId = person.id;
-    let contactType = req.params.contactType;
-    let personContacts = await databaseActions.findAll("application", "PersonContacts", {
-      where: {
-        personId: personId,
-        type: contactType,
-        verified: true,
+        userId: req.user.userId,
       },
     });
+    let personId = person.id;
+    let contactType = req.params.contactType;
+    let personContacts = await databaseActions.findAll(
+      "application",
+      "PersonContacts",
+      {
+        where: {
+          personId: personId,
+          type: contactType,
+          verified: true,
+        },
+      }
+    );
 
     if (personContacts && personContacts.length > 0) {
       // send 200
@@ -100,10 +99,9 @@ const getPersonContactsFunc = async (req, res) => {
         status: 204,
         message: "Contact info fetched successfully",
         data: {
-          rows: personContacts
+          rows: personContacts,
         },
       };
-
     } else {
       // send 204
       return {
@@ -113,10 +111,9 @@ const getPersonContactsFunc = async (req, res) => {
     }
   } catch (err) {
     console.log(err);
-    throw err
+    throw err;
   }
-}
-
+};
 
 const putBasicDetailsFunc = async (req, res) => {
   try {
@@ -140,34 +137,35 @@ const putBasicDetailsFunc = async (req, res) => {
     }
     console.log(data.photoUrl);
     console.log("UPDATEING DATA", data);
-    let result = await databaseProvider.application.sequelize.transaction(async (t) => {
-      let docDetail = await databaseActions.update("application", "Persons",
-        {
-          ...data,
-          updatedBy: req.user.userId,
-        },
-        {
-          where: {
-            id: personId,
+    let result = await databaseProvider.application.sequelize.transaction(
+      async (t) => {
+        let docDetail = await databaseActions.update(
+          "application",
+          "Persons",
+          {
+            ...data,
+            updatedBy: req.user.userId,
           },
-          transaction: t,
-        }
-      );
-    });
+          {
+            where: {
+              id: personId,
+            },
+            transaction: t,
+          }
+        );
+      }
+    );
 
     console.log("Basic detail updated");
 
-    return { status: 200, message: "Basic details updated" }
+    return { status: 200, message: "Basic details updated" };
   } catch (err) {
     console.log(err);
     return { status: 500, message: err };
 
     // res.status(500).json({ message: messageProcessor(err) });
   }
-
 };
-
-
 
 const getRegistrationInfoFunc = async (req, res) => {
   try {
@@ -176,17 +174,21 @@ const getRegistrationInfoFunc = async (req, res) => {
     console.log("User ID = " + userID);
 
     /**
-       * TODO: put another model data to patient if required
-       */
-    let doctorDetails = await databaseActions.findOne("application", "DoctorDetails", {
-      include: [
-        {
-          as: "Persons",
-          model: databaseProvider.application.models.Persons,
-          where: { userId: userID },
-        },
-      ],
-    });
+     * TODO: put another model data to patient if required
+     */
+    let doctorDetails = await databaseActions.findOne(
+      "application",
+      "DoctorDetails",
+      {
+        include: [
+          {
+            as: "Persons",
+            model: databaseProvider.application.models.Persons,
+            where: { userId: userID },
+          },
+        ],
+      }
+    );
 
     let personDocs = doctorDetails
       ? await databaseActions.findOne("application", "PersonDocs", {
@@ -213,20 +215,22 @@ const getRegistrationInfoFunc = async (req, res) => {
     //     .json({ message: "Person registration info not found" });
 
     if (doctorDetails) {
-      return { status: 200, message: "Registration info fetched successfully", data: temp }
+      return {
+        status: 200,
+        message: "Registration info fetched successfully",
+        data: temp,
+      };
     } else {
-      return { status: 204, message: "Person registration info not found" }
+      return { status: 204, message: "Person registration info not found" };
     }
   } catch (err) {
     console.error(err);
     return {
       error: err,
       message: "Error while fetch person registration info data",
-    }
+    };
   }
 };
-
-
 
 const putRegistrationDetailsFunc = async (req, res) => {
   try {
@@ -256,104 +260,151 @@ const putRegistrationDetailsFunc = async (req, res) => {
     del_urls.push(file_url);
 
     let data = req.body;
-    let result = await databaseProvider.application.sequelize.transaction(async (t) => {
-      data.personDocs = [];
+    let result = await databaseProvider.application.sequelize.transaction(
+      async (t) => {
+        data.personDocs = [];
 
-      if (!d) {
-        console.log("Docotr details not found");
-        let docDetail = await databaseActions.create("application", "DoctorDetails",
-          {
-            ...data,
-            doctorId: personId,
-            updatedBy: req.user.userId,
-          },
-          {
-            transaction: t,
-          }
-        );
-      } else {
-        console.log("Docotr details found: ", d.id);
-      }
-
-      if (file_url) {
-        let [nrows, rows] = await databaseActions.update("application", "PersonDocs",
-          {
-            docUrl: file_url,
-            updatedBy: req.user.userId,
-          },
-          {
-            where: {
-              personId: personId,
-            },
-          },
-          { transaction: t, }
-
-
-        );
-        if (nrows == 0) {
-          let nPersonDocs = await databaseActions.create("application", "PersonDocs",
+        if (!d) {
+          console.log("Docotr details not found");
+          let docDetail = await databaseActions.create(
+            "application",
+            "DoctorDetails",
             {
-              docUrl: file_url,
-              type: "Registration Document",
-              personId,
+              ...data,
+              doctorId: personId,
               updatedBy: req.user.userId,
             },
             {
               transaction: t,
             }
           );
-
-          console.log(
-            "Registration file entry made:",
-            nPersonDocs.id
-          );
         } else {
-          console.log("Registration file URL updated");
+          console.log("Docotr details found: ", d.id);
         }
-      } else {
-        console.log("No registration file given");
-      }
 
-      if (data.departmentId) {
-        let docDetail = await databaseActions.update("application", "Persons",
+        if (file_url) {
+          let [nrows, rows] = await databaseActions.update(
+            "application",
+            "PersonDocs",
+            {
+              docUrl: file_url,
+              updatedBy: req.user.userId,
+            },
+            {
+              where: {
+                personId: personId,
+              },
+            },
+            { transaction: t }
+          );
+          if (nrows == 0) {
+            let nPersonDocs = await databaseActions.create(
+              "application",
+              "PersonDocs",
+              {
+                docUrl: file_url,
+                type: "Registration Document",
+                personId,
+                updatedBy: req.user.userId,
+              },
+              {
+                transaction: t,
+              }
+            );
+
+            console.log("Registration file entry made:", nPersonDocs.id);
+          } else {
+            console.log("Registration file URL updated");
+          }
+        } else {
+          console.log("No registration file given");
+        }
+
+        if (data.departmentId) {
+          let docDetail = await databaseActions.update(
+            "application",
+            "Persons",
+            {
+              departmentId: data.departmentId,
+              updatedBy: req.user.userId,
+            },
+            {
+              where: {
+                id: personId,
+              },
+            },
+            { transaction: t }
+          );
+          console.log("Department updated");
+        }
+
+        let docDetail = await databaseActions.update(
+          "application",
+          "DoctorDetails",
           {
-            departmentId: data.departmentId,
+            ...data,
             updatedBy: req.user.userId,
           },
           {
             where: {
-              id: personId,
+              doctorId: personId,
             },
           },
           { transaction: t }
-
         );
-        console.log("Department updated");
       }
-
-      let docDetail = await databaseActions.update("application", "DoctorDetails",
-        {
-          ...data,
-          updatedBy: req.user.userId,
-        },
-        {
-          where: {
-            doctorId: personId,
-          }
-        },
-        { transaction: t }
-
-      );
-    });
+    );
 
     console.log("Registration detail updated");
     return { status: 200, message: "Registration details updated" };
   } catch (err) {
-  console.log(err);
-  return { status: 500, message: err };
-  // res.status(500).json({ message: err });
-}
-}
+    console.log(err);
+    return { status: 500, message: err };
+    // res.status(500).json({ message: err });
+  }
+};
 
+const postUpdateEducationFunc = async (req, res) => {
+  try {
+    var data = req.body;
+    var personId = req.params.id;
+    var result = await databaseProvider.application.sequelize.transaction(
+      async (t) => {
+        if (data.isCurrent) {
+          data.endDate = null;
+        }
+        var addDetail = await databaseActions.create(
+          "application",
+          "PersonEducations",
+          {
+            ...data,
+            personId: personId,
+            createdBy: req.user.userId,
+            updatedBy: req.user.userId,
+            updatedBy: req.user.userId,
+            _status: coreConstant.entityStatus.ACTIVE,
+          },
+          { transaction: t }
+        );
+        return addDetail.id;
+      }
+    );
+    console.log("Education created", result);
+    return { status: 200, message: "Education create success" };
+    // res.status(200).json({ message: messageProcessor(200008) });
+  } catch (err) {
+    console.log(err);
+    return {status: 500, message: err}
+    // res.status(500).json({ message: messageProcessor(err) });
+  }
+};
 
-module.exports = { getContactInfoFunc, getAddressTypeFunc, getDepartmentFunc, putBasicDetailsFunc, getRegistrationInfoFunc ,putRegistrationDetailsFunc};
+module.exports = {
+  getContactInfoFunc,
+  getAddressTypeFunc,
+  getDepartmentFunc,
+  putBasicDetailsFunc,
+  getRegistrationInfoFunc,
+  putRegistrationDetailsFunc,
+  postUpdateEducationFunc,
+};
