@@ -225,16 +225,69 @@ module.exports.putRegistrationDetails = async (req, res) => {
 }
 
 
-module.exports.postUpdateEducation = async (req, res) => {
+module.exports.postAddEducation = async (req, res) => {
   try{
     let result = await profileFunction.postAddEducationFunc(req, res);
     let { status, message, data } = result;
-    res.status(status).json({message: message, data 
-  });
+    res.status(status).json({message: message, data  });
   }catch(error){
     console.error("Error :: ", error);
     res.status(500).json({ message: error.message });
   }
-  /*
-        */
+};
+
+module.exports.putUpdateEducation = async (req, res) => {
+  try{
+    let result = await profileFunction.putUpdateEducationFunc(req, res);
+    let { status, message, data } = result;
+    res.status(status).json({message: message, data  });
+  }catch(error){
+    console.error("Error :: ", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports.putDeleteEducation = async (req, res) => {
+  try{
+    let result = await profileFunction.putDeleteEducationFunc(req, res);
+    let { status, message, data } = result;
+    res.status(status).json({message: message, data  });
+  }catch(error){
+    console.error("Error :: ", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports.postAddExperience = async (req, res) => {
+  try{
+    let result = await profileFunction.postAddExperienceFunc(req, res);
+    let { status, message, data } = result;
+    res.status(status).json({message: message, data  });
+  }catch(error){
+    console.error("Error :: ", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+module.exports.putUpdateExperience = async (req, res) => {
+  try{
+    let result = await profileFunction.putUpdateExperienceFunc(req, res);
+    let { status, message, data } = result;
+    res.status(status).json({message: message, data });
+  }catch(error){
+    console.error("Error :: ", error);
+    res.status(500).json({ message: error.message });
+  }
+};
+
+
+module.exports.putDeleteExperience = async (req, res) => {
+  try{
+    let result = await profileFunction.putDeleteExperienceFunc(req, res);
+    let { status, message, data } = result;
+    res.status(status).json({message: message, data });
+  }catch(error){
+    console.error("Error :: ", error);
+    res.status(500).json({ message: error.message });
+  }
 }

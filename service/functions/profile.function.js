@@ -366,14 +366,14 @@ const putRegistrationDetailsFunc = async (req, res) => {
 
 const postAddEducationFunc = async (req, res) => {
   try {
-    var data = req.body;
-    var personId = req.params.id;
-    var result = await databaseProvider.application.sequelize.transaction(
+    let data = req.body;
+    let personId = req.params.id;
+    let result = await databaseProvider.application.sequelize.transaction(
       async (t) => {
         if (data.isCurrent) {
           data.endDate = null;
         }
-        var addDetail = await databaseActions.create(
+        let addDetail = await databaseActions.create(
           "application",
           "PersonEducations",
           {
@@ -399,6 +399,164 @@ const postAddEducationFunc = async (req, res) => {
   }
 };
 
+const putUpdateEducationFunc = async (req, res) => {
+  try {
+    let data = req.body;
+    if (data.isCurrent) {
+      data.endDate = null;
+    }
+    let result = await databaseProvider.application.sequelize.transaction(async (t) => {
+      let [nrows, rows] = await databaseActions.update("application","PersonEducations",
+        {
+          ...data,
+          updatedBy: req.user.userId,
+        },
+        {
+          where: { id: req.params.id },
+        },{
+          transaction: t,
+        }
+      );
+      if (nrows == 0) {
+        throw "Education update success";
+      }
+    });
+
+    console.log("Education detail updated");
+    return {status: 200, message: "Education update success"};
+    // res.status(200).json({ message: "Education update success" });
+  } catch (err) {
+    console.log(err);
+    return {status:500, message:err}
+    // res.status(500).json({ message: messageProcessor(err) });
+  }
+};
+
+const putDeleteEducationFunc = async (req, res) => {
+  try {
+    let educationId = req.params.id;
+    let result = await databaseProvider.application.sequelize.transaction(async (t) => {
+      let [nrows, rows] = await databaseActions.update("application","PersonEducations",
+        {
+          isActive: false,
+          _status: coreConstant.entityStatus.DELETED,
+          updatedBy: req.user.userId,
+        },
+        {
+          where: { id: educationId },
+        },{
+          transaction: t,
+        }
+      );
+      if (nrows == 0) {
+        throw "Experience update success";
+      }
+    });
+    console.log("education deleted: ", req.params.id);
+    return { status:200, message: "Education delete success" };
+    // res.status(200).json({ message: messageProcessor(200010) });
+  } catch (error) {
+    console.log("education Delete error", error);
+    return{status:500, message: err};
+    // res.status(500).json({ message: messageProcessor(error) });
+  }
+};
+
+const postAddExperienceFunc = async (req, res) => {
+  try {
+    let data = req.body;
+    let personId = req.params.id;
+    let result = await databaseProvider.application.sequelize.transaction(async (t) => {
+      if (data.isCurrent) {
+        data.endDate = null;
+      }
+      let addDetail = await databaseActions.create("application","PersonExperiences",
+        {
+          ...data,
+          personId: personId,
+          createdBy: req.user.userId,
+          updatedBy: req.user.userId,
+          updatedBy: req.user.userId,
+          _status: coreConstant.entityStatus.ACTIVE,
+        },
+        { transaction: t }
+      );
+      return addDetail.id;
+    });
+    console.log("Experience created", result);
+    return {status:200, message: "Experience create success"};
+    // res.status(200).json({ message: messageProcessor(200011) });
+  } catch (err) {
+    console.log(err);
+    return {status: 500, message: err};
+    // res.status(500).json({ message: messageProcessor(290013) });
+  }
+};
+
+const putUpdateExperienceFunc = async (req, res) => {
+  try {
+    let data = req.body;
+    if (data.isCurrent) {
+      data.endDate = null;
+    }
+    let result = await databaseProvider.application.sequelize.transaction(async (t) => {
+      let [nrows, rows] = await databaseActions.update("application","PersonExperiences",
+        {
+          ...data,
+          updatedBy: req.user.userId,
+        },
+        {
+          where: { id: req.params.id }
+        },{
+          transaction: t,
+        }
+      );
+      if (nrows == 0) {
+        throw "Experience update error";
+      }
+    });
+
+    console.log("Experiences detail updated");
+    return{status:200, message: "Experience update success"};
+    // res.status(200).json({ message: messageProcessor(200012) });
+  } catch (err) {
+    console.log(err);
+    return{status:500, message:err};
+    // res.status(500).json({ message: messageProcessor(290014) });
+  }
+};
+
+const putDeleteExperienceFunc = async (req, res) => {
+  try {
+    let result = await databaseProvider.application.sequelize.transaction(async (t) => {
+      let experienceId = req.params.id;
+      let [nrows, rows] = await databaseActions.update("application","PersonExperiences",
+        {
+          isActive: false,
+          updatedBy: req.user.userId,
+          _status: coreConstant.entityStatus.DELETED,
+        },
+        {
+          where: { id: experienceId }
+        },{ 
+          transaction: t,
+        }
+      );
+      if (nrows == 0) {
+        throw "Experience delete error";
+      }
+    });
+    console.log("Experiences deleted: ", req.params.id);
+    return {status: 200, message: "Experience delete success"};
+    // res.status(200).json({ message: messageProcessor(200013) });
+  } catch (error) {
+    console.log("education Delete error", error);
+    return{status:500, message: error};
+    // res.status(500).json({ message: messageProcessor(290015) });
+  }
+};
+
+
 module.exports = {
   getContactInfoFunc,
   getAddressTypeFunc,
@@ -406,5 +564,10 @@ module.exports = {
   putBasicDetailsFunc,
   getRegistrationInfoFunc,
   putRegistrationDetailsFunc,
-  postUpdateEducationFunc,
+  postAddEducationFunc,
+  putUpdateEducationFunc,
+  putDeleteEducationFunc,
+  postAddExperienceFunc,
+  putUpdateExperienceFunc,
+  putDeleteExperienceFunc
 };

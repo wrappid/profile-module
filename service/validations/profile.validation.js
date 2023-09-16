@@ -1,7 +1,5 @@
-
 const yup = require("yup");
 const moment = require("moment");
-
 
 const getContactInfo = {
   body: yup.object({}).noUnknown().strict(),
@@ -16,24 +14,39 @@ const getAddressTypeSchema = {
 const getPersonContacts = {
   body: yup.object({}).noUnknown().strict(),
   query: yup.object({}).noUnknown().strict(),
-}
+};
 
 const getRegistrationInfo = {
   body: yup.object({}).noUnknown().strict(),
   query: yup.object({}).noUnknown().strict(),
-}
+};
 
 const departmentGET = {
   body: yup.object({}).noUnknown().strict(),
   params: yup.object({}).noUnknown().strict(),
-  query: yup
+  query: yup.object({ isActive: yup.boolean() }).noUnknown().strict(),
+};
+const putUpdateExperience = yup.object({
+  body: yup
     .object({
+      id: yup.mixed(),
+      type: yup.string().max(50),
+      designation: yup.string().max(50),
+      organization: yup.string().max(150),
+      description: yup.string().max(150),
+      location: yup.string().max(150),
+      field: yup.string().max(150),
+      startMonth: yup.string().max(150),
+      startYear: yup.string().max(150),
+      endMonth: yup.string().max(150),
+      endYear: yup.string().max(150),
+      startDate: yup.string(),
+      endDate: yup.string().nullable(),
       isActive: yup.boolean(),
     })
     .noUnknown()
     .strict(),
-};
-
+});
 
 const putBasicDetails = yup.object({
   bio: yup
@@ -75,24 +88,98 @@ const putRegistrationDetails = yup.object({
     .strict(),
 });
 
-
 const postAddEducation = yup.object({
-  type: yup.string().max(50),
-  degree: yup.string().max(50),
-  school: yup.string().max(150),
-  location: yup.string().max(150),
-  board: yup.string().max(150),
-  field: yup.string().max(150),
-  startMonth: yup.string().max(150),
-  startYear: yup.string().max(150),
-  endMonth: yup.string().max(150),
-  endYear: yup.string().max(150),
-  startDate: yup.string(),
-  endDate: yup.string().nullable(),
+  body: yup
+    .object({
+      type: yup.string().max(50),
+      degree: yup.string().max(50),
+      school: yup.string().max(150),
+      location: yup.string().max(150),
+      board: yup.string().max(150),
+      field: yup.string().max(150),
+      startMonth: yup.string().max(150),
+      startYear: yup.string().max(150),
+      endMonth: yup.string().max(150),
+      endYear: yup.string().max(150),
+      startDate: yup.string(),
+      endDate: yup.string().nullable(),
+    })
+    .noUnknown()
+    .strict(),
 });
-// .noUnknown()
-// .strict();
 
+const postUpdateEducation = yup.object({
+  body: yup
+    .object({
+      id: yup.mixed(),
+      type: yup.string().max(50),
+      degree: yup.string().max(50),
+      school: yup.string().max(150),
+      location: yup.string().max(150),
+      board: yup.string().max(150),
+      field: yup.string().max(150),
+      startMonth: yup.string().max(150),
+      startYear: yup.string().max(150),
+      endMonth: yup.string().max(150),
+      endYear: yup.string().max(150),
+      startDate: yup.string(),
+      endDate: yup.string().nullable(),
+      isActive: yup.boolean(),
+    })
+    .noUnknown()
+    .strict(),
+});
 
+const putDeleteEducation = yup.object({
+  body: yup
+    .object({
+      isActive: yup.boolean(),
+    })
+    .noUnknown()
+    .strict(),
+});
 
-module.exports = { getContactInfo, getAddressTypeSchema, departmentGET, getPersonContacts, getRegistrationInfo, putBasicDetails, putRegistrationDetails, postAddEducation };
+const postAddExperience = yup.object({
+  body: yup
+    .object({
+      type: yup.string().max(50),
+      designation: yup.string().max(50),
+      organization: yup.string().max(150),
+      description: yup.string().max(150),
+      location: yup.string().max(150),
+      field: yup.string().max(150),
+      startMonth: yup.string().max(150),
+      startYear: yup.string().max(150),
+      endMonth: yup.string().max(150),
+      endYear: yup.string().max(150),
+      startDate: yup.string(),
+      endDate: yup.string().nullable(),
+    })
+    .noUnknown()
+    .strict(),
+});
+
+const putDeleteExperience =  yup.object({
+  body: yup
+    .object({
+      isActive: yup.boolean(),
+    })
+    .noUnknown()
+    .strict(),
+});
+
+module.exports = {
+  getContactInfo,
+  getAddressTypeSchema,
+  departmentGET,
+  getPersonContacts,
+  getRegistrationInfo,
+  putBasicDetails,
+  putRegistrationDetails,
+  postAddEducation,
+  postUpdateEducation,
+  putDeleteEducation,
+  postAddExperience,
+  putUpdateExperience,
+  putDeleteExperience
+};
