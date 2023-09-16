@@ -214,11 +214,10 @@ module.exports.putBasicDetails = async (req, res) => {
 
 module.exports.putRegistrationDetails = async (req, res) => {
   try {
-    res.status(200).json({message:"API call successfully!!"})
-   /*let result = await profileFunction.putRegistrationDetailsFunc(req, res);
-    let { status, message, data } = result;
-    res.status(status).json({message: message, data 
-  }); */
+    // res.status(200).json({message:"API call successfully!!"})
+   let result = await profileFunction.putRegistrationDetailsFunc(req, res);
+    let { status, message } = result;
+    res.status(status).json({message: message }); 
   } catch (error) {
     console.error("Error :: ", error);
     res.status(500).json({ message: error.message });

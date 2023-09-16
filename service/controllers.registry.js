@@ -8,7 +8,7 @@ const controllersRegistry = {
     getpersonContacts : [CoreMiddlewaresRegistry.validation(getPersonContacts),profileController.getPersonContacts],
     getRegistrationInfo: [CoreMiddlewaresRegistry.validation(getRegistrationInfo),profileController.getRegistrationInfo],
     putBasicDetails: [CoreMiddlewaresRegistry.validation(putBasicDetails),CoreMiddlewaresRegistry.fileHandler.single("photo"),profileController.putBasicDetails],
-    putRegistrationDetails : [CoreMiddlewaresRegistry.validation(putRegistrationDetails),profileController.putRegistrationDetails]
+    putRegistrationDetails : [CoreMiddlewaresRegistry.validation(putRegistrationDetails),CoreMiddlewaresRegistry.fileHandler.single("registrationDocument"),profileController.putRegistrationDetails]
 
 };
 

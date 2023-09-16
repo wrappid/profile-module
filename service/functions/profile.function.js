@@ -178,10 +178,10 @@ const getRegistrationInfoFunc = async (req, res) => {
     /**
        * TODO: put another model data to patient if required
        */
-    let doctorDetails = await databaseActions.findOne("application","DoctorDetails",{
+    let doctorDetails = await databaseActions.findOne("application", "DoctorDetails", {
       include: [
         {
-          as   : "Persons",
+          as: "Persons",
           model: databaseProvider.application.models.Persons,
           where: { userId: userID },
         },
@@ -189,10 +189,10 @@ const getRegistrationInfoFunc = async (req, res) => {
     });
 
     let personDocs = doctorDetails
-      ? await databaseActions.findOne("application","PersonDocs",{
+      ? await databaseActions.findOne("application", "PersonDocs", {
         where: {
           personId: doctorDetails?.dataValues?.Persons?.id,
-          type    : "Registration Document",
+          type: "Registration Document",
         },
       })
       : null;
@@ -212,160 +212,148 @@ const getRegistrationInfoFunc = async (req, res) => {
     //     .status(204)
     //     .json({ message: "Person registration info not found" });
 
-    if(doctorDetails){
-      return {status: 200, message: "Registration info fetched successfully", data : temp}
-    } else{
-      return {status:204, message: "Person registration info not found" }
-    }   
+    if (doctorDetails) {
+      return { status: 200, message: "Registration info fetched successfully", data: temp }
+    } else {
+      return { status: 204, message: "Person registration info not found" }
+    }
   } catch (err) {
     console.error(err);
-    return{
-      error  : err,
+    return {
+      error: err,
       message: "Error while fetch person registration info data",
     }
   }
 };
 
 
-/*
-const putRegistrationDetailsFunc = async(req, res) => {
+
+const putRegistrationDetailsFunc = async (req, res) => {
   try {
     let del_urls = [];
     let file_url = null;
     let personId = req.params.id;
+    if (
+      req.file["registrationDocument"] &&
+      req.file["registrationDocument"][0]
+    ) {
+      file_url = await getUrl(
+        req.file["registrationDocument"][0].filename
+          ? req.file["registrationDocument"][0].filename
+          : req.file["registrationDocument"][0].key
+            ? req.file["registrationDocument"][0].key
+            : req.file["registrationDocument"][0].originalname
+      );
+    }
+    console.log("File URL", file_url);
 
-    let out = await upload.fields([
-      { name: "registrationDocument", maxCount: 1 },
-    ])(req, res, async function (err) {
-      try {
-        if (err) {
-          console.log("FIle Upload error", err);
-          throw err;
-        } else {
-          if (
-            req.files["registrationDocument"] &&
-            req.files["registrationDocument"][0]
-          ) {
-            file_url = await getUrl(
-              req.files["registrationDocument"][0].filename
-                ? req.files["registrationDocument"][0].filename
-                : req.files["registrationDocument"][0].key
-                ? req.files["registrationDocument"][0].key
-                : req.files["registrationDocument"][0].originalname
-            );
-          }
-          console.log("File URL", file_url);
-
-          let d = await databaseActions.findOne("application","DoctorDetails",{
-            where: {
-              doctorId: req.params.id,
-            },
-          });
-
-          del_urls.push(file_url);
-
-          let data = req.body;
-          let result = await databaseProvider.sequelize.transaction(async (t) => {
-            data.personDocs = [];
-
-            if (!d) {
-              console.log("Docotr details not found");
-              let docDetail = await db.DoctorDetails.create(
-                {
-                  ...data,
-                  doctorId: personId,
-                  updatedBy: req.user.userId,
-                },
-                {
-                  transaction: t,
-                }
-              );
-            } else {
-              console.log("Docotr details found: ", d.id);
-            }
-
-            if (file_url) {
-              let [nrows, rows] = await db.PersonDocs.update(
-                {
-                  docUrl: file_url,
-                  updatedBy: req.user.userId,
-                },
-                {
-                  where: {
-                    personId: personId,
-                  },
-                  transaction: t,
-                }
-              );
-              if (nrows == 0) {
-                let nPersonDocs = await db.PersonDocs.create(
-                  {
-                    docUrl: file_url,
-                    type: "Registration Document",
-                    personId,
-                    updatedBy: req.user.userId,
-                  },
-                  {
-                    transaction: t,
-                  }
-                );
-
-                console.log(
-                  "Registration file entry made:",
-                  nPersonDocs.id
-                );
-              } else {
-                console.log("Registration file URL updated");
-              }
-            } else {
-              console.log("No registration file given");
-            }
-
-            if (data.departmentId) {
-              let docDetail = await db.Persons.update(
-                {
-                  departmentId: data.departmentId,
-                  updatedBy: req.user.userId,
-                },
-                {
-                  where: {
-                    id: personId,
-                  },
-                  transaction: t,
-                }
-              );
-              console.log("Department updated");
-            }
-
-            let docDetail = await db.DoctorDetails.update(
-              {
-                ...data,
-                updatedBy: req.user.userId,
-              },
-              {
-                where: {
-                  doctorId: personId,
-                },
-                transaction: t,
-              }
-            );
-          });
-
-          console.log("Registration detail updated");
-          res.status(200).json({ message: messageProcessor(200003) });
-        }
-      } catch (err) {
-        console.log(err);
-        await deleteS3FIle(del_urls);
-        res.status(500).json({ message: messageProcessor(err) });
-      }
+    let d = await databaseActions.findOne("application", "DoctorDetails", {
+      where: {
+        doctorId: req.params.id,
+      },
     });
-  } catch (err) {
-    console.log(err);
-    await deleteS3FIle(del_urls);
-    res.status(500).json({ message: messageProcessor(err) });
-  }
-}
-*/
 
-module.exports = { getContactInfoFunc, getAddressTypeFunc, getDepartmentFunc, putBasicDetailsFunc, getRegistrationInfoFunc };
+    del_urls.push(file_url);
+
+    let data = req.body;
+    let result = await databaseProvider.application.sequelize.transaction(async (t) => {
+      data.personDocs = [];
+
+      if (!d) {
+        console.log("Docotr details not found");
+        let docDetail = await databaseActions.create("application", "DoctorDetails",
+          {
+            ...data,
+            doctorId: personId,
+            updatedBy: req.user.userId,
+          },
+          {
+            transaction: t,
+          }
+        );
+      } else {
+        console.log("Docotr details found: ", d.id);
+      }
+
+      if (file_url) {
+        let [nrows, rows] = await databaseActions.update("application", "PersonDocs",
+          {
+            docUrl: file_url,
+            updatedBy: req.user.userId,
+          },
+          {
+            where: {
+              personId: personId,
+            },
+          },
+          { transaction: t, }
+
+
+        );
+        if (nrows == 0) {
+          let nPersonDocs = await databaseActions.create("application", "PersonDocs",
+            {
+              docUrl: file_url,
+              type: "Registration Document",
+              personId,
+              updatedBy: req.user.userId,
+            },
+            {
+              transaction: t,
+            }
+          );
+
+          console.log(
+            "Registration file entry made:",
+            nPersonDocs.id
+          );
+        } else {
+          console.log("Registration file URL updated");
+        }
+      } else {
+        console.log("No registration file given");
+      }
+
+      if (data.departmentId) {
+        let docDetail = await databaseActions.update("application", "Persons",
+          {
+            departmentId: data.departmentId,
+            updatedBy: req.user.userId,
+          },
+          {
+            where: {
+              id: personId,
+            },
+          },
+          { transaction: t }
+
+        );
+        console.log("Department updated");
+      }
+
+      let docDetail = await databaseActions.update("application", "DoctorDetails",
+        {
+          ...data,
+          updatedBy: req.user.userId,
+        },
+        {
+          where: {
+            doctorId: personId,
+          }
+        },
+        { transaction: t }
+
+      );
+    });
+
+    console.log("Registration detail updated");
+    return { status: 200, message: "Registration details updated" };
+  } catch (err) {
+  console.log(err);
+  return { status: 500, message: err };
+  // res.status(500).json({ message: err });
+}
+}
+
+
+module.exports = { getContactInfoFunc, getAddressTypeFunc, getDepartmentFunc, putBasicDetailsFunc, getRegistrationInfoFunc ,putRegistrationDetailsFunc};
