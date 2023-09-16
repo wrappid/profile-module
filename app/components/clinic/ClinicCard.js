@@ -1,6 +1,5 @@
 import {
   CoreAvatar,
-  CoreTypographyBody1,
   CoreClasses,
   CoreIconText,
   __IconTypes,
@@ -44,31 +43,29 @@ export default function ClinicCard(props) {
   return (
     <CoreGrid>
       <CoreAvatar
-        gridProps={{ gridSize: { md: 2, sm: 4, xs: 4 } }}  
+        gridProps={{ gridSize: { md: 2, sm: 4, xs: 3 } }}  
         variant="square"
         src={clinicLogo}
         styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_LARGE]}
       />
 
-      <CoreBox gridProps={{ gridSize: { md: 10, sm: 8, xs: 8 } }}>
+      <CoreBox gridProps={{ gridSize: { md: 10, sm: 8, xs: 9 } }}>
         <CoreH6>{fullName}</CoreH6>
 
-        <CoreTypographyBody1 variant="span">
-          <CoreIconText
-            link={true}
-            type={__IconTypes.MATERIAL_OUTLINED_ICON}
-            icon="phone"
-            text={phone} />
-        </CoreTypographyBody1>
+        <CoreIconText
+          link={true}
+          type={__IconTypes.MATERIAL_OUTLINED_ICON}
+          icon="phone"
+          text={phone} 
+        />
 
-        <CoreTypographyBody1 varient="span">
-          <CoreIconText
-            link={true}
-            type={__IconTypes.MATERIAL_OUTLINED_ICON}
-            href={googleMapsUrl}
-            icon="location_on"
-            text={formattedAddress}/>
-        </CoreTypographyBody1>
+        <CoreIconText
+          link={true}
+          type={__IconTypes.MATERIAL_OUTLINED_ICON}
+          href={googleMapsUrl}
+          icon="location_on"
+          text={formattedAddress}
+        />
       </CoreBox>
     </CoreGrid>
   );

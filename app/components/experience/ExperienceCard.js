@@ -4,7 +4,8 @@ import {
   viewFormattedDate, 
   CoreTypographyBody2, 
   CoreTypographySubtitle2, 
-  CoreClasses 
+  CoreClasses, 
+  CoreStack
 } from "@wrappid/core";
 
 export default function ExperienceCard(props) {
@@ -18,7 +19,7 @@ export default function ExperienceCard(props) {
         </>
       }
       subheader={
-        <>
+        <CoreStack>
           <CoreTypographySubtitle2>{organization}</CoreTypographySubtitle2>
 
           <CoreTypographySubtitle2>{location}</CoreTypographySubtitle2>
@@ -27,7 +28,7 @@ export default function ExperienceCard(props) {
 
             {viewFormattedDate(startDate) + " - " + viewFormattedDate(endDate, "endDate")}
           </CoreTypographyBody2>
-        </>
+        </CoreStack>
       }
     />
   );
