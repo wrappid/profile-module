@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 
-const profileFunction = require("../functions/profile.function")
+const profileFunction = require("../functions/profile.function");
 
 module.exports.getContactInfo = async (req, res) => {
   try{
@@ -51,7 +51,7 @@ module.exports.getPersonContacts = async (req, res) => {
     console.error("Error:: ", error);
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 /**
  * 
@@ -222,7 +222,7 @@ module.exports.putRegistrationDetails = async (req, res) => {
     console.error("Error :: ", error);
     res.status(500).json({ message: error.message });
   }
-}
+};
 
 
 module.exports.postAddEducation = async (req, res) => {
@@ -290,4 +290,4 @@ module.exports.putDeleteExperience = async (req, res) => {
     console.error("Error :: ", error);
     res.status(500).json({ message: error.message });
   }
-}
+};

@@ -15,8 +15,6 @@ const controllersRegistry = {
     postAddExperience: [CoreMiddlewaresRegistry.validation(postAddExperience),profileController.postAddExperience],
     putUpdateExperience: [CoreMiddlewaresRegistry.validation(putUpdateExperience),profileController.putUpdateExperience],
     putDeleteExperience: [CoreMiddlewaresRegistry.validation(putDeleteExperience),profileController.putDeleteExperience],
-    
-
 
 };
 
