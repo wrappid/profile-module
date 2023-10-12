@@ -128,15 +128,8 @@ const putBasicDetailsFunc = async (req, res) => {
     let data = req.body;
     if (data.extraInfo) data.extraInfo = JSON.parse(data.extraInfo);
     if (data.bio) data["extraInfo"] = { bio: data.bio };
-    if (req.file["photo"] && req.file["photo"][0]) {
-      file_url = await getUrl(
-        req.file["photo"].filename
-          ? req.file["photo"].filename
-          : req.file["photo"].key
-          ? req.file["photo"].key
-          : req.file["photo"].originalname
-      );
-      del_urls.push(file_url);
+    if (req?.files && req.files["photo"] && req.files["photo"][0]) {
+      file_url = req.files.photo[0].location;
       data.photoUrl = file_url;
     }
     console.log(data.photoUrl);

@@ -1,4 +1,3 @@
-const functionsRegistry = {
-};
+const functionsRegistry = {};
 
 exports.functionsRegistry = functionsRegistry;
