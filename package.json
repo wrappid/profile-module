@@ -1,7 +1,7 @@
 {
   "name": "profile-module",
   "version": "0.0.1",
-  "description": "This is a template repository for a Wrappid app module.",
+  "description": "This is a template repository for a wrappid module.",
   "main": "index.js",
   "scripts": {
     "code:lint:app": "eslint --ignore-path .gitignore ./app",
@@ -33,5 +33,26 @@
     "eslint-plugin-unused-imports": "^2.0.0",
     "prettier": "^2.5.1",
     "react-redux": "^8.0.5"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.1.0",
+    "jest": "^27.5.1",
+    "service-core": "^3.0.1",
+    "supertest": "^6.3.3"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx,ts}",
+      "!**/node_modules/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 0,
+        "functions": 0,
+        "lines": 0,
+        "statements": 0
+      }
+    }
   }
 }

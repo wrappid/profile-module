@@ -25,5 +25,5 @@ export const ComponentsRegistry = {
   contactInfoCard            : { comp: ContactInfoCard },
   educationCard              : { comp: EducationCard },
   experienceCard             : { comp: ExperienceCard },
-  registrationCard           : { comp: RegistrationCard },
+  registrationCard           : { comp: RegistrationCard }
 };
