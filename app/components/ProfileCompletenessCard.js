@@ -5,7 +5,6 @@ import {
   apiRequestAction,
   coreUseNavigate,
   CoreClasses,
-  CoreBadge,
   CoreChip,
   CoreDivider,
   CoreIcon,
@@ -17,7 +16,6 @@ import {
   CoreCard,
   CoreCardContent,
   CoreCardHeader,
-  APP_PLATFORM,
   WEB_PLATFORM,
   detectPlatform,
   CoreAvatar
@@ -25,7 +23,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 
 import { ApiRegistry } from "../apis.registry";
-import { RouteRegistry } from "../routes.registry";
+import { RoutesRegistry } from "../routes.registry";
 import {
   PROFILE_COMPLETENESS_CHECKLIST_ERROR,
   PROFILE_COMPLETENESS_CHECKLIST_SUCCESS,
@@ -51,20 +49,20 @@ export default function ProfileCompletenessCard() {
     checklist,
     data,
     report = {
-      missingData: {},
+      missingData : {},
       providedData: {},
-      quotient: 0,
-    },
+      quotient    : 0
+    }
   } = completeness || {};
 
   const [cardOpen, setCardOpen] = React.useState(true);
 
   // platform detection
   const [platform, setPlatform] = React.useState(WEB_PLATFORM);
+
   React.useEffect(() => {
     setPlatform(detectPlatform());
   }, []);
-
 
   React.useEffect(() => {
     if (!checklist || Object.keys(checklist)?.length === 0) {
@@ -76,7 +74,7 @@ export default function ProfileCompletenessCard() {
           {
             _defaultFilter: encodeURIComponent(
               JSON.stringify({ name: PROFILE_COMPLETENESS + role?.role })
-            ),
+            )
           },
           PROFILE_COMPLETENESS_CHECKLIST_SUCCESS,
           PROFILE_COMPLETENESS_CHECKLIST_ERROR
@@ -152,11 +150,11 @@ export default function ProfileCompletenessCard() {
           // update profile completeness report
           dispatch({
             payload: {
-              missingData: { ...missingData },
+              missingData : { ...missingData },
               providedData: { ...providedData },
-              quotient: completenessQuotient,
+              quotient    : completenessQuotient
             },
-            type: PROFILE_COMPLETENESS_REPORT_UPDATE,
+            type: PROFILE_COMPLETENESS_REPORT_UPDATE
           });
         }
 
@@ -171,91 +169,103 @@ export default function ProfileCompletenessCard() {
 
   return (
     <>
-      {cardOpen && (
-        !(completeness?.report?.quotient === 100) && (
-          <CoreCard>
-            <CoreCardHeader
-              avatar={
-                <CoreCircularProgress
-                  variant="determinate"
-                  value={report?.quotient}
+      {cardOpen && !(completeness?.report?.quotient === 100) && (
+        <CoreCard>
+          <CoreCardHeader
+            avatar={
+              <CoreCircularProgress
+                variant="determinate"
+                value={report?.quotient}
                 // size={100}
-                />
-              }
-              title="Setup your Rxefy account"
-              subheader="You still have information missing on your profile"
-              action={
-                <CoreIconButton
-                  onClick={() => {
-                    setCardOpen(false);
-                  }}
+              />
+            }
+            title="Setup your Rxefy account"
+            subheader="You still have information missing on your profile"
+            action={
+              <CoreIconButton
+                onClick={() => {
+                  setCardOpen(false);
+                }}
+              >
+                <CoreIcon>clear</CoreIcon>
+              </CoreIconButton>
+            }
+          />
+
+          <CoreDivider />
+
+          <CoreCardContent>
+            <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
+              Missing Information:
+            </CoreTypographyBody2>
+
+            {Object.keys(report?.missingData)?.map((data, index) => {
+              return (
+                <CoreBox
+                  key={`missingData-${index}`}
+                  styleClasses={[
+                    // --- CoreClasses.DISPLAY.INLINE_BLOCK,
+                    CoreClasses.MARGIN.M1
+                  ]}
                 >
-                  <CoreIcon>clear</CoreIcon>
-                </CoreIconButton>
-              }
-            />
+                  <CoreChip
+                    avatar={
+                      <CoreAvatar
+                        styleClasses={[CoreClasses.COLOR.TEXT_WHITE, CoreClasses.BG.BG_ERROR]}
+                        label={report?.missingData[data]}
+                      />
+                    }
+                    label={data}
+                    size="small"
+                  />
+                </CoreBox>
+              );
+            })}
 
             <CoreDivider />
 
-            <CoreCardContent>
-              <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
-                Missing Information:
-              </CoreTypographyBody2>
+            <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
+              Provided Information:
+            </CoreTypographyBody2>
 
-              {Object.keys(report?.missingData)?.map((data, index) => {
-                return (
-                  <CoreBox
-                    key={`missingData-${index}`}
-                    styleClasses={[
-                      // --- CoreClasses.DISPLAY.INLINE_BLOCK,
-                      CoreClasses.MARGIN.M1,
-                    ]}
-                  >
-                    <CoreChip avatar={
-                        <CoreAvatar styleClasses={[CoreClasses.COLOR.TEXT_WHITE, CoreClasses.BG.BG_ERROR]} label={report?.missingData[data]} />
-                      } label={data} size="small" />
-                  </CoreBox>
-                );
-              })}
+            {Object.keys(report?.providedData)?.map((data, index) => {
+              return (
+                <CoreBox
+                  key={`providedData-${index}`}
+                  styleClasses={[
+                    // --- CoreClasses.DISPLAY.INLINE_BLOCK,
+                    CoreClasses.MARGIN.M1
+                  ]}
+                >
+                  <CoreChip
+                    avatar={
+                      <CoreAvatar
+                        styleClasses={[CoreClasses.COLOR.TEXT_WHITE, CoreClasses.BG.BG_SUCCESS]}
+                        label={report?.providedData[data]}
+                      />
+                    }
+                    label={data}
+                    size="small"
+                  />
+                </CoreBox>
+              );
+            })}
 
-              <CoreDivider />
-
-              <CoreTypographyBody2 styleClasses={[CoreClasses.MARGIN.MB2]}>
-                Provided Information:
-              </CoreTypographyBody2>
-
-              {Object.keys(report?.providedData)?.map((data, index) => {
-                return (
-                  <CoreBox
-                    key={`providedData-${index}`}
-                    styleClasses={[
-                      // --- CoreClasses.DISPLAY.INLINE_BLOCK,
-                      CoreClasses.MARGIN.M1,
-                    ]}
-                  >
-                    <CoreChip avatar={
-                      <CoreAvatar styleClasses={[CoreClasses.COLOR.TEXT_WHITE, CoreClasses.BG.BG_SUCCESS]} label={report?.providedData[data]} />
-                    } label={data} size="small" />
-                  </CoreBox>
-                );
-              })}
-
-              <CoreBox
-                styleClasses={[
-                  CoreClasses.MARGIN.MT2,
-                  // --- CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
-                ]}
-              >
-                <CoreContainedButton
-                  label="Complete Profile"
-                  OnClick={() => {
-                    navigate(`/${RouteRegistry.PROFILE}`);
-                  }}
-                />
-              </CoreBox>
-            </CoreCardContent>
-          </CoreCard>
-        )
+            <CoreBox
+              styleClasses={[
+                CoreClasses.MARGIN.MT2
+                // --- CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_END,
+              ]}
+            >
+              <CoreContainedButton
+                label="Complete Profile"
+                OnClick={() => {
+                  navigate(`/${RoutesRegistry.PROFILE}`);
+                }}
+              />
+            </CoreBox>
+          </CoreCardContent>
+        </CoreCard>
       )}
     </>
   );
