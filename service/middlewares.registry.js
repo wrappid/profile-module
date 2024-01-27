@@ -1,4 +1,3 @@
-const middlewaresRegistry = {
- };
+const middlewaresRegistry = {};
 
 exports.middlewaresRegistry = middlewaresRegistry;

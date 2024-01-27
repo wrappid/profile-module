@@ -1,5 +1,3 @@
-const DEFAULT_DB = "application"
+const DEFAULT_DB = "application";
 
-module.exports = {
-    DEFAULT_DB
-}  
+module.exports = { DEFAULT_DB };  
