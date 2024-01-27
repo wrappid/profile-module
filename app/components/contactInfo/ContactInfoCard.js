@@ -1,72 +1,71 @@
 import {
-  CoreIcon,
-  CoreLabel,
-  CoreTypographyBody1,
-  CoreTypographyBody2,
-  CoreIconButton,
-  CoreBox,
-  CoreGrid,
-  CoreCardHeader,
-  CoreClasses,
-  coreUseNavigate,
-  CorePhoneLink,
-  CoreEmailLink,
-  CoreStack
+    CoreIcon,
+    CoreLabel,
+    CoreTypographyBody1,
+    CoreIconButton,
+    CoreBox,
+    CoreGrid,
+    CoreCardHeader,
+    CoreClasses,
+    coreUseNavigate,
+    CorePhoneLink,
+    CoreEmailLink
 } from "@wrappid/core";
 import { useSelector } from "react-redux";
 
 export default function ContactInfoCard(props) {
-  const navigate = coreUseNavigate();
-  const contactInfo = useSelector((state) => state.profile.contact);
-  const { phoneVerified, emailVerified } = contactInfo;
-  const { phone, email, profileLink, website } = props;
+    const navigate = coreUseNavigate();
+    const contactInfo = useSelector((state) => state.profile.contact);
+    const { phoneVerified, emailVerified } = contactInfo;
+    // eslint-disable-next-line no-unused-vars
+    const { phone, email, profileLink, website } = props;
 
-  return (
-    <>
-      <CoreCardHeader
-        styleClasses={[CoreClasses.PADDING.P0, CoreClasses.PADDING.PR1]}
-        title={
-          <CoreTypographyBody1
-            styleClasses={[CoreClasses.TEXT.TEXT_WEIGHT_BOLD]}
-          >
+    return (
+        <>
+            <CoreCardHeader
+                styleClasses={[CoreClasses.PADDING.P0, CoreClasses.PADDING.PR1]}
+                title={
+                    <CoreTypographyBody1
+                        styleClasses={[CoreClasses.TEXT.TEXT_WEIGHT_BOLD]}
+                    >
             Contact Info
-          </CoreTypographyBody1>
-        }
-        action={
-          <CoreIconButton
-            title={"Edit Contact Info"}
-            onClick={() => {
-              navigate("/settings#account");
-            }}
-          >
-            <CoreIcon>edit_note</CoreIcon>
-          </CoreIconButton>
-        }
-      />
+                    </CoreTypographyBody1>
+                }
+                action={
+                    <CoreIconButton
+                        title={"Edit Contact Info"}
+                        onClick={() => {
+                            navigate("/settings#account");
+                        }}
+                    >
+                        <CoreIcon>edit_note</CoreIcon>
+                    </CoreIconButton>
+                }
+            />
 
-      <CoreGrid>
-        <CoreBox
-          gridProps={{ gridSize: { sm: 3 } }}
-          styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
-        >
-          <CoreLabel>Primary Phone</CoreLabel>
+            <CoreGrid>
+                <CoreBox
+                    gridProps={{ gridSize: { sm: 3 } }}
+                    styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
+                >
+                    <CoreLabel>Primary Phone</CoreLabel>
 
-          <CorePhoneLink icon="phone" phone={phone} verified={phoneVerified} />
-        </CoreBox>
+                    <CorePhoneLink icon="phone" phone={phone} verified={phoneVerified} />
+                </CoreBox>
 
-        <CoreBox
-          gridProps={{ gridSize: { sm: 3 } }}
-          styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
-        >
-          <CoreLabel>Primary Email</CoreLabel>
+                <CoreBox
+                    gridProps={{ gridSize: { sm: 3 } }}
+                    styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
+                >
+                    <CoreLabel>Primary Email</CoreLabel>
 
-          <CoreEmailLink email={email} verified={emailVerified} />
-        </CoreBox>
+                    <CoreEmailLink email={email} verified={emailVerified} />
+                </CoreBox>
 
-        {/**
+                {/**
          * @todo Removing as of now for quick release
          */}
-        {/* -- <CoreBox
+                {/* -- <CoreBox
           gridProps={{ gridSize: { sm: 3 } }}
           styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
         >
@@ -103,7 +102,7 @@ export default function ContactInfoCard(props) {
             </CoreTypographyBody2>
           </CoreStack>
         </CoreBox> */}
-      </CoreGrid>
-    </>
-  );
+            </CoreGrid>
+        </>
+    );
 }
