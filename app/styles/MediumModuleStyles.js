@@ -2,9 +2,9 @@
 
 export const mediumAppStyles = {
  
-  /**************************************************
+    /**************************************************
    * Using mediumUtilityStyles example
    * eg. usingMediumUtilityStyles: { ...mediumUtilityStyles.anyUtilityStyle },
    *************************************************/
-  testWrappidStyleClass: {/* your style goes here */}
+    testWrappidStyleClass: {/* your style goes here */}
 };

@@ -1,48 +1,48 @@
 import { profileRegistrationSpecilization } from "./functions/asyncselect.functions";
 import { getCity, getDistrict, getState } from "./functions/form.dependency.function";
 import {
-  SanBasicEditUrlChange, SanClinicAddUrlChange, SanClinicDeleteUrlChange, SanClinicEditUrlChange, SanClinicReadUrlChange, SanEducationAddUrlChange, SanEducationEditUrlChange, SanEducationReadUrlChange, SanExperienceAddUrlChange, SanExperienceEditUrlChange, SanExperienceReadUrlChange, SanProfileBasicRead, SanProfileClinicRead, SanProfileEducationRead, SanProfileExperienceRead, SanProfileRegistrationRead, SanRegistrationReadUrlChange 
+    SanBasicEditUrlChange, SanClinicAddUrlChange, SanClinicDeleteUrlChange, SanClinicEditUrlChange, SanClinicReadUrlChange, SanEducationAddUrlChange, SanEducationEditUrlChange, SanEducationReadUrlChange, SanExperienceAddUrlChange, SanExperienceEditUrlChange, SanExperienceReadUrlChange, SanProfileBasicRead, SanProfileClinicRead, SanProfileEducationRead, SanProfileExperienceRead, SanProfileRegistrationRead, SanRegistrationReadUrlChange 
 } from "./functions/sanity.functions";
 
 // asyncSelect and formSubmitSanitization
 
 export const FunctionsRegistry = {
-  SanBasicEditUrlChange: SanBasicEditUrlChange,
-  SanClinicAddUrlChange: SanClinicAddUrlChange,
+    SanBasicEditUrlChange: SanBasicEditUrlChange,
+    SanClinicAddUrlChange: SanClinicAddUrlChange,
   
-  SanClinicDeleteUrlChange: SanClinicDeleteUrlChange,
+    SanClinicDeleteUrlChange: SanClinicDeleteUrlChange,
   
-  SanClinicEditUrlChange: SanClinicEditUrlChange,
+    SanClinicEditUrlChange: SanClinicEditUrlChange,
   
-  SanClinicReadUrlChange: SanClinicReadUrlChange,
+    SanClinicReadUrlChange: SanClinicReadUrlChange,
   
-  SanEducationAddUrlChange: SanEducationAddUrlChange,
+    SanEducationAddUrlChange: SanEducationAddUrlChange,
   
-  SanEducationEditUrlChange: SanEducationEditUrlChange,
+    SanEducationEditUrlChange: SanEducationEditUrlChange,
   
-  SanEducationReadUrlChange: SanEducationReadUrlChange,
+    SanEducationReadUrlChange: SanEducationReadUrlChange,
     
-  //PROFILE EXP SANITIZATION FUNCTIONS
-  SanExperienceAddUrlChange : SanExperienceAddUrlChange,
-  SanExperienceEditUrlChange: SanExperienceEditUrlChange,
-  SanExperienceReadUrlChange: SanExperienceReadUrlChange,
-  SanProfileBasicRead       : SanProfileBasicRead,
-  SanProfileClinicRead      : SanProfileClinicRead,
+    //PROFILE EXP SANITIZATION FUNCTIONS
+    SanExperienceAddUrlChange : SanExperienceAddUrlChange,
+    SanExperienceEditUrlChange: SanExperienceEditUrlChange,
+    SanExperienceReadUrlChange: SanExperienceReadUrlChange,
+    SanProfileBasicRead       : SanProfileBasicRead,
+    SanProfileClinicRead      : SanProfileClinicRead,
       
-  SanProfileEducationRead: SanProfileEducationRead,
+    SanProfileEducationRead: SanProfileEducationRead,
       
-  SanProfileExperienceRead: SanProfileExperienceRead,
+    SanProfileExperienceRead: SanProfileExperienceRead,
       
-  SanProfileRegistrationRead: SanProfileRegistrationRead,
+    SanProfileRegistrationRead: SanProfileRegistrationRead,
       
-  SanRegistrationReadUrlChange: SanRegistrationReadUrlChange,
+    SanRegistrationReadUrlChange: SanRegistrationReadUrlChange,
       
-  getCity: getCity,
+    getCity: getCity,
   
-  getDepartmentsValue: profileRegistrationSpecilization.getOptionValue,
+    getDepartmentsValue: profileRegistrationSpecilization.getOptionValue,
   
-  getDistrict: getDistrict,
+    getDistrict: getDistrict,
   
-  getState: getState
+    getState: getState
   
 };

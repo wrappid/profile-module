@@ -1,5 +1,3 @@
-import {ValidationsRegistry as formValidationRegistry} from './formValidationMap.registry'
+import { ValidationsRegistry as formValidationRegistry } from "./formValidationMap.registry";
 
-export const ValidationsRegistry = {
-    ...formValidationRegistry
-};
+export const ValidationsRegistry = { ...formValidationRegistry };
