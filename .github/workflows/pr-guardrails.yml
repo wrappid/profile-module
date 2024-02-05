@@ -15,7 +15,7 @@ jobs:
         id: branch_name_validation
         with:
           text: ${{ github.event.pull_request.head.ref }}
-          regex: '^WRPD-(feature|bugfix|release|ci|enhancement|hotfix|refactor|deps|docs|experimental|security)?-[0-9]+$|^main$|^development$'
+          regex: '^RXFY-(feature|bugfix|release|ci|enhancement|hotfix|refactor|deps|docs|experimental|security)?-[0-9]+$|^main$|^development$'
 
       - name: Print invalid branch name message
         if: ${{ steps.branch_name_validation.outputs.match == '' }}
