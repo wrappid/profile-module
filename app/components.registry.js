@@ -13,17 +13,17 @@ import RegistrationCard from "./components/registration/RegistrationCard";
 import UserProfile from "./components/UserProfile";
 
 export const ComponentsRegistry = {
-    BasicInfoCard              : { comp: BasicInfoCard },
-    ProfileBasicSkeleton       : { comp: ProfileBasicSkeleton },
-    ProfileClinicSkeleton      : { comp: ProfileClinicSkeleton },
-    ProfileContactSkeleton     : { comp: ProfileContactSkeleton },
-    ProfileEducationSkeleton   : { comp: ProfileEducationSkeleton },
-    ProfileExperienceSkeleton  : { comp: ProfileExperienceSkeleton },
-    ProfileRegistrationSkeleton: { comp: ProfileRegistrationSkeleton },
-    UserProfile                : { comp: UserProfile },
-    clinicCard                 : { comp: ClinicCard },
-    contactInfoCard            : { comp: ContactInfoCard },
-    educationCard              : { comp: EducationCard },
-    experienceCard             : { comp: ExperienceCard },
-    registrationCard           : { comp: RegistrationCard }
+  BasicInfoCard              : { comp: BasicInfoCard },
+  ProfileBasicSkeleton       : { comp: ProfileBasicSkeleton },
+  ProfileClinicSkeleton      : { comp: ProfileClinicSkeleton },
+  ProfileContactSkeleton     : { comp: ProfileContactSkeleton },
+  ProfileEducationSkeleton   : { comp: ProfileEducationSkeleton },
+  ProfileExperienceSkeleton  : { comp: ProfileExperienceSkeleton },
+  ProfileRegistrationSkeleton: { comp: ProfileRegistrationSkeleton },
+  UserProfile                : { comp: UserProfile },
+  clinicCard                 : { comp: ClinicCard },
+  contactInfoCard            : { comp: ContactInfoCard },
+  educationCard              : { comp: EducationCard },
+  experienceCard             : { comp: ExperienceCard },
+  registrationCard           : { comp: RegistrationCard }
 };
