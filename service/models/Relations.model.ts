@@ -1,48 +1,48 @@
-module.exports = (sequelize, DataTypes) => {
+export const Relations = (sequelize: any, DataTypes: any) => {
   const relations = sequelize.define("Relations", {
-    _status  : { type: DataTypes.STRING },
+    _status: { type: DataTypes.STRING },
     deletedAt: {
       allowNull: true,
-      type     : "TIMESTAMP"
+      type: "TIMESTAMP",
     },
     extraInfo: {
       defaultValue: null,
-      type        : DataTypes.JSONB
+      type: DataTypes.JSONB,
     },
     id: {
       autoIncrement: true,
-      primaryKey   : true,
-      type         : DataTypes.INTEGER
+      primaryKey: true,
+      type: DataTypes.INTEGER,
     },
     isActive: {
       defaultValue: true,
-      type        : DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
     },
     name: {
       defaultValue: "",
-      type        : DataTypes.STRING
-    }
+      type: DataTypes.STRING,
+    },
   });
 
-  relations.associate = (models) => {
+  relations.associate = (models: any) => {
     relations.belongsTo(models.Users, {
-      as        : "Owner",
+      as: "Owner",
       foreignKey: "createdBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     relations.belongsTo(models.Users, {
-      as        : "Updater",
+      as: "Updater",
       foreignKey: "updatedBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     relations.hasMany(models.PersonRelations, {
       foreignKey: "relationId",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     relations.belongsTo(models.Users, {
-      as        : "Destroyer",
+      as: "Destroyer",
       foreignKey: "deletedBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
   };
 

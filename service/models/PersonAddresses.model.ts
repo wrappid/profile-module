@@ -1,97 +1,99 @@
-module.exports = (sequelize, DataTypes) => {
+export const PersonAddresses = (sequelize: any, DataTypes: any) => {
   const personAddresses = sequelize.define("PersonAddresses", {
-    _status : { type: DataTypes.STRING },
+    _status: { type: DataTypes.STRING },
     addLine1: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     addLine2: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     city: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     country: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     deletedAt: {
       allowNull: true,
-      type     : "TIMESTAMP"
+      type: "TIMESTAMP",
     },
     district: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     fullName: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     id: {
       autoIncrement: true,
-      primaryKey   : true,
-      type         : DataTypes.INTEGER
+      primaryKey: true,
+      type: DataTypes.INTEGER,
     },
     isActive: {
       defaultValue: true,
-      type        : DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
     },
     isDefault: {
       defaultValue: true,
-      type        : DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
     },
     landmark: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     phone: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     pin: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     state: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     status: {
       defaultValue: "",
-      type        : DataTypes.STRING
-    }
+      type: DataTypes.STRING,
+    },
   });
 
-  personAddresses.associate = (models) => {
+  personAddresses.associate = (models: any) => {
     personAddresses.belongsTo(models.Persons, {
-      as        : "Person",
+      as: "Person",
       foreignKey: "personId",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     personAddresses.belongsTo(models.Users, {
-      as        : "Owner",
+      as: "Owner",
       foreignKey: "createdBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     personAddresses.belongsTo(models.Users, {
-      as        : "Updater",
+      as: "Updater",
       foreignKey: "updatedBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     personAddresses.belongsTo(models.AddressTypes, {
       foreignKey: "addressTypeId",
-      sourceKey : "id"
+      sourceKey: "id",
     });
+    /*
     personAddresses.hasOne(models.Clinics, {
       foreignKey: "personAddressId",
-      sourceKey : "id"
+      sourceKey: "id",
     });
+    */
     personAddresses.belongsTo(models.Users, {
-      as        : "Destroyer",
+      as: "Destroyer",
       foreignKey: "deletedBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
   };
 
