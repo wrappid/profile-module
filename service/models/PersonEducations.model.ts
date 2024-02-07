@@ -1,88 +1,88 @@
-module.exports = (sequelize, DataTypes) => {
+export const PersonEducations = (sequelize: any, DataTypes: any) => {
   const personEducations = sequelize.define("PersonEducations", {
     _status: { type: DataTypes.STRING },
-    board  : {
+    board: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     degree: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     deletedAt: {
       allowNull: true,
-      type     : "TIMESTAMP"
+      type: "TIMESTAMP",
     },
     endDate: {
       defaultValue: new Date(),
-      type        : "TIMESTAMP"
+      type: "TIMESTAMP",
     },
     endMonth: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     endYear: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     field: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     id: {
       autoIncrement: true,
-      primaryKey   : true,
-      type         : DataTypes.INTEGER
+      primaryKey: true,
+      type: DataTypes.INTEGER,
     },
     isActive: {
       defaultValue: true,
-      type        : DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
     },
     location: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     school: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     startDate: {
       defaultValue: new Date(),
-      type        : "TIMESTAMP"
+      type: "TIMESTAMP",
     },
     startMonth: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     startYear: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     type: {
       defaultValue: "",
-      type        : DataTypes.STRING
-    }
+      type: DataTypes.STRING,
+    },
   });
 
-  personEducations.associate = (models) => {
+  personEducations.associate = (models: any) => {
     personEducations.belongsTo(models.Persons, {
       foreignKey: "personId",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     personEducations.belongsTo(models.Users, {
-      as        : "Owner",
+      as: "Owner",
       foreignKey: "createdBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     personEducations.belongsTo(models.Users, {
-      as        : "Updater",
+      as: "Updater",
       foreignKey: "updatedBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     personEducations.belongsTo(models.Users, {
-      as        : "Destroyer",
+      as: "Destroyer",
       foreignKey: "deletedBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
   };
 

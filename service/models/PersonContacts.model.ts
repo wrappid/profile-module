@@ -1,60 +1,60 @@
-module.exports = (sequelize, DataTypes) => {
+export const PersonContacts = (sequelize: any, DataTypes: any) => {
   const personContacts = sequelize.define("PersonContacts", {
     _status: { type: DataTypes.STRING },
-    data   : {
+    data: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     deletedAt: {
       allowNull: true,
-      type     : "TIMESTAMP"
+      type: "TIMESTAMP",
     },
     id: {
       autoIncrement: true,
-      primaryKey   : true,
-      type         : DataTypes.INTEGER
+      primaryKey: true,
+      type: DataTypes.INTEGER,
     },
     isActive: {
       defaultValue: true,
-      type        : DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
     },
     notificationFlag: {
       defaultValue: false,
-      type        : DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
     },
     primaryFlag: {
       defaultValue: false,
-      type        : DataTypes.BOOLEAN
+      type: DataTypes.BOOLEAN,
     },
     type: {
       defaultValue: "",
-      type        : DataTypes.STRING
+      type: DataTypes.STRING,
     },
     verified: {
       defaultValue: false,
-      type        : DataTypes.BOOLEAN
-    }
+      type: DataTypes.BOOLEAN,
+    },
   });
 
-  personContacts.associate = (models) => {
+  personContacts.associate = (models: any) => {
     personContacts.belongsTo(models.Persons, {
       foreignKey: "personId",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     personContacts.belongsTo(models.Users, {
-      as        : "Owner",
+      as: "Owner",
       foreignKey: "createdBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     personContacts.belongsTo(models.Users, {
-      as        : "Updater",
+      as: "Updater",
       foreignKey: "updatedBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
     personContacts.belongsTo(models.Users, {
-      as        : "Destroyer",
+      as: "Destroyer",
       foreignKey: "deletedBy",
-      sourceKey : "id"
+      sourceKey: "id",
     });
   };
 
