@@ -1,11 +1,10 @@
-/* eslint-disable no-console */
 import {
   databaseProvider,
-  deleteS3FIle,
-  messageProcessor,
-  getUrl,
-  upload,
-  entityStatus,
+  // deleteS3FIle,
+  // messageProcessor,
+  // getUrl,
+  // upload,
+  // entityStatus,
 } from "@wrappid/service-core";
 
 import { DEFAULT_DB } from "../constants/profile.constants";
@@ -17,12 +16,12 @@ import { DEFAULT_DB } from "../constants/profile.constants";
  * @param {*} databaseActions
  * @returns
  */
-const createAddress = async (req, res, databaseActions) => {
+export const createAddress = async (/* req, res, databaseActions */) => {
   try {
-    let del_urls = [];
-    let personId = req.params.id;
+    /* const del_urls = [];
+    const personId = req.params.id; */
 
-    await upload.fields([{ maxCount: 1, name: "clinicLogo" }])(
+    /* await upload.fields([{ maxCount: 1, name: "clinicLogo" }])(
       req,
       res,
       async function (err) {
@@ -31,7 +30,7 @@ const createAddress = async (req, res, databaseActions) => {
             console.log("FIle Upload error", err);
             throw err;
           } else {
-            let data = req.body;
+            const data = req.body;
             let file_url = null;
 
             if (req.files["clinicLogo"] && req.files["clinicLogo"][0]) {
@@ -39,21 +38,21 @@ const createAddress = async (req, res, databaseActions) => {
                 req.files["clinicLogo"][0].filename
                   ? req.files["clinicLogo"][0].filename
                   : req.files["clinicLogo"][0].key
-                  ? req.files["clinicLogo"][0].key
-                  : req.files["clinicLogo"][0].originalname
+                    ? req.files["clinicLogo"][0].key
+                    : req.files["clinicLogo"][0].originalname
               );
               data[""];
             }
 
-            let result =
+            const result =
               await databaseProvider.application.sequelize.transaction(
                 async (transaction) => {
-                  let address = await databaseActions.findByPk(
+                  const address = await databaseActions.findByPk(
                     DEFAULT_DB,
                     "AddressTypes",
                     data.addressTypeId
                   );
-                  let addDetail = await databaseActions.create(
+                  const addDetail = await databaseActions.create(
                     DEFAULT_DB,
                     "PersonAddresses",
                     {
@@ -100,10 +99,10 @@ const createAddress = async (req, res, databaseActions) => {
           res.status(500).json({ message: messageProcessor(err) });
         }
       }
-    );
+    ); */
   } catch (err) {
     console.log(err);
-    return { message: messageProcessor(err), status: 500 };
+    // return { message: messageProcessor(err), status: 500 };
   }
 };
 
@@ -113,13 +112,13 @@ const createAddress = async (req, res, databaseActions) => {
  * @param {*} res
  * @param {*} databaseActions
  */
-async function updateAddress(req, res, databaseActions) {
+export async function updateAddress(/* req, res, databaseActions */) {
   try {
-    let del_urls = [];
-    let addressId = req.params.id;
-    let file_url = null;
+    /* const del_urls = [];
+    const addressId = req.params.id;
+    let file_url = null; */
 
-    await upload.fields([{ maxCount: 1, name: "clinicLogo" }])(
+    /* await upload.fields([{ maxCount: 1, name: "clinicLogo" }])(
       req,
       res,
       async function (err) {
@@ -128,21 +127,21 @@ async function updateAddress(req, res, databaseActions) {
             console.log("FIle Upload error", err);
             throw err;
           } else {
-            let data = req.body;
+            const data = req.body;
 
             if (req.files["clinicLogo"] && req.files["clinicLogo"][0]) {
               file_url = await getUrl(
                 req.files["clinicLogo"][0].filename
                   ? req.files["clinicLogo"][0].filename
                   : req.files["clinicLogo"][0].key
-                  ? req.files["clinicLogo"][0].key
-                  : req.files["clinicLogo"][0].originalname
+                    ? req.files["clinicLogo"][0].key
+                    : req.files["clinicLogo"][0].originalname
               );
               data[""];
             }
             await databaseProvider.application.sequelize.transaction(
               async (transaction) => {
-                let address = await databaseActions.findByPk(
+                const address = await databaseActions.findByPk(
                   DEFAULT_DB,
                   "PersonAddresses",
                   req.params.id,
@@ -173,7 +172,7 @@ async function updateAddress(req, res, databaseActions) {
 
                 if (address?.AddressType?.type?.toLowerCase() === "clinic") {
                   console.log("Clinic Url", file_url);
-                  let updateOb = {
+                  const updateOb = {
                     name: data.fullName,
                     updatedBy: req.user.userId,
                   };
@@ -207,10 +206,10 @@ async function updateAddress(req, res, databaseActions) {
           res.status(500).json({ message: messageProcessor(err) });
         }
       }
-    );
+    ); */
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: messageProcessor(err) });
+    // res.status(500).json({ message: messageProcessor(err) });
   }
 }
 
@@ -220,12 +219,12 @@ async function updateAddress(req, res, databaseActions) {
  * @param {*} databaseActions
  * @returns
  */
-async function deleteAddress(req, databaseActions) {
+export async function deleteAddress(req, databaseActions) {
   try {
     await databaseProvider.application.sequelize.transaction(
       async (transaction) => {
-        let addressId = req.params.id;
-        let address = await databaseActions.findByPk(
+        const addressId = req.params.id;
+        const address = await databaseActions.findByPk(
           DEFAULT_DB,
           "PersonAddresses",
           addressId,
@@ -240,7 +239,10 @@ async function deleteAddress(req, databaseActions) {
           DEFAULT_DB,
           "PersonAddresses",
           {
-            _status: entityStatus.DELETED,
+            /**
+             * @todo needs to uncomment below line
+             */
+            // _status: entityStatus.DELETED,
             isActive: false,
             updatedBy: req.user.userId,
           },
@@ -278,10 +280,10 @@ async function deleteAddress(req, databaseActions) {
     );
 
     console.log("Address deleted: ", req.params.id);
-    return { message: messageProcessor(200007), status: 200 };
+    // return { message: messageProcessor(200007), status: 200 };
   } catch (error) {
     console.log("Address Delete error", error);
-    return { message: messageProcessor(error), status: 500 };
+    // return { message: messageProcessor(error), status: 500 };
   }
 }
 

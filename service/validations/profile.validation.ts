@@ -1,32 +1,32 @@
 import moment from "moment";
 import * as yup from "yup";
 
-const getContactInfo = {
+export const getContactInfo = {
   body: yup.object<any>().noUnknown().strict(),
   query: yup.object<any>().noUnknown().strict(),
 };
 
-const getAddressTypeSchema = {
+export const getAddressTypeSchema = {
   body: yup.object<any>().noUnknown().strict(),
   query: yup.object<any>().noUnknown().strict(),
 };
 
-const getPersonContacts = {
+export const getPersonContacts = {
   body: yup.object<any>().noUnknown().strict(),
   query: yup.object<any>().noUnknown().strict(),
 };
 
-const getRegistrationInfo = {
+export const getRegistrationInfo = {
   body: yup.object<any>().noUnknown().strict(),
   query: yup.object<any>().noUnknown().strict(),
 };
 
-const departmentGET = {
+export const departmentGET = {
   body: yup.object<any>().noUnknown().strict(),
   query: yup.ObjectSchema<{ isActive: any }>,
 };
 
-const putUpdateExperience: yup.ObjectSchema<{
+export const putUpdateExperience: yup.ObjectSchema<{
   body: {
     description?: string;
     designation?: string;
@@ -65,7 +65,7 @@ const putUpdateExperience: yup.ObjectSchema<{
     .strict(),
 });
 
-const putBasicDetails: yup.ObjectSchema<{
+export const putBasicDetails: yup.ObjectSchema<{
   bio?: string;
   dob?: Date;
   firstName?: string;
@@ -101,7 +101,7 @@ const putBasicDetails: yup.ObjectSchema<{
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
 });
 
-const putRegistrationDetails: yup.ObjectSchema<{
+export const putRegistrationDetails: yup.ObjectSchema<{
   body: {
     regDate?: string;
     regNo?: string;
@@ -118,7 +118,7 @@ const putRegistrationDetails: yup.ObjectSchema<{
     .strict(),
 });
 
-const postAddEducation: yup.ObjectSchema<{
+export const postAddEducation: yup.ObjectSchema<{
   body: {
     board?: string;
     degree?: string;
@@ -153,7 +153,7 @@ const postAddEducation: yup.ObjectSchema<{
     .strict(),
 });
 
-const postUpdateEducation: yup.ObjectSchema<{
+export const postUpdateEducation: yup.ObjectSchema<{
   body: {
     board?: string;
     degree?: string;
@@ -192,7 +192,7 @@ const postUpdateEducation: yup.ObjectSchema<{
     .strict(),
 });
 
-const putDeleteEducation: yup.ObjectSchema<{
+export const putDeleteEducation: yup.ObjectSchema<{
   body: {
     isActive?: boolean;
   };
@@ -200,7 +200,7 @@ const putDeleteEducation: yup.ObjectSchema<{
   body: yup.object({ isActive: yup.boolean() }).noUnknown().strict(),
 });
 
-const postAddExperience: yup.ObjectSchema<{
+export const postAddExperience: yup.ObjectSchema<{
   body: {
     description?: string;
     designation?: string;
@@ -235,7 +235,7 @@ const postAddExperience: yup.ObjectSchema<{
     .strict(),
 });
 
-const putDeleteExperience: yup.ObjectSchema<{
+export const putDeleteExperience: yup.ObjectSchema<{
   body: {
     isActive?: boolean;
   };
@@ -243,7 +243,7 @@ const putDeleteExperience: yup.ObjectSchema<{
   body: yup.object({ isActive: yup.boolean() }).noUnknown().strict(),
 });
 
-export {
+export const profileValidation = {
   getContactInfo,
   getAddressTypeSchema,
   getPersonContacts,
@@ -258,3 +258,4 @@ export {
   postAddExperience,
   putDeleteExperience,
 };
+export default profileValidation;

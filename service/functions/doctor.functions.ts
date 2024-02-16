@@ -16,9 +16,9 @@ import { DEFAULT_DB } from "../constants/profile.constants";
  */
 const updateDoctorDetails = async (req, res, databaseActions) => {
   try {
-    let del_urls = [];
+    const del_urls = [];
     let file_url = null;
-    let personId = req.params.id;
+    const personId = req.params.id;
 
     await upload.fields([{ maxCount: 1, name: "registrationDocument" }])(
       req,
@@ -37,13 +37,13 @@ const updateDoctorDetails = async (req, res, databaseActions) => {
                 req.files["registrationDocument"][0].filename
                   ? req.files["registrationDocument"][0].filename
                   : req.files["registrationDocument"][0].key
-                  ? req.files["registrationDocument"][0].key
-                  : req.files["registrationDocument"][0].originalname
+                    ? req.files["registrationDocument"][0].key
+                    : req.files["registrationDocument"][0].originalname
               );
             }
             console.log("File URL", file_url);
 
-            let exists = await databaseActions.findOne(
+            const exists = await databaseActions.findOne(
               DEFAULT_DB,
               "DoctorDetails",
               { where: { doctorId: req.params.id } }
@@ -51,7 +51,7 @@ const updateDoctorDetails = async (req, res, databaseActions) => {
 
             del_urls.push(file_url);
 
-            let data = req.body;
+            const data = req.body;
 
             await databaseProvider.action.sequelize.transaction(
               async (transaction) => {
@@ -74,7 +74,7 @@ const updateDoctorDetails = async (req, res, databaseActions) => {
                 }
 
                 if (file_url) {
-                  let updateInfo = await databaseActions.update(
+                  const updateInfo = await databaseActions.update(
                     DEFAULT_DB,
                     "PersonDocs",
                     {
@@ -88,7 +88,7 @@ const updateDoctorDetails = async (req, res, databaseActions) => {
                   );
 
                   if (updateInfo === 0) {
-                    let nPersonDocs = await databaseActions.create(
+                    const nPersonDocs = await databaseActions.create(
                       DEFAULT_DB,
                       "PersonDocs",
                       {
@@ -166,8 +166,8 @@ const updateDoctorDetails = async (req, res, databaseActions) => {
  */
 const createDoctorDetails = async (req, res, databaseActions) => {
   try {
-    let del_urls = [];
-    let personId = req.params.id;
+    const del_urls = [];
+    const personId = req.params.id;
 
     await upload.fields([{ maxCount: 1, name: "registrationDocument" }])(
       req,
@@ -188,11 +188,11 @@ const createDoctorDetails = async (req, res, databaseActions) => {
                 req.files["registrationDocument"][0].filename
                   ? req.files["registrationDocument"][0].filename
                   : req.files["registrationDocument"][0].key
-                  ? req.files["registrationDocument"][0].key
-                  : req.files["registrationDocument"][0].originalname
+                    ? req.files["registrationDocument"][0].key
+                    : req.files["registrationDocument"][0].originalname
               );
 
-              let doctorDetails = await databaseActions.findOne(
+              const doctorDetails = await databaseActions.findOne(
                 DEFAULT_DB,
                 "DoctorDetails",
                 { where: { personId: req.params.id } }
@@ -203,7 +203,7 @@ const createDoctorDetails = async (req, res, databaseActions) => {
               if (doctorDetails) {
                 throw 290004;
               }
-              let data = req.body;
+              const data = req.body;
 
               // eslint-disable-next-line  no-undef
               await db.sequelize.transaction(async (transaction) => {

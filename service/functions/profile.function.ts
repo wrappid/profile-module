@@ -10,11 +10,11 @@ import {
 const getContactInfoFunc = async (req: any, res: any) => {
   //eslint-disable-next-line no-useless-catch
   try {
-    let userID = req.user.userId;
+    const userID = req.user.userId;
 
     console.log("User ID = " + userID);
 
-    let userDetails = await databaseActions.findOne("application", "Users", {
+    const userDetails = await databaseActions.findOne("application", "Users", {
       include: [
         {
           as: "Person",
@@ -23,7 +23,7 @@ const getContactInfoFunc = async (req: any, res: any) => {
       ],
       where: { id: userID },
     });
-    let data = {
+    const data = {
       email: userDetails.email,
       emailVerified: userDetails?.Person?.emailVerified,
       phone: userDetails?.phone,
@@ -41,7 +41,7 @@ const getContactInfoFunc = async (req: any, res: any) => {
 
 const getAddressTypeFunc = async (req: any, res: any) => {
   try {
-    let data = await databaseActions.findAll("application", "AddressTypes", {
+    const data = await databaseActions.findAll("application", "AddressTypes", {
       attributes: ["id", "type"],
     });
 
@@ -61,7 +61,7 @@ const getAddressTypeFunc = async (req: any, res: any) => {
 
 const getDepartmentFunc = async (req: any, res: any) => {
   try {
-    let data = await databaseActions.findAll("application", "Departments", {
+    const data = await databaseActions.findAll("application", "Departments", {
       where: { ...req.query },
     });
 
@@ -81,12 +81,12 @@ const getDepartmentFunc = async (req: any, res: any) => {
 
 const getPersonContactsFunc = async (req: any, res: any) => {
   try {
-    let person = await databaseActions.findOne("application", "Persons", {
+    const person = await databaseActions.findOne("application", "Persons", {
       where: { userId: req.user.userId },
     });
-    let personId = person.id;
-    let contactType = req.params.contactType;
-    let personContacts = await databaseActions.findAll(
+    const personId = person.id;
+    const contactType = req.params.contactType;
+    const personContacts = await databaseActions.findAll(
       "application",
       "PersonContacts",
       {
@@ -122,9 +122,9 @@ const getPersonContactsFunc = async (req: any, res: any) => {
 const putBasicDetailsFunc = async (req: any, res: any) => {
   try {
     let file_url = null;
-    let personId = req.params.id;
+    const personId = req.params.id;
 
-    let data = req.body;
+    const data = req.body;
 
     if (data.extraInfo) data.extraInfo = JSON.parse(data.extraInfo);
     if (data.bio) data["extraInfo"] = { bio: data.bio };
@@ -134,9 +134,9 @@ const putBasicDetailsFunc = async (req: any, res: any) => {
     }
     console.log(data.photoUrl);
     console.log("UPDATEING DATA", data);
-    let result = await databaseProvider.application.sequelize.transaction(
+    const result = await databaseProvider.application.sequelize.transaction(
       async (transaction: any) => {
-        let docDetail = await databaseActions.update(
+        const docDetail = await databaseActions.update(
           "application",
           "Persons",
           {
@@ -162,14 +162,14 @@ const putBasicDetailsFunc = async (req: any, res: any) => {
 
 const getRegistrationInfoFunc = async (req: any, res: any) => {
   try {
-    let userID = req.user.userId;
+    const userID = req.user.userId;
 
     console.log("User ID = " + userID);
 
     /**
      * TODO: put another model data to patient if required
      */
-    let doctorDetails = await databaseActions.findOne(
+    const doctorDetails = await databaseActions.findOne(
       "application",
       "DoctorDetails",
       {
@@ -183,16 +183,16 @@ const getRegistrationInfoFunc = async (req: any, res: any) => {
       }
     );
 
-    let personDocs = doctorDetails
+    const personDocs = doctorDetails
       ? await databaseActions.findOne("application", "PersonDocs", {
-          where: {
-            personId: doctorDetails?.dataValues?.Persons?.id,
-            type: "Registration Document",
-          },
-        })
+        where: {
+          personId: doctorDetails?.dataValues?.Persons?.id,
+          type: "Registration Document",
+        },
+      })
       : null;
 
-    let temp = { ...doctorDetails?.dataValues };
+    const temp = { ...doctorDetails?.dataValues };
 
     delete temp.Persons;
     temp["departmentId"] = doctorDetails?.dataValues?.Persons?.departmentId;
@@ -218,9 +218,9 @@ const getRegistrationInfoFunc = async (req: any, res: any) => {
 
 const putRegistrationDetailsFunc = async (req: any, res: any) => {
   try {
-    let del_urls: any = [];
+    const del_urls: any = [];
     let file_url: any = null;
-    let personId: any = req.params.id;
+    const personId: any = req.params.id;
 
     if (
       req.file["registrationDocument"] &&
@@ -238,7 +238,7 @@ const putRegistrationDetailsFunc = async (req: any, res: any) => {
     }
     console.log("File URL", file_url);
 
-    let docData = await databaseActions.findOne(
+    const docData = await databaseActions.findOne(
       "application",
       "DoctorDetails",
       { where: { doctorId: req.params.id } }
@@ -246,14 +246,14 @@ const putRegistrationDetailsFunc = async (req: any, res: any) => {
 
     del_urls.push(file_url);
 
-    let data = req.body;
-    let result = await databaseProvider.application.sequelize.transaction(
+    const data = req.body;
+    const result = await databaseProvider.application.sequelize.transaction(
       async (transaction: any) => {
         data.personDocs = [];
 
         if (!docData) {
           console.log("Docotr details not found");
-          let docDetail = await databaseActions.create(
+          const docDetail = await databaseActions.create(
             "application",
             "DoctorDetails",
             {
@@ -268,7 +268,7 @@ const putRegistrationDetailsFunc = async (req: any, res: any) => {
         }
 
         if (file_url) {
-          let [nrows, rows] = await databaseActions.update(
+          const [nrows, rows] = await databaseActions.update(
             "application",
             "PersonDocs",
             {
@@ -280,7 +280,7 @@ const putRegistrationDetailsFunc = async (req: any, res: any) => {
           );
 
           if (nrows == 0) {
-            let nPersonDocs = await databaseActions.create(
+            const nPersonDocs = await databaseActions.create(
               "application",
               "PersonDocs",
               {
@@ -301,7 +301,7 @@ const putRegistrationDetailsFunc = async (req: any, res: any) => {
         }
 
         if (data.departmentId) {
-          let docDetail = await databaseActions.update(
+          const docDetail = await databaseActions.update(
             "application",
             "Persons",
             {
@@ -315,7 +315,7 @@ const putRegistrationDetailsFunc = async (req: any, res: any) => {
           console.log("Department updated");
         }
 
-        let docDetail = await databaseActions.update(
+        const docDetail = await databaseActions.update(
           "application",
           "DoctorDetails",
           {
@@ -338,14 +338,14 @@ const putRegistrationDetailsFunc = async (req: any, res: any) => {
 
 const postAddEducationFunc = async (req: any, res: any) => {
   try {
-    let data: any = req.body;
-    let personId = req.params.id;
-    let result = await databaseProvider.application.sequelize.transaction(
+    const data: any = req.body;
+    const personId = req.params.id;
+    const result = await databaseProvider.application.sequelize.transaction(
       async (transaction: any) => {
         if (data.isCurrent) {
           data.endDate = null;
         }
-        let addDetail = await databaseActions.create(
+        const addDetail = await databaseActions.create(
           "application",
           "PersonEducations",
           {
@@ -372,14 +372,14 @@ const postAddEducationFunc = async (req: any, res: any) => {
 
 const putUpdateEducationFunc = async (req: any, res: any) => {
   try {
-    let data = req.body;
+    const data = req.body;
 
     if (data.isCurrent) {
       data.endDate = null;
     }
-    let result = await databaseProvider.application.sequelize.transaction(
+    const result = await databaseProvider.application.sequelize.transaction(
       async (transaction: any) => {
-        let [nrows, rows] = await databaseActions.update(
+        const [nrows, rows] = await databaseActions.update(
           "application",
           "PersonEducations",
           {
@@ -406,10 +406,10 @@ const putUpdateEducationFunc = async (req: any, res: any) => {
 
 const putDeleteEducationFunc = async (req: any, res: any) => {
   try {
-    let educationId = req.params.id;
-    let result = await databaseProvider.application.sequelize.transaction(
+    const educationId = req.params.id;
+    const result = await databaseProvider.application.sequelize.transaction(
       async (transaction: any) => {
-        let [nrows, rows] = await databaseActions.update(
+        const [nrows, rows] = await databaseActions.update(
           "application",
           "PersonEducations",
           {
@@ -437,14 +437,14 @@ const putDeleteEducationFunc = async (req: any, res: any) => {
 
 const postAddExperienceFunc = async (req: any, res: any) => {
   try {
-    let data: any = req.body;
-    let personId = req.params.id;
-    let result = await databaseProvider.application.sequelize.transaction(
+    const data: any = req.body;
+    const personId = req.params.id;
+    const result = await databaseProvider.application.sequelize.transaction(
       async (transaction: any) => {
         if (data.isCurrent) {
           data.endDate = null;
         }
-        let addDetail = await databaseActions.create(
+        const addDetail = await databaseActions.create(
           "application",
           "PersonExperiences",
           {
@@ -471,14 +471,14 @@ const postAddExperienceFunc = async (req: any, res: any) => {
 
 const putUpdateExperienceFunc = async (req: any, res: any) => {
   try {
-    let data = req.body;
+    const data = req.body;
 
     if (data.isCurrent) {
       data.endDate = null;
     }
-    let result = await databaseProvider.application.sequelize.transaction(
+    const result = await databaseProvider.application.sequelize.transaction(
       async (transaction: any) => {
-        let [nrows] = await databaseActions.update(
+        const [nrows] = await databaseActions.update(
           "application",
           "PersonExperiences",
           {
@@ -505,10 +505,10 @@ const putUpdateExperienceFunc = async (req: any, res: any) => {
 
 const putDeleteExperienceFunc = async (req: any, res: any) => {
   try {
-    let result = await databaseProvider.application.sequelize.transaction(
+    const result = await databaseProvider.application.sequelize.transaction(
       async (transaction: any) => {
-        let experienceId = req.params.id;
-        let [nrows, rows] = await databaseActions.update(
+        const experienceId = req.params.id;
+        const [nrows, rows] = await databaseActions.update(
           "application",
           "PersonExperiences",
           {
