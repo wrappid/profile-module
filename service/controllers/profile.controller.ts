@@ -7,7 +7,7 @@ import * as profileFunction from "../functions/profile.function";
 
 const getContactInfo = async (req: any, res: any) => {
   try {
-    let { status, ...restData } = await profileFunction.getContactInfoFunc(
+    const { status, ...restData } = await profileFunction.getContactInfoFunc(
       req,
       res
     );
@@ -21,7 +21,7 @@ const getContactInfo = async (req: any, res: any) => {
 
 const getAddressType = async (req: any, res: any) => {
   try {
-    let { status, ...restData }: any = await profileFunction.getAddressTypeFunc(
+    const { status, ...restData }: any = await profileFunction.getAddressTypeFunc(
       req,
       res
     );
@@ -41,7 +41,7 @@ const getAddressType = async (req: any, res: any) => {
 
 const getDepartment = async (req: any, res: any) => {
   try {
-    let { status, ...restData }: any = await profileFunction.getDepartmentFunc(
+    const { status, ...restData }: any = await profileFunction.getDepartmentFunc(
       req,
       res
     );
@@ -55,7 +55,7 @@ const getDepartment = async (req: any, res: any) => {
 
 const getPersonContacts = async (req: any, res: any) => {
   try {
-    let { status, ...restData } = await profileFunction.getPersonContactsFunc(
+    const { status, ...restData } = await profileFunction.getPersonContactsFunc(
       req,
       res
     );
@@ -76,8 +76,8 @@ const getPersonContacts = async (req: any, res: any) => {
 
 const getRegistrationInfo = async (req: any, res: any) => {
   try {
-    let result = await profileFunction.getRegistrationInfoFunc(req, res);
-    let { status, message, data } = result;
+    const result = await profileFunction.getRegistrationInfoFunc(req, res);
+    const { status, message, data } = result;
 
     res.status(status).json({ data, message: message });
   } catch (error: any) {
@@ -88,8 +88,8 @@ const getRegistrationInfo = async (req: any, res: any) => {
 
 const putBasicDetails = async (req: any, res: any) => {
   try {
-    let result: any = await profileFunction.putBasicDetailsFunc(req, res);
-    let { status, message, data } = result;
+    const result: any = await profileFunction.putBasicDetailsFunc(req, res);
+    const { status, message, data } = result;
 
     res.status(status).json({ data, message: message });
   } catch (error: any) {
@@ -100,11 +100,11 @@ const putBasicDetails = async (req: any, res: any) => {
 
 const putRegistrationDetails = async (req: any, res: any) => {
   try {
-    let result: any = await profileFunction.putRegistrationDetailsFunc(
+    const result: any = await profileFunction.putRegistrationDetailsFunc(
       req,
       res
     );
-    let { status, message } = result;
+    const { status, message } = result;
 
     res.status(status).json({ message: message });
   } catch (error: any) {
@@ -115,8 +115,8 @@ const putRegistrationDetails = async (req: any, res: any) => {
 
 const postAddEducation = async (req: any, res: any) => {
   try {
-    let result: any = await profileFunction.postAddEducationFunc(req, res);
-    let { status, message, data } = result;
+    const result: any = await profileFunction.postAddEducationFunc(req, res);
+    const { status, message, data } = result;
 
     res.status(status).json({ data, message: message });
   } catch (error: any) {
@@ -127,8 +127,8 @@ const postAddEducation = async (req: any, res: any) => {
 
 const putUpdateEducation = async (req: any, res: any) => {
   try {
-    let result: any = await profileFunction.putUpdateEducationFunc(req, res);
-    let { status, message, data } = result;
+    const result: any = await profileFunction.putUpdateEducationFunc(req, res);
+    const { status, message, data } = result;
 
     res.status(status).json({ data, message: message });
   } catch (error: any) {
@@ -139,8 +139,8 @@ const putUpdateEducation = async (req: any, res: any) => {
 
 const putDeleteEducation = async (req: any, res: any) => {
   try {
-    let result: any = await profileFunction.putDeleteEducationFunc(req, res);
-    let { status, message, data } = result;
+    const result: any = await profileFunction.putDeleteEducationFunc(req, res);
+    const { status, message, data } = result;
 
     res.status(status).json({ data, message: message });
   } catch (error: any) {
@@ -151,8 +151,8 @@ const putDeleteEducation = async (req: any, res: any) => {
 
 const postAddExperience = async (req: any, res: any) => {
   try {
-    let result: any = await profileFunction.postAddExperienceFunc(req, res);
-    let { status, message, data } = result;
+    const result: any = await profileFunction.postAddExperienceFunc(req, res);
+    const { status, message, data } = result;
 
     res.status(status).json({ data, message: message });
   } catch (error: any) {
@@ -163,8 +163,8 @@ const postAddExperience = async (req: any, res: any) => {
 
 const putUpdateExperience = async (req: any, res: any) => {
   try {
-    let result: any = await profileFunction.putUpdateExperienceFunc(req, res);
-    let { status, message, data } = result;
+    const result: any = await profileFunction.putUpdateExperienceFunc(req, res);
+    const { status, message, data } = result;
 
     res.status(status).json({ data, message: message });
   } catch (error: any) {
@@ -175,8 +175,8 @@ const putUpdateExperience = async (req: any, res: any) => {
 
 const putDeleteExperience = async (req: any, res: any) => {
   try {
-    let result: any = await profileFunction.putDeleteExperienceFunc(req, res);
-    let { status, message, data } = result;
+    const result: any = await profileFunction.putDeleteExperienceFunc(req, res);
+    const { status, message, data } = result;
 
     res.status(status).json({ data, message: message });
   } catch (error: any) {

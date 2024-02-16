@@ -1,20 +1,23 @@
 /* eslint-disable no-console */
-const { deleteS3FIle, messageProcessor, getUrl, upload } = require("@wrappid/service-core");
+// import { /* deleteS3FIle, messageProcessor, getUrl, upload */ } from "@wrappid/service-core";
+// import { DEFAULT_DB } from "../constants/profile.constants";
 
-const { DEFAULT_DB } = require("../constants/profile.constants");
+
 
 /**
  * 
  * @param {*} req 
  * @returns 
  */
-const updateBasicDetails = async (req, res, databaseActions) => {
+export const updateBasicDetails = async (req, res, /*databaseActions */) => {
   try {
-    let del_urls = [];
+    console.log(req);
+    
+    /* const del_urls = [];
     let file_url = null;
-    let personId = req.params.id;
+    const personId = req.params.id; */
 
-    await upload.fields([{ maxCount: 1, name: "photo" }])(
+    /* await upload.fields([{ maxCount: 1, name: "photo" }])(
       req,
       res,
       async function (err) {
@@ -23,7 +26,7 @@ const updateBasicDetails = async (req, res, databaseActions) => {
             console.log("FIle Upload error", err);
             throw err;
           } else {
-            let data = req.body;
+            const data = req.body;
 
             if (data.extraInfo) data.extraInfo = JSON.parse(data.extraInfo);
             if (data.bio) data["extraInfo"] = { bio: data.bio };
@@ -57,11 +60,9 @@ const updateBasicDetails = async (req, res, databaseActions) => {
           res.status(500).json({ message: messageProcessor(err) });
         }
       }
-    );
+    ); */
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: messageProcessor(err) });
+    res.status(500).json({ message: "unknown"/* messageProcessor(err) */ });
   }
 };
-
-module.exports = { updateBasicDetails };
