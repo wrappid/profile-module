@@ -65,36 +65,44 @@ export const PersonAddresses = (sequelize: any, DataTypes: any) => {
   });
 
   personAddresses.associate = (models: any) => {
-    personAddresses.belongsTo(models.Persons, {
-      as: "Person",
-      foreignKey: "personId",
-      sourceKey: "id",
-    });
-    personAddresses.belongsTo(models.Users, {
-      as: "Owner",
-      foreignKey: "createdBy",
-      sourceKey: "id",
-    });
-    personAddresses.belongsTo(models.Users, {
-      as: "Updater",
-      foreignKey: "updatedBy",
-      sourceKey: "id",
-    });
-    personAddresses.belongsTo(models.AddressTypes, {
-      foreignKey: "addressTypeId",
-      sourceKey: "id",
-    });
-    /*
-    personAddresses.hasOne(models.Clinics, {
-      foreignKey: "personAddressId",
-      sourceKey: "id",
-    });
-    */
-    personAddresses.belongsTo(models.Users, {
-      as: "Destroyer",
-      foreignKey: "deletedBy",
-      sourceKey: "id",
-    });
+    if(models.Persons){
+      personAddresses.belongsTo(models.Persons, {
+        as: "Person",
+        foreignKey: "personId",
+        sourceKey: "id",
+      });
+    }
+    if(models.Users){
+      personAddresses.belongsTo(models.Users, {
+        as: "Owner",
+        foreignKey: "createdBy",
+        sourceKey: "id",
+      });
+      personAddresses.belongsTo(models.Users, {
+        as: "Updater",
+        foreignKey: "updatedBy",
+        sourceKey: "id",
+      });
+      personAddresses.belongsTo(models.Users, {
+        as: "Destroyer",
+        foreignKey: "deletedBy",
+        sourceKey: "id",
+      });
+    }
+    if(models.AddressTypes){
+      personAddresses.belongsTo(models.AddressTypes, {
+        foreignKey: "addressTypeId",
+        sourceKey: "id",
+      });
+    }
+    if(models.Clinics){
+      personAddresses.hasOne(models.Clinics, {
+        foreignKey: "personAddressId",
+        sourceKey: "id",
+      });
+    }
+
+   
   };
 
   return personAddresses;

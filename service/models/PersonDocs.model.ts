@@ -29,25 +29,29 @@ export const PersonDocs = (sequelize: any, DataTypes: any) => {
   });
 
   personDocs.associate = (models: any) => {
-    personDocs.belongsTo(models.Persons, {
-      foreignKey: "personId",
-      sourceKey: "id",
-    });
-    personDocs.belongsTo(models.Users, {
-      as: "Owner",
-      foreignKey: "createdBy",
-      sourceKey: "id",
-    });
-    personDocs.belongsTo(models.Users, {
-      as: "Updater",
-      foreignKey: "updatedBy",
-      sourceKey: "id",
-    });
-    personDocs.belongsTo(models.Users, {
-      as: "Destroyer",
-      foreignKey: "deletedBy",
-      sourceKey: "id",
-    });
+    if(models.Persons){
+      personDocs.belongsTo(models.Persons, {
+        foreignKey: "personId",
+        sourceKey: "id",
+      });
+    }
+    if(models.Users){
+      personDocs.belongsTo(models.Users, {
+        as: "Owner",
+        foreignKey: "createdBy",
+        sourceKey: "id",
+      });
+      personDocs.belongsTo(models.Users, {
+        as: "Updater",
+        foreignKey: "updatedBy",
+        sourceKey: "id",
+      });
+      personDocs.belongsTo(models.Users, {
+        as: "Destroyer",
+        foreignKey: "deletedBy",
+        sourceKey: "id",
+      });
+    }
   };
 
   return personDocs;

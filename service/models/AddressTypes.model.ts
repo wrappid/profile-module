@@ -21,25 +21,29 @@ export const AddressTypes = (sequelize: any, DataTypes: any) => {
   });
 
   addressTypes.associate = (models: any) => {
-    addressTypes.hasMany(models.PersonAddresses, {
-      foreignKey: "addressTypeId",
-      sourceKey: "id",
-    });
-    addressTypes.belongsTo(models.Users, {
-      as: "Owner",
-      foreignKey: "createdBy",
-      sourceKey: "id",
-    });
-    addressTypes.belongsTo(models.Users, {
-      as: "Updater",
-      foreignKey: "updatedBy",
-      sourceKey: "id",
-    });
-    addressTypes.belongsTo(models.Users, {
-      as: "Destroyer",
-      foreignKey: "deletedBy",
-      sourceKey: "id",
-    });
+    if(models.PersonAddresses){
+      addressTypes.hasMany(models.PersonAddresses, {
+        foreignKey: "addressTypeId",
+        sourceKey: "id",
+      });
+    }
+    if(models.Users){
+      addressTypes.belongsTo(models.Users, {
+        as: "Owner",
+        foreignKey: "createdBy",
+        sourceKey: "id",
+      });
+      addressTypes.belongsTo(models.Users, {
+        as: "Updater",
+        foreignKey: "updatedBy",
+        sourceKey: "id",
+      });
+      addressTypes.belongsTo(models.Users, {
+        as: "Destroyer",
+        foreignKey: "deletedBy",
+        sourceKey: "id",
+      });
+    }
   };
 
   return addressTypes;
