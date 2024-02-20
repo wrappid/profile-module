@@ -101,8 +101,6 @@ export const PersonAddresses = (sequelize: any, DataTypes: any) => {
         sourceKey: "id",
       });
     }
-
-   
   };
 
   return personAddresses;

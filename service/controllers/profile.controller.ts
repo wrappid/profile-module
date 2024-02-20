@@ -1,7 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable id-length */
-/* eslint-disable no-console */
-/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 import * as profileFunction from "../functions/profile.function";
 
