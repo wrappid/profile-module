@@ -65,25 +65,29 @@ export const PersonExperiences = (sequelize: any, DataTypes: any) => {
   });
 
   personExperiences.associate = (models: any) => {
-    personExperiences.belongsTo(models.Persons, {
-      foreignKey: "personId",
-      sourceKey: "id",
-    });
-    personExperiences.belongsTo(models.Users, {
-      as: "Owner",
-      foreignKey: "createdBy",
-      sourceKey: "id",
-    });
-    personExperiences.belongsTo(models.Users, {
-      as: "Updater",
-      foreignKey: "updatedBy",
-      sourceKey: "id",
-    });
-    personExperiences.belongsTo(models.Users, {
-      as: "Destroyer",
-      foreignKey: "deletedBy",
-      sourceKey: "id",
-    });
+    if(models.Persons){
+      personExperiences.belongsTo(models.Persons, {
+        foreignKey: "personId",
+        sourceKey: "id",
+      });
+    }
+    if(models.Users){
+      personExperiences.belongsTo(models.Users, {
+        as: "Owner",
+        foreignKey: "createdBy",
+        sourceKey: "id",
+      });
+      personExperiences.belongsTo(models.Users, {
+        as: "Updater",
+        foreignKey: "updatedBy",
+        sourceKey: "id",
+      });
+      personExperiences.belongsTo(models.Users, {
+        as: "Destroyer",
+        foreignKey: "deletedBy",
+        sourceKey: "id",
+      });
+    }
   };
 
   return personExperiences;
