@@ -13,22 +13,8 @@ CREATE TABLE IF NOT EXISTS `application`.`AddressTypes` (
   `createdBy` INT NULL,
   `updatedBy` INT NULL,
   `deletedBy` INT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `AddressTypes_createdBy_fkey`
-    FOREIGN KEY (`createdBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `AddressTypes_deletedBy_fkey`
-    FOREIGN KEY (`deletedBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `AddressTypes_updatedBy_fkey`
-    FOREIGN KEY (`updatedBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE);
+  PRIMARY KEY (`id`)
+  );
 
 
 -- ----------------------------------------------------------------------------
@@ -58,32 +44,8 @@ CREATE TABLE IF NOT EXISTS `application`.`PersonAddresses` (
   `createdBy` INT NULL,
   `updatedBy` INT NULL,
   `deletedBy` INT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `PersonAddresses_addressTypeId_fkey`
-    FOREIGN KEY (`addressTypeId`)
-    REFERENCES `application`.`AddressTypes` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonAddresses_createdBy_fkey`
-    FOREIGN KEY (`createdBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonAddresses_deletedBy_fkey`
-    FOREIGN KEY (`deletedBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonAddresses_personId_fkey`
-    FOREIGN KEY (`personId`)
-    REFERENCES `application`.`Persons` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonAddresses_updatedBy_fkey`
-    FOREIGN KEY (`updatedBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE);
+  PRIMARY KEY (`id`)
+  );
 
 -- ----------------------------------------------------------------------------
 -- Table application.PersonDocs
@@ -102,27 +64,8 @@ CREATE TABLE IF NOT EXISTS `application`.`PersonDocs` (
   `createdBy` INT NULL,
   `updatedBy` INT NULL,
   `deletedBy` INT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `PersonDocs_createdBy_fkey`
-    FOREIGN KEY (`createdBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonDocs_deletedBy_fkey`
-    FOREIGN KEY (`deletedBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonDocs_personId_fkey`
-    FOREIGN KEY (`personId`)
-    REFERENCES `application`.`Persons` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonDocs_updatedBy_fkey`
-    FOREIGN KEY (`updatedBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE);
+  PRIMARY KEY (`id`)
+);
 
 -- ----------------------------------------------------------------------------
 -- Table application.PersonEducations
@@ -150,27 +93,8 @@ CREATE TABLE IF NOT EXISTS `application`.`PersonEducations` (
   `createdBy` INT NULL,
   `updatedBy` INT NULL,
   `deletedBy` INT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `PersonEducations_createdBy_fkey`
-    FOREIGN KEY (`createdBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonEducations_deletedBy_fkey`
-    FOREIGN KEY (`deletedBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonEducations_personId_fkey`
-    FOREIGN KEY (`personId`)
-    REFERENCES `application`.`Persons` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonEducations_updatedBy_fkey`
-    FOREIGN KEY (`updatedBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE);
+  PRIMARY KEY (`id`)
+  );
 
 -- ----------------------------------------------------------------------------
 -- Table application.PersonExperiences
@@ -198,25 +122,6 @@ CREATE TABLE IF NOT EXISTS `application`.`PersonExperiences` (
   `createdBy` INT NULL,
   `updatedBy` INT NULL,
   `deletedBy` INT NULL,
-  PRIMARY KEY (`id`),
-  CONSTRAINT `PersonExperiences_createdBy_fkey`
-    FOREIGN KEY (`createdBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonExperiences_deletedBy_fkey`
-    FOREIGN KEY (`deletedBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonExperiences_personId_fkey`
-    FOREIGN KEY (`personId`)
-    REFERENCES `application`.`Persons` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE,
-  CONSTRAINT `PersonExperiences_updatedBy_fkey`
-    FOREIGN KEY (`updatedBy`)
-    REFERENCES `application`.`Users` (`id`)
-    ON DELETE SET NULL
-    ON UPDATE CASCADE);
+  PRIMARY KEY (`id`)
+  );
 
