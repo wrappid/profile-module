@@ -26,15 +26,17 @@ const ControllersRegistry = {
     CoreMiddlewaresRegistry.validation(getContactInfo),
     profileController.getContactInfo,
   ],
+  // Doctor
   getDepartment: [
     CoreMiddlewaresRegistry.validation(departmentGET),
     profileController.getDepartment,
   ],
+  // Doctor
   getRegistrationInfo: [
     CoreMiddlewaresRegistry.validation(getRegistrationInfo),
     profileController.getRegistrationInfo,
   ],
-  getpersonContacts: [
+  getPersonContacts: [
     CoreMiddlewaresRegistry.validation(getPersonContacts),
     profileController.getPersonContacts,
   ],
@@ -59,6 +61,7 @@ const ControllersRegistry = {
     CoreMiddlewaresRegistry.validation(putDeleteExperience),
     profileController.putDeleteExperience,
   ],
+  // Doctor
   putRegistrationDetails: [
     CoreMiddlewaresRegistry.validation(putRegistrationDetails),
     CoreMiddlewaresRegistry.fileHandler({ filename: "registrationDocument" }),
