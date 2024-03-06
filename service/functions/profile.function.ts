@@ -104,7 +104,7 @@ const getPersonContactsFunc = async (req: any, res: any) => {
       return {
         data: { rows: personContacts },
         message: "Contact info fetched successfully",
-        status: 204,
+        status: 200,
       };
     } else {
       // send 204

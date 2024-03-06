@@ -23,7 +23,7 @@ export const getRegistrationInfo = {
 
 export const departmentGET = {
   body: yup.object<any>().noUnknown().strict(),
-  query: yup.ObjectSchema<{ isActive: any }>,
+  query: yup.object<any>().noUnknown().strict(),
 };
 
 export const putUpdateExperience: yup.ObjectSchema<{
