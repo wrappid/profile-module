@@ -40,4 +40,5 @@ const RoutesRegistry = {
     controllerRef: "testPatchFunc",
   },
 };
+
 export default RoutesRegistry;

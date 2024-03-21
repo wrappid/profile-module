@@ -1,14 +1,14 @@
 {
-    "projectType": "module",
-    "projectID": "",
-    "projectName": "profile",
-    "remote": true,
-    "repoProvider": "github.com",
-    "repoOwner": "Rxefy",
-    "repoURL": "https://github.com/Rxefy/profile-module.git",
-    "app": {
-        "renderType": []
-    },
-    "service": {},
-    "modules": {}
+  "projectType": "module",
+  "projectID": "",
+  "projectName": "profile",
+  "remote": true,
+  "repoProvider": "github.com",
+  "repoOwner": "Rxefy",
+  "repoURL": "https://github.com/Rxefy/profile-module.git",
+  "app": {
+    "renderType": []
+  },
+  "service": {},
+  "modules": {}
 }
