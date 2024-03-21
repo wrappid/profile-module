@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 
 import {
-  CoreGrid,
+  AppContainerLayout,
   CoreCard,
   CoreCardContent,
   CoreDivider,
   CoreForm,
+  CoreGrid,
+  CoreLayoutItem,
   FORM_EDIT_MODE,
   FORM_IDS,
   FORM_VIEW_MODE
@@ -44,159 +46,163 @@ function UserProfile() {
   };
 
   return (
-    <CoreGrid>
-      <CoreCard gridProps={{ gridSize: { sm: 12 } }}>
-        <CoreCardContent>
-          <CoreGrid coreId="userProfileGrid">
-            <CoreForm
-              coreId="basicInfo"
-              allowDelete={false}
-              formId={FORM_IDS.__PROFILE_BASIC}
-              mode={formsMode[FORM_IDS.__PROFILE_BASIC]}
-              query={{
-                _defaultFilter: encodeURIComponent(
-                  JSON.stringify({ userId: auth?.uid })
-                ),
-              }}
-            />
+    <>
+      <CoreLayoutItem id={AppContainerLayout.PLACEHOLDER.CONTENT}>
+        <CoreGrid>
+          <CoreCard gridProps={{ gridSize: { sm: 12 } }}>
+            <CoreCardContent>
+              <CoreGrid coreId="userProfileGrid">
+                <CoreForm
+                  coreId="basicInfo"
+                  allowDelete={false}
+                  formId={FORM_IDS.__PROFILE_BASIC}
+                  mode={formsMode[FORM_IDS.__PROFILE_BASIC]}
+                  query={{
+                    _defaultFilter: encodeURIComponent(
+                      JSON.stringify({ userId: auth?.uid })
+                    ),
+                  }}
+                />
 
-            <CoreDivider />
+                <CoreDivider />
 
-            <CoreForm
-              coreId="contactInfo"
-              allowDelete={false}
-              allowEdit={false}
-              formId={FORM_IDS.__PROFILE_CONTACT}
-              notEditable={true}
-            />
+                <CoreForm
+                  coreId="contactInfo"
+                  allowDelete={false}
+                  allowEdit={false}
+                  formId={FORM_IDS.__PROFILE_CONTACT}
+                  notEditable={true}
+                />
 
-            <CoreDivider />
+                <CoreDivider />
 
-            {auth?.role?.role &&
-              auth?.role?.role.toLowerCase() === "doctor" && (
-              <CoreForm
-                coreId="registrationInfo"
-                formId={FORM_IDS.__PROFILE_REGISTRATION}
-                allowDelete={false}
-                gridProps={{
-                  gridSize: {
-                    sm: 6,
-                    xs: 12,
-                  },
-                }}
-                mode={formsMode[FORM_IDS.__PROFILE_REGISTRATION]}
-              />
-            )}
+                {auth?.role?.role &&
+                  auth?.role?.role.toLowerCase() === "doctor" && (
+                  <CoreForm
+                    coreId="registrationInfo"
+                    formId={FORM_IDS.__PROFILE_REGISTRATION}
+                    allowDelete={false}
+                    gridProps={{
+                      gridSize: {
+                        sm: 6,
+                        xs: 12,
+                      },
+                    }}
+                    mode={formsMode[FORM_IDS.__PROFILE_REGISTRATION]}
+                  />
+                )}
 
-            {auth?.role?.role &&
-              auth?.role?.role.toLowerCase() === "doctor" && (
-              <CoreForm
-                arrayView={true}
-                coreId="clinicInfo"
-                formId={FORM_IDS.__PROFILE_CLINIC}
-                gridProps={{
-                  gridSize: {
-                    sm: 6,
-                    xs: 12,
-                  },
-                }}
-                mode={formsMode[FORM_IDS.__PROFILE_CLINIC]}
-                arrayDataLimit={2}
-                query={{
-                  _defaultFilter: encodeURIComponent(
-                    JSON.stringify({ personId: profile?.basic?.id })
-                  ),
-                }}
-              />
-            )}
+                {auth?.role?.role &&
+                  auth?.role?.role.toLowerCase() === "doctor" && (
+                  <CoreForm
+                    arrayView={true}
+                    coreId="clinicInfo"
+                    formId={FORM_IDS.__PROFILE_CLINIC}
+                    gridProps={{
+                      gridSize: {
+                        sm: 6,
+                        xs: 12,
+                      },
+                    }}
+                    mode={formsMode[FORM_IDS.__PROFILE_CLINIC]}
+                    arrayDataLimit={2}
+                    query={{
+                      _defaultFilter: encodeURIComponent(
+                        JSON.stringify({ personId: profile?.basic?.id })
+                      ),
+                    }}
+                  />
+                )}
 
-            {auth?.role?.role &&
-              auth?.role?.role.toLowerCase() === "doctor" && <CoreDivider />}
+                {auth?.role?.role &&
+                  auth?.role?.role.toLowerCase() === "doctor" && <CoreDivider />}
 
-            {auth?.role?.role &&
-              auth?.role?.role.toLowerCase() !== "patient" && (
-              <CoreForm
-                arrayView={true}
-                coreId="educationInfo"
-                formId={FORM_IDS.__PROFILE_EDUCATION}
-                gridProps={{
-                  gridSize: {
-                    sm: 6,
-                    xs: 12,
-                  },
-                }}
-                mode={formsMode[FORM_IDS.__PROFILE_EDUCATION]}
-                arrayDataLimit={2}
-                query={{
-                  _defaultFilter: encodeURIComponent(
-                    JSON.stringify({ personId: profile?.basic?.id })
-                  ),
-                }}
-              />
-            )}
+                {auth?.role?.role &&
+                  auth?.role?.role.toLowerCase() !== "patient" && (
+                  <CoreForm
+                    arrayView={true}
+                    coreId="educationInfo"
+                    formId={FORM_IDS.__PROFILE_EDUCATION}
+                    gridProps={{
+                      gridSize: {
+                        sm: 6,
+                        xs: 12,
+                      },
+                    }}
+                    mode={formsMode[FORM_IDS.__PROFILE_EDUCATION]}
+                    arrayDataLimit={2}
+                    query={{
+                      _defaultFilter: encodeURIComponent(
+                        JSON.stringify({ personId: profile?.basic?.id })
+                      ),
+                    }}
+                  />
+                )}
 
-            {auth?.role?.role &&
-              auth?.role?.role.toLowerCase() !== "patient" && (
-              <CoreForm
-                arrayView={true}
-                coreId="experienceInfo"
-                formId={FORM_IDS.__PROFILE_EXPERIENCE}
-                gridProps={{
-                  gridSize: {
-                    sm: 6,
-                    xs: 12,
-                  },
-                }}
-                mode={formsMode[FORM_IDS.__PROFILE_EXPERIENCE]}
-                arrayDataLimit={2}
-                query={{
-                  _defaultFilter: encodeURIComponent(
-                    JSON.stringify({ personId: profile?.basic?.id })
-                  ),
-                }}
-                // --- afterCreateError={() => {
-                //   alert("CREATE error hook");
-                // }}
-                // afterEditError={() => {
-                //   alert("EDIT error hook");
-                // }}
-                // afterDeleteError={() => {
-                //   alert("DELETE error hook");
-                // }}
-                // afterCreateSuccess={() => {
-                //   alert("CREATE success hook");
-                // }}
-                // afterEditSuccess={() => {
-                //   alert("EDIT success hook");
-                // }}
-                // afterDeleteSuccess={() => {
-                //   alert("DELETE success hook");
-                // }}
-              />
-            )}
+                {auth?.role?.role &&
+                  auth?.role?.role.toLowerCase() !== "patient" && (
+                  <CoreForm
+                    arrayView={true}
+                    coreId="experienceInfo"
+                    formId={FORM_IDS.__PROFILE_EXPERIENCE}
+                    gridProps={{
+                      gridSize: {
+                        sm: 6,
+                        xs: 12,
+                      },
+                    }}
+                    mode={formsMode[FORM_IDS.__PROFILE_EXPERIENCE]}
+                    arrayDataLimit={2}
+                    query={{
+                      _defaultFilter: encodeURIComponent(
+                        JSON.stringify({ personId: profile?.basic?.id })
+                      ),
+                    }}
+                    // --- afterCreateError={() => {
+                    //   alert("CREATE error hook");
+                    // }}
+                    // afterEditError={() => {
+                    //   alert("EDIT error hook");
+                    // }}
+                    // afterDeleteError={() => {
+                    //   alert("DELETE error hook");
+                    // }}
+                    // afterCreateSuccess={() => {
+                    //   alert("CREATE success hook");
+                    // }}
+                    // afterEditSuccess={() => {
+                    //   alert("EDIT success hook");
+                    // }}
+                    // afterDeleteSuccess={() => {
+                    //   alert("DELETE success hook");
+                    // }}
+                  />
+                )}
 
-            {auth?.role?.role &&
-              auth?.role?.role.toLowerCase() === "patient" && (
-              <CoreForm
-                arrayView={true}
-                formId={FORM_IDS.__CREATE_PATIENT}
-                gridProps={{
-                  gridSize: {
-                    sm: 6,
-                    xs: 12,
-                  },
-                }}
-                mode={FORM_VIEW_MODE}
-              />
-            )}
-          </CoreGrid>
-        </CoreCardContent>
-      </CoreCard>
+                {auth?.role?.role &&
+                  auth?.role?.role.toLowerCase() === "patient" && (
+                  <CoreForm
+                    arrayView={true}
+                    formId={FORM_IDS.__CREATE_PATIENT}
+                    gridProps={{
+                      gridSize: {
+                        sm: 6,
+                        xs: 12,
+                      },
+                    }}
+                    mode={FORM_VIEW_MODE}
+                  />
+                )}
+              </CoreGrid>
+            </CoreCardContent>
+          </CoreCard>
 
-      {/* -- <CoreCard gridProps={{ gridSize: { sm: 4 } }}>
-        <CoreCardContent><RssFeed /></CoreCardContent>
-      </CoreCard> */}
-    </CoreGrid>
+          {/* -- <CoreCard gridProps={{ gridSize: { sm: 4 } }}>
+            <CoreCardContent><RssFeed /></CoreCardContent>
+          </CoreCard> */}
+        </CoreGrid>
+      </CoreLayoutItem>
+    </>
   );
 }
 
