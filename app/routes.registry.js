@@ -1,1 +1,1 @@
-export const RoutesRegistry = { PROFILE: "profile" };
+export const RoutesRegistry = { };
