@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 0.0.2 (2024-04-08)
+
+
+### Features
+
+* :fire: remove  models ([5add4f6](https://https//github.com/Rxefy/profile-module/commit/5add4f673e53632f68ba50ef04fa8fb3c42bd6a1)), closes [#30](https://https//github.com/Rxefy/profile-module/issues/30)
+* Add Models ([b6bcf4f](https://https//github.com/Rxefy/profile-module/commit/b6bcf4f6890e8559e339056a1866caf36b10942a)), closes [#18](https://https//github.com/Rxefy/profile-module/issues/18)
+* **config:** :sparkles: tag release of wrappid module template ([e9fd27b](https://https//github.com/Rxefy/profile-module/commit/e9fd27b5639b0a564b35525789f53b7b31cebe3f)), closes [#60](https://https//github.com/Rxefy/profile-module/issues/60)
+* **global:** :zap: models association fix ([f381614](https://https//github.com/Rxefy/profile-module/commit/f381614d1ad5c409bdd066a97cb3eef12c10feb5)), closes [#30](https://https//github.com/Rxefy/profile-module/issues/30)
+* import type fix ([09b15a0](https://https//github.com/Rxefy/profile-module/commit/09b15a001fe76c9082deff4d69466db9538e8d28)), closes [#28](https://https//github.com/Rxefy/profile-module/issues/28)
+* linting fix ([7d5dd68](https://https//github.com/Rxefy/profile-module/commit/7d5dd6875ac77586ba446ba755199406fac7d4cd)), closes [#22](https://https//github.com/Rxefy/profile-module/issues/22)
+* scatter model ([e3a6724](https://https//github.com/Rxefy/profile-module/commit/e3a6724ad220e9f859637dbd41b89ac9f7b89a72)), closes [#22](https://https//github.com/Rxefy/profile-module/issues/22)
+* ts files fix ([9b38f4c](https://https//github.com/Rxefy/profile-module/commit/9b38f4c30e61974d8815e99691ab7205a91566d8)), closes [#28](https://https//github.com/Rxefy/profile-module/issues/28)
+* update package-lock.json ([dbb9b3b](https://https//github.com/Rxefy/profile-module/commit/dbb9b3bcf0455b10414c5f253867b3e1a412d6ba)), closes [#28](https://https//github.com/Rxefy/profile-module/issues/28)
+* **utils:** :memo: update attribution generation script ([70af8b2](https://https//github.com/Rxefy/profile-module/commit/70af8b2c4bd3739e8856139b0ac953d114ce774d)), closes [#63](https://https//github.com/Rxefy/profile-module/issues/63)
+
+
+### Bug Fixes
+
+* :ambulance: Fix RoutesRegistry export name ([7a1c16c](https://https//github.com/Rxefy/profile-module/commit/7a1c16c97fe9cec1ed2181e9376854d6e2375264)), closes [#19](https://https//github.com/Rxefy/profile-module/issues/19)
+* :art: styles related issues fix ([c77a383](https://https//github.com/Rxefy/profile-module/commit/c77a383e6759bbb81bfd7bf2682d3fdf792af8a6)), closes [#24](https://https//github.com/Rxefy/profile-module/issues/24)
+* :bug: typo in moduleStyles files ([9713298](https://https//github.com/Rxefy/profile-module/commit/97132981b490ae91e702d555d6a16f08dd6e039e)), closes [#39](https://https//github.com/Rxefy/profile-module/issues/39)
+* :construction_worker: update from template ([a87a5ac](https://https//github.com/Rxefy/profile-module/commit/a87a5acd1f76c52e7e798491dfd9ae8bfca83dcb)), closes [#41](https://https//github.com/Rxefy/profile-module/issues/41)
+* :fire: remove unused files ([bd01a43](https://https//github.com/Rxefy/profile-module/commit/bd01a43a179bd3f230a019ba526e146a4a331c82)), closes [#30](https://https//github.com/Rxefy/profile-module/issues/30)
+* :zap: layout implementation ([de91a24](https://https//github.com/Rxefy/profile-module/commit/de91a24e2c85cd5843756f8a79671622f966fb7b)), closes [#41](https://https//github.com/Rxefy/profile-module/issues/41)
+* :zap: update meta file ([a5b3b42](https://https//github.com/Rxefy/profile-module/commit/a5b3b42f544546dad3fa9c37df27dde93e5a8ce5)), closes [#41](https://https//github.com/Rxefy/profile-module/issues/41)
+* **config:** :heavy_plus_sign: add standard version package and script ([553f9ff](https://https//github.com/Rxefy/profile-module/commit/553f9ffd602de6d375945ccf504d467ba2ace81a)), closes [#60](https://https//github.com/Rxefy/profile-module/issues/60)
+* **config:** :wrench: update code style scrip ([6f7a82d](https://https//github.com/Rxefy/profile-module/commit/6f7a82d4d9449d1a05035c49ea9a70de7032283e)), closes [#19](https://https//github.com/Rxefy/profile-module/issues/19)
+* **config:** :wrench: update code style scrip ([5d88675](https://https//github.com/Rxefy/profile-module/commit/5d88675aaab8940247bf969da097919abd559b49)), closes [#19](https://https//github.com/Rxefy/profile-module/issues/19)
+* configure ESLint to recognize the module path ([a60af75](https://https//github.com/Rxefy/profile-module/commit/a60af7525a8f01f801e5d64e9a73d06348bf8b67)), closes [#48](https://https//github.com/Rxefy/profile-module/issues/48)
+* **core:** :bug: changed button click event 'OnClick' to 'onClick' ([05ce2f0](https://https//github.com/Rxefy/profile-module/commit/05ce2f00759e7493d54cf7e7ad4bb26c614ada92)), closes [#41](https://https//github.com/Rxefy/profile-module/issues/41)
+* **core:** :bug: fix compilation errors ([2c5e79d](https://https//github.com/Rxefy/profile-module/commit/2c5e79d66fc721c7a215f08394d0b81382b31f78)), closes [#42](https://https//github.com/Rxefy/profile-module/issues/42)
+* **core:** :zap: fix routes registry ([cc133a3](https://https//github.com/Rxefy/profile-module/commit/cc133a3f5a0c2f001a13385abcbe4376781ee6ff)), closes [#41](https://https//github.com/Rxefy/profile-module/issues/41)
+* **global:** :bug: fix response status code ([c5ac592](https://https//github.com/Rxefy/profile-module/commit/c5ac592b750d6727dbb48c1a4f55c099d8361f00)), closes [#37](https://https//github.com/Rxefy/profile-module/issues/37)
+
 ### 0.0.4 (2024-03-18)
 
 ### 0.0.3 (2024-03-16)

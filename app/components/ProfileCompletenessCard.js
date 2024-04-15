@@ -260,7 +260,7 @@ export default function ProfileCompletenessCard() {
             >
               <CoreContainedButton
                 label="Complete Profile"
-                OnClick={() => {
+                onClick={() => {
                   navigate(`/${RoutesRegistry.PROFILE}`);
                 }}
               />
