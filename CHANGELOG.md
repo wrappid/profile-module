@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.3](https://https//github.com/Rxefy/profile-module/compare/v0.0.2...v0.0.3) (2024-04-15)
+
+
+### Bug Fixes
+
+* **global:** :arrow_up: remove ^ ([c37cfb0](https://https//github.com/Rxefy/profile-module/commit/c37cfb09c384bf7b5e329462de09fbc249a27801)), closes [#42](https://https//github.com/Rxefy/profile-module/issues/42)
+
 ### 0.0.2 (2024-04-08)
 
 
