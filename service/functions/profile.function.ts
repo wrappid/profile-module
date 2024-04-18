@@ -156,7 +156,7 @@ const putBasicDetailsFunc = async (req: any, res: any) => {
     return { message: "Basic details updated", status: 200 };
   } catch (err) {
     console.log(err);
-    return { message: err, status: 500 };
+    throw err;
   }
 };
 
@@ -209,10 +209,7 @@ const getRegistrationInfoFunc = async (req: any, res: any) => {
     }
   } catch (err) {
     console.error(err);
-    return {
-      error: err,
-      message: "Error while fetch person registration info data",
-    };
+    throw err;
   }
 };
 
@@ -332,7 +329,7 @@ const putRegistrationDetailsFunc = async (req: any, res: any) => {
     return { message: "Registration details updated", status: 200 };
   } catch (err) {
     console.log(err);
-    return { message: err, status: 500 };
+    throw err;
   }
 };
 
@@ -366,7 +363,7 @@ const postAddEducationFunc = async (req: any, res: any) => {
     return { message: "Education create success", status: 200 };
   } catch (err) {
     console.log(err);
-    return { message: err, status: 500 };
+    throw err;
   }
 };
 
@@ -400,7 +397,7 @@ const putUpdateEducationFunc = async (req: any, res: any) => {
     return { message: "Education update success", status: 200 };
   } catch (err) {
     console.log(err);
-    return { message: err, status: 500 };
+    throw err;
   }
 };
 
@@ -422,16 +419,16 @@ const putDeleteEducationFunc = async (req: any, res: any) => {
         );
 
         if (nrows == 0) {
-          throw "Experience update success";
+          throw "Education Delete error: No Row Update";
         }
       }
     );
 
-    console.log("education deleted: ", req.params.id);
+    console.log("Education deleted: ", req.params.id);
     return { message: "Education delete success", status: 200 };
   } catch (error) {
-    console.log("education Delete error", error);
-    return { message: error, status: 500 };
+    console.log("Education Delete error: ", error);
+    throw error;
   }
 };
 
@@ -465,7 +462,7 @@ const postAddExperienceFunc = async (req: any, res: any) => {
     return { message: "Experience create success", status: 200 };
   } catch (err) {
     console.log(err);
-    return { message: err, status: 500 };
+    throw err;
   }
 };
 
@@ -499,7 +496,7 @@ const putUpdateExperienceFunc = async (req: any, res: any) => {
     return { message: "Experience update success", status: 200 };
   } catch (err) {
     console.log(err);
-    return { message: err, status: 500 };
+    throw err;
   }
 };
 
@@ -521,7 +518,7 @@ const putDeleteExperienceFunc = async (req: any, res: any) => {
         );
 
         if (nrows == 0) {
-          throw "Experience delete error";
+          throw "Experience delete error: No Row Update";
         }
       }
     );
@@ -529,8 +526,8 @@ const putDeleteExperienceFunc = async (req: any, res: any) => {
     console.log("Experiences deleted: ", req.params.id);
     return { message: "Experience delete success", status: 200 };
   } catch (error) {
-    console.log("education Delete error", error);
-    return { message: error, status: 500 };
+    console.log("Experience Delete error", error);
+    throw error;
   }
 };
 

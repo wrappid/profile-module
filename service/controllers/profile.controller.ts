@@ -142,7 +142,7 @@ const putDeleteEducation = async (req: any, res: any) => {
     res.status(status).json({ data, message: message });
   } catch (error: any) {
     console.error("Error :: ", error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error });
   }
 };
 
@@ -178,7 +178,7 @@ const putDeleteExperience = async (req: any, res: any) => {
     res.status(status).json({ data, message: message });
   } catch (error: any) {
     console.error("Error :: ", error);
-    res.status(500).json({ message: error.message });
+    res.status(500).json({ message: error });
   }
 };
 
