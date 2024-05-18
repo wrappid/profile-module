@@ -1,0 +1,77 @@
+{
+    "table": "PersonDocs",
+    "database": "application",
+    "attributes": {
+        "_status": {
+            "": "STRING"
+        },
+        "deletedAt": {
+            "allowNull": true,
+            "type": "TIMESTAMP"
+        },
+        "description": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "docUrl": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "id": {
+            "autoIncrement": true,
+            "primaryKey": true,
+            "type": "INTEGER"
+        },
+        "isActive": {
+            "defaultValue": true,
+            "type": "BOOLEAN"
+        },
+        "type": {
+            "defaultValue": "",
+            "type": "STRING"
+        }
+    },
+    "associations": [
+        {
+            "data": [
+                {
+                    "data": {
+                        "as": "Owner",
+                        "sourceKey": "id",
+                        "foreignKey": "createdBy"
+                    },
+                    "type": "belongsTo"
+                },
+                {
+                    "data": {
+                        "as": "Updater",
+                        "sourceKey": "id",
+                        "foreignKey": "updatedBy"
+                    },
+                    "type": "belongsTo"
+                },
+                {
+                    "data": {
+                        "as": "Destroyer",
+                        "sourceKey": "id",
+                        "foreignKey": "deletedBy"
+                    },
+                    "type": "belongsTo"
+                }
+            ],
+            "model": "Users"
+        },
+        {
+            "model": "Persons",
+            "data": [
+                {
+                    "type": "belongsTo",
+                    "data": {
+                        "foreignKey": "personId",
+                        "sourceKey": "id"
+                    }
+                }
+            ]
+        }
+    ]
+}

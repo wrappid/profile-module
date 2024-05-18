@@ -1,0 +1,113 @@
+{
+    "table": "PersonExperiences",
+    "database": "application",
+    "attributes": {
+        "_status": {
+            "type": "STRING"
+        },
+        "deletedAt": {
+            "allowNull": true,
+            "type": "DATE"
+        },
+        "description": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "designation": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "endDate": {
+            "defaultValue": null,
+            "type": "DATE"
+        },
+        "endMonth": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "endYear": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "field": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "id": {
+            "autoIncrement": true,
+            "primaryKey": true,
+            "type": "INTEGER"
+        },
+        "isActive": {
+            "defaultValue": true,
+            "type": "BOOLEAN"
+        },
+        "location": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "organization": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "startDate": {
+            "defaultValue": null,
+            "type": "DATE"
+        },
+        "startMonth": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "startYear": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "type": {
+            "defaultValue": "",
+            "type": "STRING"
+        }
+    },
+    "associations": [
+        {
+            "data": [
+                {
+                    "data": {
+                        "as": "Owner",
+                        "sourceKey": "id",
+                        "foreignKey": "createdBy"
+                    },
+                    "type": "belongsTo"
+                },
+                {
+                    "data": {
+                        "as": "Updater",
+                        "sourceKey": "id",
+                        "foreignKey": "updatedBy"
+                    },
+                    "type": "belongsTo"
+                },
+                {
+                    "data": {
+                        "as": "Destroyer",
+                        "sourceKey": "id",
+                        "foreignKey": "deletedBy"
+                    },
+                    "type": "belongsTo"
+                }
+            ],
+            "model": "Users"
+        },
+        {
+            "model": "Persons",
+            "data": [
+                {
+                    "type": "belongsTo",
+                    "data": {
+                        "foreignKey": "personId",
+                        "sourceKey": "id"
+                    }
+                }
+            ]
+        }
+    ]
+}
