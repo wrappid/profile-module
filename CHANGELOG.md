@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.5](https://https//github.com/Rxefy/profile-module/compare/v0.0.4...v0.0.5) (2024-05-20)
+
+
+### Features
+
+* **core:** :wrench: model registry file to json file ([58616a7](https://https//github.com/Rxefy/profile-module/commit/58616a731911aaaa872c67031e68d6f68a6511e7)), closes [#47](https://https//github.com/Rxefy/profile-module/issues/47)
+
 ### [0.0.4](https://https//github.com/Rxefy/profile-module/compare/v0.0.3...v0.0.4) (2024-04-18)
 
 
