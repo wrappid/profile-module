@@ -1,0 +1,138 @@
+{
+    "table": "PersonAddresses",
+    "database": "application",
+    "attributes": {
+        "_status": {
+            "type": "STRING"
+        },
+        "addLine1": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "addLine2": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "city": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "country": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "deletedAt": {
+            "allowNull": true,
+            "type": "DATE"
+        },
+        "district": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "fullName": {
+            "defaultValue": "",
+            "type": "STRING"
+        },
+        "id": {
+            "autoIncrement": true,
+            "primaryKey": true,
+            "type": "INTEGER"
+        },
+        "isActive": {
+            "  defaultValue": true,
+            "  type": "BOOLEAN"
+        },
+        "isDefault": {
+            "  defaultValue": true,
+            "  type": "BOOLEAN"
+        },
+        "landmark": {
+            "  defaultValue": "",
+            "  type": "STRING"
+        },
+        "phone": {
+            "  defaultValue": "",
+            "  type": "STRING"
+        },
+        "pin": {
+            "  defaultValue": "",
+            "  type": "STRING"
+        },
+        "state": {
+            "  defaultValue": "",
+            "  type": "STRING"
+        },
+        "status": {
+            "  defaultValue": "",
+            "  type": "STRING"
+        }
+    },
+    "associations": [
+        {
+            "data": [
+                {
+                    "data": {
+                        "as": "Owner",
+                        "sourceKey": "id",
+                        "foreignKey": "createdBy"
+                    },
+                    "type": "belongsTo"
+                },
+                {
+                    "data": {
+                        "as": "Updater",
+                        "sourceKey": "id",
+                        "foreignKey": "updatedBy"
+                    },
+                    "type": "belongsTo"
+                },
+                {
+                    "data": {
+                        "as": "Destroyer",
+                        "sourceKey": "id",
+                        "foreignKey": "deletedBy"
+                    },
+                    "type": "belongsTo"
+                }
+            ],
+            "model": "Users"
+        },
+        {
+            "model": "Persons",
+            "data": [
+                {
+                    "type": "belongsTo",
+                    "data": {
+                        "as": "Person",
+                        "foreignKey": "personId",
+                        "sourceKey": "id"
+                    }
+                }
+            ]
+        },
+        {
+            "model": "AddressTypes",
+            "data": [
+                {
+                    "type": "belongsTo",
+                    "data": {
+                        "foreignKey": "addressTypeId",
+                        "sourceKey": "id"
+                    }
+                }
+            ]
+        },
+        {
+            "model": "Clinics",
+            "data": [
+                {
+                    "type": "hasOne",
+                    "data": {
+                        "foreignKey": "personAddressId",
+                        "sourceKey": "id"
+                    }
+                }
+            ]
+        }
+    ]
+}
