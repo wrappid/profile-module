@@ -39,32 +39,32 @@
             "type": "INTEGER"
         },
         "isActive": {
-            "  defaultValue": true,
-            "  type": "BOOLEAN"
+            "defaultValue": true,
+            "type": "BOOLEAN"
         },
         "isDefault": {
-            "  defaultValue": true,
-            "  type": "BOOLEAN"
+            "defaultValue": true,
+            "type": "BOOLEAN"
         },
         "landmark": {
-            "  defaultValue": "",
-            "  type": "STRING"
+            "defaultValue": "",
+            "type": "STRING"
         },
         "phone": {
-            "  defaultValue": "",
+            "defaultValue": "",
             "  type": "STRING"
         },
         "pin": {
-            "  defaultValue": "",
-            "  type": "STRING"
+            "defaultValue": "",
+            "type": "STRING"
         },
         "state": {
-            "  defaultValue": "",
-            "  type": "STRING"
+            "defaultValue": "",
+            "type": "STRING"
         },
         "status": {
-            "  defaultValue": "",
-            "  type": "STRING"
+            "defaultValue": "",
+            "type": "STRING"
         }
     },
     "associations": [
