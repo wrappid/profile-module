@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://https//github.com/Rxefy/profile-module/compare/v0.0.5...v0.0.6) (2024-05-24)
+
+
+### Features
+
+* **core:** :wrench: remove all the model from model resistry ([ec16d96](https://https//github.com/Rxefy/profile-module/commit/ec16d9607e813a68d3bb4713bdfd000eb50faa62)), closes [#47](https://https//github.com/Rxefy/profile-module/issues/47)
+
 ### [0.0.5](https://https//github.com/Rxefy/profile-module/compare/v0.0.4...v0.0.5) (2024-05-20)
 
 
