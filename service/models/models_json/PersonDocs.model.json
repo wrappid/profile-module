@@ -3,11 +3,11 @@
     "database": "application",
     "attributes": {
         "_status": {
-            "": "STRING"
+            "type": "STRING"
         },
         "deletedAt": {
             "allowNull": true,
-            "type": "TIMESTAMP"
+            "type": "DATE"
         },
         "description": {
             "defaultValue": "",
