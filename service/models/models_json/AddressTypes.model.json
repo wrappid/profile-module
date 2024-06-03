@@ -1,69 +1,69 @@
 {
-    "table": "AddressTypes",
-    "database": "application",
-    "attributes": {
-        "_status": {
-            "type": "STRING"
-        },
-        "deletedAt": {
-            "allowNull": true,
-            "type": "DATE"
-        },
-        "id": {
-            "autoIncrement": true,
-            "primaryKey": true,
-            "type": "INTEGER"
-        },
-        "isActive": {
-            "defaultValue": true,
-            "type": "BOOLEAN"
-        },
-        "type": {
-            "defaultValue": "",
-            "type": "STRING"
-        }
+  "table": "AddressTypes",
+  "database": "application",
+  "attributes": {
+    "id": {
+      "type": "INTEGER",
+      "primaryKey": true,
+      "autoIncrement": true
     },
-    "associations": [
+    "type": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "_status": {
+      "type": "STRING"
+    },
+    "isActive": {
+      "type": "BOOLEAN",
+      "defaultValue": true
+    },
+    "deletedAt": {
+      "type": "DATE",
+      "allowNull": true
+    }
+  },
+  "associations": [
+    {
+      "data": [
         {
-            "data": [
-                {
-                    "data": {
-                        "as": "Owner",
-                        "sourceKey": "id",
-                        "foreignKey": "createdBy"
-                    },
-                    "type": "belongsTo"
-                },
-                {
-                    "data": {
-                        "as": "Updater",
-                        "sourceKey": "id",
-                        "foreignKey": "updatedBy"
-                    },
-                    "type": "belongsTo"
-                },
-                {
-                    "data": {
-                        "as": "Destroyer",
-                        "sourceKey": "id",
-                        "foreignKey": "deletedBy"
-                    },
-                    "type": "belongsTo"
-                }
-            ],
-            "model": "Users"
+          "data": {
+            "as": "Owner",
+            "sourceKey": "id",
+            "foreignKey": "createdBy"
+          },
+          "type": "belongsTo"
         },
         {
-            "model": "PersonAddresses",
-            "data": [
-                {
-                    "type": "hasMany",
-                    "data": {
-                        "foreignKey": "addressTypeId",
-                        "sourceKey": "id"
-                    }
-                }
-            ]
+          "data": {
+            "as": "Updater",
+            "sourceKey": "id",
+            "foreignKey": "updatedBy"
+          },
+          "type": "belongsTo"
+        },
+        {
+          "data": {
+            "as": "Destroyer",
+            "sourceKey": "id",
+            "foreignKey": "deletedBy"
+          },
+          "type": "belongsTo"
         }
-    ]
+      ],
+      "model": "Users"
+    },
+    {
+      "data": [
+        {
+          "data": {
+            "sourceKey": "id",
+            "foreignKey": "addressTypeId"
+          },
+          "type": "hasMany"
+        }
+      ],
+      "model": "PersonAddresses"
+    }
+  ]
 }

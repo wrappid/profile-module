@@ -1,138 +1,138 @@
 {
-    "table": "PersonAddresses",
-    "database": "application",
-    "attributes": {
-        "_status": {
-            "type": "STRING"
-        },
-        "addLine1": {
-            "defaultValue": "",
-            "type": "STRING"
-        },
-        "addLine2": {
-            "defaultValue": "",
-            "type": "STRING"
-        },
-        "city": {
-            "defaultValue": "",
-            "type": "STRING"
-        },
-        "country": {
-            "defaultValue": "",
-            "type": "STRING"
-        },
-        "deletedAt": {
-            "allowNull": true,
-            "type": "DATE"
-        },
-        "district": {
-            "defaultValue": "",
-            "type": "STRING"
-        },
-        "fullName": {
-            "defaultValue": "",
-            "type": "STRING"
-        },
-        "id": {
-            "autoIncrement": true,
-            "primaryKey": true,
-            "type": "INTEGER"
-        },
-        "isActive": {
-            "defaultValue": true,
-            "type": "BOOLEAN"
-        },
-        "isDefault": {
-            "defaultValue": true,
-            "type": "BOOLEAN"
-        },
-        "landmark": {
-            "defaultValue": "",
-            "type": "STRING"
-        },
-        "phone": {
-            "defaultValue": "",
-            "  type": "STRING"
-        },
-        "pin": {
-            "defaultValue": "",
-            "type": "STRING"
-        },
-        "state": {
-            "defaultValue": "",
-            "type": "STRING"
-        },
-        "status": {
-            "defaultValue": "",
-            "type": "STRING"
-        }
+  "table": "PersonAddresses",
+  "database": "application",
+  "attributes": {
+    "id": {
+      "type": "INTEGER",
+      "primaryKey": true,
+      "autoIncrement": true
     },
-    "associations": [
+    "pin": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "city": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "phone": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "state": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "status": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "_status": {
+      "type": "STRING"
+    },
+    "country": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "addLine1": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "addLine2": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "district": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "fullName": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "isActive": {
+      "type": "BOOLEAN",
+      "defaultValue": true
+    },
+    "landmark": {
+      "type": "STRING",
+      "defaultValue": ""
+    },
+    "deletedAt": {
+      "type": "DATE",
+      "allowNull": true
+    },
+    "isDefault": {
+      "type": "BOOLEAN",
+      "defaultValue": true
+    }
+  },
+  "associations": [
+    {
+      "data": [
         {
-            "data": [
-                {
-                    "data": {
-                        "as": "Owner",
-                        "sourceKey": "id",
-                        "foreignKey": "createdBy"
-                    },
-                    "type": "belongsTo"
-                },
-                {
-                    "data": {
-                        "as": "Updater",
-                        "sourceKey": "id",
-                        "foreignKey": "updatedBy"
-                    },
-                    "type": "belongsTo"
-                },
-                {
-                    "data": {
-                        "as": "Destroyer",
-                        "sourceKey": "id",
-                        "foreignKey": "deletedBy"
-                    },
-                    "type": "belongsTo"
-                }
-            ],
-            "model": "Users"
+          "data": {
+            "as": "Owner",
+            "sourceKey": "id",
+            "foreignKey": "createdBy"
+          },
+          "type": "belongsTo"
         },
         {
-            "model": "Persons",
-            "data": [
-                {
-                    "type": "belongsTo",
-                    "data": {
-                        "as": "Person",
-                        "foreignKey": "personId",
-                        "sourceKey": "id"
-                    }
-                }
-            ]
+          "data": {
+            "as": "Updater",
+            "sourceKey": "id",
+            "foreignKey": "updatedBy"
+          },
+          "type": "belongsTo"
         },
         {
-            "model": "AddressTypes",
-            "data": [
-                {
-                    "type": "belongsTo",
-                    "data": {
-                        "foreignKey": "addressTypeId",
-                        "sourceKey": "id"
-                    }
-                }
-            ]
-        },
-        {
-            "model": "Clinics",
-            "data": [
-                {
-                    "type": "hasOne",
-                    "data": {
-                        "foreignKey": "personAddressId",
-                        "sourceKey": "id"
-                    }
-                }
-            ]
+          "data": {
+            "as": "Destroyer",
+            "sourceKey": "id",
+            "foreignKey": "deletedBy"
+          },
+          "type": "belongsTo"
         }
-    ]
+      ],
+      "model": "Users"
+    },
+    {
+      "data": [
+        {
+          "data": {
+            "as": "Person",
+            "sourceKey": "id",
+            "foreignKey": "personId"
+          },
+          "type": "belongsTo"
+        }
+      ],
+      "model": "Persons"
+    },
+    {
+      "data": [
+        {
+          "data": {
+            "sourceKey": "id",
+            "foreignKey": "addressTypeId"
+          },
+          "type": "belongsTo"
+        }
+      ],
+      "model": "AddressTypes"
+    },
+    {
+      "data": [
+        {
+          "data": {
+            "sourceKey": "id",
+            "foreignKey": "personAddressId"
+          },
+          "type": "hasOne"
+        }
+      ],
+      "model": "Clinics"
+    }
+  ]
 }
