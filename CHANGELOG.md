@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://https//github.com/Rxefy/profile-module/compare/v0.0.6...v0.0.7) (2024-06-05)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix model json ([9ff2baa](https://https//github.com/Rxefy/profile-module/commit/9ff2baa5876f47f214fe4ccef76162ba582cf12e)), closes [#47](https://https//github.com/Rxefy/profile-module/issues/47)
+
 ### [0.0.6](https://https//github.com/Rxefy/profile-module/compare/v0.0.5...v0.0.6) (2024-05-24)
 
 
