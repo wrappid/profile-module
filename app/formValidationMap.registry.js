@@ -1,130 +1,129 @@
 import { getFormikRequiredMessage } from "@wrappid/core";
 import moment from "moment";
-import * as yup from "yup";
+import { string, date, mixed, boolean, object } from "yup";
 
 export const ValidationsRegistry = {
   profileBaic: {
-    bio: yup
-      .string()
-      .trim()
-    // .required(getFormikRequiredMessage("bio"))
-      .matches(
-        /^[a-zA-Z0-9\s.'"@$&-/\\?]+$/,
-        "All special charecters are not allowed"
-      ),
-    dob: yup
-      .date()
-      .required(getFormikRequiredMessage("dateOfBirth"))
-      .min(moment().subtract(115, "years"), "MIN_AGE")
-      .max(moment().endOf("day").subtract(18, "years"), "Min age should be 18"),
-    firstName: yup
-      .string()
+    bio: 
+      string()
+        .trim()
+      // .required(getFormikRequiredMessage("bio"))
+        .matches(
+          /^[a-zA-Z0-9\s.'"@$&-/\\?]+$/,
+          "All special charecters are not allowed"
+        ),
+    dob: 
+      date()
+        .required(getFormikRequiredMessage("dateOfBirth"))
+        .min(moment().subtract(115, "years"), "MIN_AGE")
+        .max(moment().endOf("day").subtract(18, "years"), "Min age should be 18"),
+    firstName: string()
       .trim()
       .required(getFormikRequiredMessage("firstName"))
       .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-    gender  : yup.string().required("Gender is required"),
-    lastName: yup
-      .string()
-      .trim()
-      .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-    middleName: yup
-      .string()
-      .trim()
-      .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+    gender: string().required("Gender is required"),
+    lastName: 
+      string()
+        .trim()
+        .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+    middleName: 
+      string()
+        .trim()
+        .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+    photo: mixed()
+      .test("fileSize", "File size must be less than 5MB", (value) => {
+        if (!value) return true; 
+        return value.size <= 5242880;
+      }),
   },
   profileEducation: {
-    board: yup
-      .string()
-      .trim()
-      .required("Board name is required")
-      .matches(
-        /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-        "All special charecters are not allowed except - . , / ( ) [ ]"
-      ),
-    degree: yup
-      .string()
+    board: 
+      string()
+        .trim()
+        .required("Board name is required")
+        .matches(
+          /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+          "All special charecters are not allowed except - . , / ( ) [ ]"
+        ),
+    degree: string()
       .trim()
       .required("Degree is required")
       .matches(
         /^[a-zA-Z0-9\s-.,/()[\]]+$/,
         "All special charecters are not allowed except - . , / ( ) [ ]"
       ),
-    endDate: yup
-      .date()
-      .max(new Date(), "Must be today or earlier than today")
-      .when("isCurrent", {
-        is       : true,
-        otherwise: yup
-          .date()
-          .required("End date required")
-          .test(
-            "start-end-check",
-            "End date should be after start date",
-            (val, props) => {
+    endDate: 
+      date()
+        .max(new Date(), "Must be today or earlier than today")
+        .when("isCurrent", {
+          is: true,
+          otherwise: 
+          date()
+            .required("End date required")
+            .test(
+              "start-end-check",
+              "End date should be after start date",
+              (val, props) => {
               // -- console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
               // -- console.log("HERER", val);
-              if (
-                props.parent.startDate &&
+                if (
+                  props.parent.startDate &&
                 val &&
                 moment(val).diff(moment(props.parent.startDate), "days") > 0
-              ) {
-                return true;
-              } else return false;
-            }
-          ),
-        then: yup.date(),
-      }),
-    isCurrent: yup.boolean().notRequired(),
-    school   : yup
-      .string()
+                ) {
+                  return true;
+                } else return false;
+              }
+            ),
+          then: () => date(),
+        }),
+    isCurrent: boolean().notRequired(),
+    school   : string()
       .trim()
       .required("School name is required")
       .matches(
         /^[a-zA-Z0-9\s-.,/()[\]]+$/,
         "All special charecters are not allowed except - . , / ( ) [ ]"
       ),
-    startDate: yup
-      .date()
+    startDate: date()
       .max(new Date(), "Must be today or earlier than today")
       .required("Start date is required"),
   },
   profileExperience: {
-    designation: yup
-      .string()
+    designation: string()
       .trim()
       .required("Designation is required")
       .matches(
         /^[a-zA-Z0-9\s-.,/()[\]]+$/,
         "All special charecters are not allowed except - . , / ( ) [ ]"
       ),
-    endDate: yup
-      .date()
-      .max(new Date(), "Must be today or earlier than today")
-      .when("isCurrent", {
-        is       : true,
-        otherwise: yup
-          .date()
-          .required("End date required")
-          .test(
-            "start-end-check",
-            "End date should be after start date",
-            (val, props) => {
+    endDate: 
+      date()
+        .max(new Date(), "Must be today or earlier than today")
+        .when("isCurrent", {
+          is: true,
+          otherwise: 
+          date()
+            .required("End date required")
+            .test(
+              "start-end-check",
+              "End date should be after start date",
+              (val, props) => {
               // -- console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
               // -- console.log("HERER", val);
-              if (
-                props.parent.startDate &&
+                if (
+                  props.parent.startDate &&
                 val &&
                 moment(val).diff(moment(props.parent.startDate), "days") > 0
-              ) {
-                return true;
-              } else return false;
-            }
-          ),
-        then: yup.date(),
-      }),
-    isCurrent: yup.boolean().notRequired(),
-    location : yup
-      .string()
+                ) {
+                  return true;
+                } else return false;
+              }
+            ),
+          then: date(),
+        }),
+    isCurrent: boolean().notRequired(),
+    location : string()
       .trim()
       .required("Location is required")
       .matches(
@@ -132,33 +131,33 @@ export const ValidationsRegistry = {
         "All special charecters are not allowed except - . , / ( ) [ ]"
       )
       .required(),
-    organization: yup
-      .string()
-      .trim()
-      .required("Organization name is required")
-      .matches(
-        /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-        "All special charecters are not allowed except - . , / ( ) [ ]"
-      ),
-    startDate: yup
-      .date()
+    organization: 
+      string()
+        .trim()
+        .required("Organization name is required")
+        .matches(
+          /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+          "All special charecters are not allowed except - . , / ( ) [ ]"
+        ),
+    startDate: 
+    date()
       .max(new Date(), "Must be today or earlier than today")
       .required("Start date is required"),
   },
   profileRegistration: {
-    departmentId: yup.string().required("Department is required"),
-    regDate     : yup
-      .date()
-      .max(new Date(), "Registration date must be today or earlier than today")
-      .required("Registration date is required"),
-    regNo: yup
-      .string()
-      .trim()
-      .required("Registration No. is required")
-      .matches(
-        /^[a-zA-Z0-9\s-/]+$/,
-        "Special charecters are not allowed except - and /"
-      ),
-    registrationDocument: yup.object().nullable(),
+    departmentId: string().required("Department is required"),
+    regDate: 
+      date()
+        .max(new Date(), "Registration date must be today or earlier than today")
+        .required("Registration date is required"),
+    regNo: 
+      string()
+        .trim()
+        .required("Registration No. is required")
+        .matches(
+          /^[a-zA-Z0-9\s-/]+$/,
+          "Special charecters are not allowed except - and /"
+        ),
+    registrationDocument: object().nullable(),
   }
 };
