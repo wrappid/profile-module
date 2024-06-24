@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import {
   AppContainerLayout,
+  CoreBox,
   CoreCard,
   CoreCardContent,
   CoreComponent,
@@ -78,16 +79,10 @@ function UserProfile() {
 
                 <CoreDivider />
 
-                <CoreComponent
-                  gridProps={{
-                    gridSize: {
-                      sm: 6,
-                      xs: 12,
-                    },
-                  }}
-                  componentName="AppSpecificProfileSection" />
-
-                <CoreDivider />
+                <CoreBox>
+                  <CoreComponent
+                    componentName="AppSpecificProfileSection" />
+                </CoreBox>
 
                 <CoreForm
                   arrayView={true}

@@ -120,7 +120,7 @@ export const ValidationsRegistry = {
                   } else return false;
                 }
               ),
-          then: date(),
+          then: () => date(),
         }),
     isCurrent: boolean().notRequired(),
     location : string()
