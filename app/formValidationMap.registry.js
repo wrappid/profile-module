@@ -56,25 +56,25 @@ export const ValidationsRegistry = {
       date()
         .max(new Date(), "Must be today or earlier than today")
         .when("isCurrent", {
-          is: true,
-          otherwise: 
-          date()
-            .required("End date required")
-            .test(
-              "start-end-check",
-              "End date should be after start date",
-              (val, props) => {
-              // -- console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
-              // -- console.log("HERER", val);
-                if (
-                  props.parent.startDate &&
+          is       : true,
+          otherwise: () =>
+            date()
+              .required("End date required")
+              .test(
+                "start-end-check",
+                "End date should be after start date",
+                (val, props) => {
+                  // -- console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
+                  // -- console.log("HERER", val);
+                  if (
+                    props.parent.startDate &&
                 val &&
                 moment(val).diff(moment(props.parent.startDate), "days") > 0
-                ) {
-                  return true;
-                } else return false;
-              }
-            ),
+                  ) {
+                    return true;
+                  } else return false;
+                }
+              ),
           then: () => date(),
         }),
     isCurrent: boolean().notRequired(),
@@ -101,25 +101,25 @@ export const ValidationsRegistry = {
       date()
         .max(new Date(), "Must be today or earlier than today")
         .when("isCurrent", {
-          is: true,
-          otherwise: 
-          date()
-            .required("End date required")
-            .test(
-              "start-end-check",
-              "End date should be after start date",
-              (val, props) => {
-              // -- console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
-              // -- console.log("HERER", val);
-                if (
-                  props.parent.startDate &&
+          is       : true,
+          otherwise: () =>
+            date()
+              .required("End date required")
+              .test(
+                "start-end-check",
+                "End date should be after start date",
+                (val, props) => {
+                  // -- console.log("kkikikiki", props.parent.startDate, val, moment(props.parent.startDate).diff(moment(val), 'days'));
+                  // -- console.log("HERER", val);
+                  if (
+                    props.parent.startDate &&
                 val &&
                 moment(val).diff(moment(props.parent.startDate), "days") > 0
-                ) {
-                  return true;
-                } else return false;
-              }
-            ),
+                  ) {
+                    return true;
+                  } else return false;
+                }
+              ),
           then: date(),
         }),
     isCurrent: boolean().notRequired(),
