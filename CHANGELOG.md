@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://https//github.com/Rxefy/profile-module/compare/v0.0.8...v0.0.9) (2024-06-25)
+
+
+### Features
+
+* **core:** :lipstick: improve view mode ([ae3f08c](https://https//github.com/Rxefy/profile-module/commit/ae3f08c45544e25a78c004a0889f1d263dbe36d6)), closes [#52](https://https//github.com/Rxefy/profile-module/issues/52)
+
 ### [0.0.8](https://https//github.com/Rxefy/profile-module/compare/v0.0.7...v0.0.8) (2024-06-25)
 
 
