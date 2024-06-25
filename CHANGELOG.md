@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://https//github.com/Rxefy/profile-module/compare/v0.0.9...v0.0.10) (2024-06-25)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix add registration info not working ([2ce47de](https://https//github.com/Rxefy/profile-module/commit/2ce47de0e9146e56d92420ed529e3eeb6b543d95)), closes [#56](https://https//github.com/Rxefy/profile-module/issues/56)
+
 ### [0.0.9](https://https//github.com/Rxefy/profile-module/compare/v0.0.8...v0.0.9) (2024-06-25)
 
 
