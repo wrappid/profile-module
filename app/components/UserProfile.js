@@ -6,6 +6,7 @@ import {
   CoreBox,
   CoreCard,
   CoreCardContent,
+  CoreClasses,
   CoreComponent,
   CoreDivider,
   CoreForm,
@@ -52,7 +53,7 @@ function UserProfile() {
     <>
       <CoreLayoutItem id={AppContainerLayout.PLACEHOLDER.CONTENT}>
         <CoreGrid>
-          <CoreCard gridProps={{ gridSize: { sm: 12 } }}>
+          <CoreCard gridProps={{ gridSize: { sm: 12 } }} styleClasses={[CoreClasses.PADDING.P1]}>
             <CoreCardContent>
               <CoreGrid coreId="userProfileGrid">
                 <CoreForm
