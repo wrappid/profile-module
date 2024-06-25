@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.11](https://https//github.com/Rxefy/profile-module/compare/v0.0.10...v0.0.11) (2024-06-25)
+
+
+### Bug Fixes
+
+* **global:** :bug: profilebasic info edit logo validation ([7224008](https://https//github.com/Rxefy/profile-module/commit/72240082e71f06fd6569536dc8777073ec8efe3b)), closes [#56](https://https//github.com/Rxefy/profile-module/issues/56)
+
 ### [0.0.10](https://https//github.com/Rxefy/profile-module/compare/v0.0.9...v0.0.10) (2024-06-25)
 
 
