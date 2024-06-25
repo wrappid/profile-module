@@ -1,6 +1,6 @@
 import { getFormikRequiredMessage } from "@wrappid/core";
 import moment from "moment";
-import { string, date, mixed, boolean, object } from "yup";
+import { string, date, mixed, boolean } from "yup";
 
 export const ValidationsRegistry = {
   profileBaic: {
@@ -158,6 +158,21 @@ export const ValidationsRegistry = {
           /^[a-zA-Z0-9\s-/]+$/,
           "Special charecters are not allowed except - and /"
         ),
-    registrationDocument: object().nullable(),
+    registrationDocument: mixed()
+      .test("fileSize", "File size must be less than 5MB", (value) => {
+        if (!value) return true; 
+        return value.size <= 5242880;
+      })
+      .test(
+        "fileType",
+        "Only PDF and Doc files allowed",
+        (value) => {
+          if (!value) return true; // Skip validation if no file selected
+  
+          const supportedTypes = ["application/pdf", "application/msword"];
+
+          return supportedTypes.includes(value.type);
+        }
+      )
   }
 };

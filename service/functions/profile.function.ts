@@ -220,11 +220,11 @@ const putRegistrationDetailsFunc = async (req: any, res: any) => {
     const personId: any = req.params.id;
 
     if (
-      req.file["registrationDocument"] &&
-      req.file["registrationDocument"][0]
+      req.files["registrationDocument"] &&
+      req.files["registrationDocument"][0]
     ) {
       //eslint-disable-next-line  no-undef
-      file_url = "file_url";
+      file_url = req.files["registrationDocument"][0].location;
       // await getUrl(
       //   req.file["registrationDocument"][0].filename
       //     ? req.file["registrationDocument"][0].filename
