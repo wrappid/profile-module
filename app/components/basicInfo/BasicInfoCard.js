@@ -55,9 +55,9 @@ export default function BasicInfoCard(props) {
   const degrees = useSelector((state) => state?.profile?.registration?.degrees);
 
   return (
-    <CoreGrid styleClasses={[]}>
+    <CoreGrid styleClasses={[CoreClasses.MARGIN.ML1, CoreClasses.MARGIN.MT_N5]}>
       <CoreBox
-        gridProps={{ gridSize: { md: 2, xs: 12 } }}
+        gridProps={{ gridSize: { md: 0.9, xs: 12 } }}
         styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.BORDER.BORDER_PRIMARY]}
       >
         <CoreAvatar

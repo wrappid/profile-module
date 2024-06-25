@@ -23,13 +23,10 @@ export default function ContactInfoCard(props) {
   return (
     <>
       <CoreCardHeader
-        styleClasses={[CoreClasses.PADDING.P0, CoreClasses.PADDING.PR1]}
         title={
           <CoreTypographyBody1
             styleClasses={[CoreClasses.TEXT.TEXT_WEIGHT_BOLD]}
-          >
-            Contact Info
-          </CoreTypographyBody1>
+          >Contact Info</CoreTypographyBody1>
         }
         action={
           <CoreIconButton
@@ -43,7 +40,7 @@ export default function ContactInfoCard(props) {
         }
       />
 
-      <CoreGrid>
+      <CoreGrid styleClasses={[CoreClasses.MARGIN.ML1]}>
         <CoreBox
           gridProps={{ gridSize: { sm: 3 } }}
           styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}
