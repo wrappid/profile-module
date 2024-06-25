@@ -1,9 +1,12 @@
+/* eslint-disable etc/no-commented-out-code */
 import { useState, useEffect } from "react";
 
 import {
   AppContainerLayout,
+  CoreBox,
   CoreCard,
   CoreCardContent,
+  CoreComponent,
   CoreDivider,
   CoreForm,
   CoreGrid,
@@ -76,123 +79,78 @@ function UserProfile() {
 
                 <CoreDivider />
 
-                {auth?.role?.role &&
-                  auth?.role?.role.toLowerCase() === "doctor" && (
-                  <CoreForm
-                    coreId="registrationInfo"
-                    formId={FORM_IDS.__PROFILE_REGISTRATION}
-                    allowDelete={false}
-                    gridProps={{
-                      gridSize: {
-                        sm: 6,
-                        xs: 12,
-                      },
-                    }}
-                    mode={formsMode[FORM_IDS.__PROFILE_REGISTRATION]}
-                  />
-                )}
+                <CoreBox>
+                  <CoreComponent
+                    componentName="AppSpecificProfileSection" />
+                </CoreBox>
 
-                {auth?.role?.role &&
-                  auth?.role?.role.toLowerCase() === "doctor" && (
-                  <CoreForm
-                    arrayView={true}
-                    coreId="clinicInfo"
-                    formId={FORM_IDS.__PROFILE_CLINIC}
-                    gridProps={{
-                      gridSize: {
-                        sm: 6,
-                        xs: 12,
-                      },
-                    }}
-                    mode={formsMode[FORM_IDS.__PROFILE_CLINIC]}
-                    arrayDataLimit={2}
-                    query={{
-                      _defaultFilter: encodeURIComponent(
-                        JSON.stringify({ personId: profile?.basic?.id })
-                      ),
-                    }}
-                  />
-                )}
-
-                {auth?.role?.role &&
-                  auth?.role?.role.toLowerCase() === "doctor" && <CoreDivider />}
-
-                {auth?.role?.role &&
-                  auth?.role?.role.toLowerCase() !== "patient" && (
-                  <CoreForm
-                    arrayView={true}
-                    coreId="educationInfo"
-                    formId={FORM_IDS.__PROFILE_EDUCATION}
-                    gridProps={{
-                      gridSize: {
-                        sm: 6,
-                        xs: 12,
-                      },
-                    }}
-                    mode={formsMode[FORM_IDS.__PROFILE_EDUCATION]}
-                    arrayDataLimit={2}
-                    query={{
-                      _defaultFilter: encodeURIComponent(
-                        JSON.stringify({ personId: profile?.basic?.id })
-                      ),
-                    }}
-                  />
-                )}
-
-                {auth?.role?.role &&
-                  auth?.role?.role.toLowerCase() !== "patient" && (
-                  <CoreForm
-                    arrayView={true}
-                    coreId="experienceInfo"
-                    formId={FORM_IDS.__PROFILE_EXPERIENCE}
-                    gridProps={{
-                      gridSize: {
-                        sm: 6,
-                        xs: 12,
-                      },
-                    }}
-                    mode={formsMode[FORM_IDS.__PROFILE_EXPERIENCE]}
-                    arrayDataLimit={2}
-                    query={{
-                      _defaultFilter: encodeURIComponent(
-                        JSON.stringify({ personId: profile?.basic?.id })
-                      ),
-                    }}
-                    // --- afterCreateError={() => {
-                    //   alert("CREATE error hook");
-                    // }}
-                    // afterEditError={() => {
-                    //   alert("EDIT error hook");
-                    // }}
-                    // afterDeleteError={() => {
-                    //   alert("DELETE error hook");
-                    // }}
-                    // afterCreateSuccess={() => {
-                    //   alert("CREATE success hook");
-                    // }}
-                    // afterEditSuccess={() => {
-                    //   alert("EDIT success hook");
-                    // }}
-                    // afterDeleteSuccess={() => {
-                    //   alert("DELETE success hook");
-                    // }}
-                  />
-                )}
-
-                {auth?.role?.role &&
-                  auth?.role?.role.toLowerCase() === "patient" && (
-                  <CoreForm
-                    arrayView={true}
-                    formId={FORM_IDS.__CREATE_PATIENT}
-                    gridProps={{
-                      gridSize: {
-                        sm: 6,
-                        xs: 12,
-                      },
-                    }}
-                    mode={FORM_VIEW_MODE}
-                  />
-                )}
+                <CoreForm
+                  arrayView={true}
+                  coreId="educationInfo"
+                  formId={FORM_IDS.__PROFILE_EDUCATION}
+                  gridProps={{
+                    gridSize: {
+                      sm: 6,
+                      xs: 12,
+                    },
+                  }}
+                  mode={formsMode[FORM_IDS.__PROFILE_EDUCATION]}
+                  arrayDataLimit={2}
+                  query={{
+                    _defaultFilter: encodeURIComponent(
+                      JSON.stringify({ personId: profile?.basic?.id })
+                    ),
+                  }}
+                />
+                
+                <CoreForm
+                  arrayView={true}
+                  coreId="experienceInfo"
+                  formId={FORM_IDS.__PROFILE_EXPERIENCE}
+                  gridProps={{
+                    gridSize: {
+                      sm: 6,
+                      xs: 12,
+                    },
+                  }}
+                  mode={formsMode[FORM_IDS.__PROFILE_EXPERIENCE]}
+                  arrayDataLimit={2}
+                  query={{
+                    _defaultFilter: encodeURIComponent(
+                      JSON.stringify({ personId: profile?.basic?.id })
+                    ),
+                  }}
+                  // --- afterCreateError={() => {
+                  //   alert("CREATE error hook");
+                  // }}
+                  // afterEditError={() => {
+                  //   alert("EDIT error hook");
+                  // }}
+                  // afterDeleteError={() => {
+                  //   alert("DELETE error hook");
+                  // }}
+                  // afterCreateSuccess={() => {
+                  //   alert("CREATE success hook");
+                  // }}
+                  // afterEditSuccess={() => {
+                  //   alert("EDIT success hook");
+                  // }}
+                  // afterDeleteSuccess={() => {
+                  //   alert("DELETE success hook");
+                  // }}
+                />
+                
+                {/* <CoreForm
+                  arrayView={true}
+                  formId={FORM_IDS.__CREATE_PATIENT}
+                  gridProps={{
+                    gridSize: {
+                      sm: 6,
+                      xs: 12,
+                    },
+                  }}
+                  mode={FORM_VIEW_MODE}
+                /> */}
               </CoreGrid>
             </CoreCardContent>
           </CoreCard>
