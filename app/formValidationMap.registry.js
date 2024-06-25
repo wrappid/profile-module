@@ -30,11 +30,17 @@ export const ValidationsRegistry = {
       string()
         .trim()
         .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-    photo: mixed()
-      .test("fileSize", "File size must be less than 5MB", (value) => {
-        if (!value) return true; 
-        return value.size <= 5242880;
-      }),
+    photo: mixed().when("myfile", {
+      isType   : (value) => typeof value === "string",
+      // Allow null for strings
+      otherwise: (schema) =>
+        schema
+          .test("fileSize", "File size must be less than 5MB", (value) => {
+            if (!value) return true; // Allow empty files
+            return value.size <= 5 * 1024 * 1024; // Check for 5MB limit
+          }), 
+      then: (schema) => schema.nullable(true),
+    }),
   },
   profileEducation: {
     board: 
