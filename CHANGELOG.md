@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://https//github.com/Rxefy/profile-module/compare/v0.0.7...v0.0.8) (2024-06-25)
+
+
+### Bug Fixes
+
+* **global:** :bug: fix form validations ([9cb8ae4](https://https//github.com/Rxefy/profile-module/commit/9cb8ae4095cc9a303cf02279f666e31dae0dfda6)), closes [#53](https://https//github.com/Rxefy/profile-module/issues/53)
+* **global:** :bug: remove clinic and registration info code ([b925a41](https://https//github.com/Rxefy/profile-module/commit/b925a419c2d39fa0cf067625bcb264c4fb2e04cb)), closes [#53](https://https//github.com/Rxefy/profile-module/issues/53)
+* **global:** :bug: validation fix ([d40a5f8](https://https//github.com/Rxefy/profile-module/commit/d40a5f879aa8f90510dc208349c43431f4170b09)), closes [#53](https://https//github.com/Rxefy/profile-module/issues/53)
+
 ### [0.0.7](https://https//github.com/Rxefy/profile-module/compare/v0.0.6...v0.0.7) (2024-06-05)
 
 
