@@ -5,7 +5,6 @@ import {
   CoreIconButton,
   CoreBox,
   CoreGrid,
-  CoreCardHeader,
   CoreClasses,
   coreUseNavigate,
   CorePhoneLink,
@@ -21,26 +20,26 @@ export default function ContactInfoCard(props) {
   const { phone, email, profileLink, website } = props;
 
   return (
-    <>
-      <CoreCardHeader
-        title={
-          <CoreTypographyBody1
-            styleClasses={[CoreClasses.TEXT.TEXT_WEIGHT_BOLD]}
-          >Contact Info</CoreTypographyBody1>
-        }
-        action={
-          <CoreIconButton
-            title={"Edit Contact Info"}
-            onClick={() => {
-              navigate("/settings#account");
-            }}
-          >
-            <CoreIcon>edit_note</CoreIcon>
-          </CoreIconButton>
-        }
-      />
 
-      <CoreGrid styleClasses={[CoreClasses.MARGIN.ML1]}>
+    <>
+      <CoreBox styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_SPACE_BETWEEN]}>
+        <CoreTypographyBody1
+          styleClasses={[CoreClasses.TEXT.TEXT_WEIGHT_BOLD]}
+        >Contact Info</CoreTypographyBody1>
+
+        <CoreIconButton
+          title={"Edit Contact Info"}
+          onClick={() => {
+            navigate("/settings#account");
+          }}
+          styleClasses={[CoreClasses.PADDING.PR0]}
+        >
+          <CoreIcon>edit_note</CoreIcon>
+        </CoreIconButton>
+      
+      </CoreBox>
+
+      <CoreGrid styleClasses={[CoreClasses.PADDING.PL0]}>
         <CoreBox
           gridProps={{ gridSize: { sm: 3 } }}
           styleClasses={[CoreClasses.FLEX.DIRECTION_COLUMN]}

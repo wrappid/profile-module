@@ -2,8 +2,9 @@ import {
   CoreAvatar,
   CoreH6,
   CoreTypographyBody1,
-  CoreTypographyCaption,
+  CoreIconButton,
   CoreBox,
+  CoreIcon,
   CoreGrid,
   CoreClasses,
   getFullName,
@@ -19,7 +20,27 @@ export default function BasicInfoCard(props) {
   const {
     firstName, middleName, lastName, gender, dob, bio, photo
   } = props;
-
+  const CustomIconTooltipText = (props) =>{
+    return (
+      <CoreIconButton
+        disableFocusRipple={true}
+        disableRipple={true}
+        type={__IconTypes.MATERIAL_OUTLINED_ICON}
+        title={props?.tip}
+        disableElevation={true}
+        styleClasses={[CoreClasses.CURSOR.CURSOR_DEFAULT, CoreClasses.PADDING.P0]}
+        {...props}>
+  
+        {props?.icon !== undefined ? 
+          <CoreIcon>
+            {props?.icon}
+          </CoreIcon> : null
+        }
+  
+        {props?.children}
+      </CoreIconButton>
+    );
+  };
   const getGender = (gender, iconFlag = false) => {
     let genderTmp = "unknown";
 
@@ -75,14 +96,37 @@ export default function BasicInfoCard(props) {
         <CoreStack
           direction="row"
           spacing={1}
+          divider={true}
           styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}
         >
-          
-          <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon="cake" text={getAge(dob)} />
+          <CustomIconTooltipText
+            tip={getAge(dob)}
+            disableFocusRipple={true}
+            disableRipple={true}
+            type={__IconTypes.MATERIAL_OUTLINED_ICON}
+          >
+            <CoreIconButton
+              type={__IconTypes.MATERIAL_OUTLINED_ICON}
+              title=""
+              disabled={true}
+              disableFocusRipple={true}
+            >
+              <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon="cake" text={getAge(dob)} />
+            </CoreIconButton>
+          </CustomIconTooltipText>
 
-          <CoreTypographyCaption styleClasses={[CoreClasses.COLOR.TEXT_SECONDARY]}>{" | "}</CoreTypographyCaption>
+          <CoreIconButton
+            type={__IconTypes.MATERIAL_OUTLINED_ICON}
+            title=""
+            disabled={true}
+            disableFocusRipple={true} >
 
-          <CoreIconText type={__IconTypes.MATERIAL_OUTLINED_ICON} icon={getGender(gender, true)} text={getGender(gender)} />
+            <CoreIconText
+              type={__IconTypes.MATERIAL_OUTLINED_ICON}
+              icon={getGender(gender, true)}
+              text={getGender(gender)}
+            />
+          </CoreIconButton>
 
         </CoreStack>
       </CoreBox>
