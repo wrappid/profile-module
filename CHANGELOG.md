@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://https//github.com/Rxefy/profile-module/compare/v0.0.11...v0.0.12) (2024-06-26)
+
+
+### Features
+
+* **global:** :lipstick: education and experience section UI polishing ([0cc36d7](https://https//github.com/Rxefy/profile-module/commit/0cc36d7aa9c5189ee8ed2c8da3381fe58207bc7e)), closes [#59](https://https//github.com/Rxefy/profile-module/issues/59)
+
 ### [0.0.11](https://https//github.com/Rxefy/profile-module/compare/v0.0.10...v0.0.11) (2024-06-25)
 
 
