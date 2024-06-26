@@ -55,7 +55,7 @@ function UserProfile() {
         <CoreGrid>
           <CoreCard gridProps={{ gridSize: { sm: 12 } }} styleClasses={[CoreClasses.PADDING.P1]}>
             <CoreCardContent>
-              <CoreGrid coreId="userProfileGrid">
+              <CoreGrid columnSpacing={6} coreId="userProfileGrid">
                 <CoreForm
                   coreId="basicInfo"
                   allowDelete={false}
@@ -86,6 +86,7 @@ function UserProfile() {
                 </CoreBox>
 
                 <CoreForm
+                  styleClasses={[CoreClasses.PADDING.PR1]}
                   arrayView={true}
                   coreId="educationInfo"
                   formId={FORM_IDS.__PROFILE_EDUCATION}
@@ -105,6 +106,7 @@ function UserProfile() {
                 />
                 
                 <CoreForm
+                  styleClasses={[CoreClasses.PADDING.PR1]}
                   arrayView={true}
                   coreId="experienceInfo"
                   formId={FORM_IDS.__PROFILE_EXPERIENCE}
