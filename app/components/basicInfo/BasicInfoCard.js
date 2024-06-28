@@ -14,7 +14,7 @@ import {
 } from "@wrappid/core";
 import { useSelector } from "react-redux";
 
-import { getAge /**, getFullName  */ } from "../utils/helper";
+import { getAge, getDOB } from "../../functions/helper.functions";
 
 export default function BasicInfoCard(props) {
   const {
@@ -100,7 +100,7 @@ export default function BasicInfoCard(props) {
           styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}
         >
           <CustomIconTooltipText
-            tip={getAge(dob)}
+            tip={getDOB(dob)}
             disableFocusRipple={true}
             disableRipple={true}
             type={__IconTypes.MATERIAL_OUTLINED_ICON}

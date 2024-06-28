@@ -86,3 +86,20 @@ export function getAge(birthDate) {
   //return the calculated age
   return ageString && ageString.length > 0 ? ageString : "N/A";
 }
+
+/**
+ * Function to return the age of the person
+ * in dd month yyyy format
+ * @param {*} data 
+ * @returns {formatted date}
+ */
+export function getDOB(data){
+
+  const dateStr = data;
+  const date = new Date(dateStr);
+    
+  const options = { day: "2-digit", month: "long", year: "numeric" };
+  const formattedDate = date.toLocaleDateString("en-US", options);
+    
+  return formattedDate;
+}
