@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://https//github.com/Rxefy/profile-module/compare/v0.0.13...v0.0.14) (2024-06-28)
+
+
+### Features
+
+* **utils:** :bug: dob format correction ([2fb2559](https://https//github.com/Rxefy/profile-module/commit/2fb2559f009d1a8264cb7548c74ddd57e9d5e516)), closes [#52](https://https//github.com/Rxefy/profile-module/issues/52)
+
 ### [0.0.13](https://https//github.com/Rxefy/profile-module/compare/v0.0.12...v0.0.13) (2024-06-26)
 
 ### [0.0.12](https://https//github.com/Rxefy/profile-module/compare/v0.0.11...v0.0.12) (2024-06-26)
