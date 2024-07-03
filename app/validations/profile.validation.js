@@ -2,9 +2,8 @@ import { getFormikRequiredMessage } from "@wrappid/core";
 import moment from "moment";
 import { string, date, mixed, boolean } from "yup";
 
-export const ValidationsRegistry = {
-  profileBaic: {
-    bio: 
+const profileBaic = {
+  bio: 
       string()
         .trim()
       // .required(getFormikRequiredMessage("bio"))
@@ -12,38 +11,38 @@ export const ValidationsRegistry = {
           /^[a-zA-Z0-9\s.'"@$&-/\\?]+$/,
           "All special charecters are not allowed"
         ),
-    dob: 
+  dob: 
       date()
         .required(getFormikRequiredMessage("dateOfBirth"))
         .min(moment().subtract(115, "years"), "MIN_AGE")
         .max(moment().endOf("day").subtract(18, "years"), "Min age should be 18"),
-    firstName: string()
-      .trim()
-      .required(getFormikRequiredMessage("firstName"))
-      .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-    gender: string().required("Gender is required"),
-    lastName: 
+  firstName: string()
+    .trim()
+    .required(getFormikRequiredMessage("firstName"))
+    .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
+  gender: string().required("Gender is required"),
+  lastName: 
       string()
         .trim()
         .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-    middleName: 
+  middleName: 
       string()
         .trim()
         .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-    photo: mixed().when("myfile", {
-      isType   : (value) => typeof value === "string",
-      // Allow null for strings
-      otherwise: (schema) =>
-        schema
-          .test("fileSize", "File size must be less than 5MB", (value) => {
-            if (!value) return true; // Allow empty files
-            return value.size <= 5 * 1024 * 1024; // Check for 5MB limit
-          }), 
-      then: (schema) => schema.nullable(true),
-    }),
-  },
-  profileEducation: {
-    board: 
+  photo: mixed().when("myfile", {
+    isType   : (value) => typeof value === "string",
+    // Allow null for strings
+    otherwise: (schema) =>
+      schema
+        .test("fileSize", "File size must be less than 5MB", (value) => {
+          if (!value) return true; // Allow empty files
+          return value.size <= 5 * 1024 * 1024; // Check for 5MB limit
+        }), 
+    then: (schema) => schema.nullable(true),
+  }),
+};
+const profileEducation =  {
+  board: 
       string()
         .trim()
         .required("Board name is required")
@@ -51,14 +50,14 @@ export const ValidationsRegistry = {
           /^[a-zA-Z0-9\s-.,/()[\]]+$/,
           "All special charecters are not allowed except - . , / ( ) [ ]"
         ),
-    degree: string()
-      .trim()
-      .required("Degree is required")
-      .matches(
-        /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-        "All special charecters are not allowed except - . , / ( ) [ ]"
-      ),
-    endDate: 
+  degree: string()
+    .trim()
+    .required("Degree is required")
+    .matches(
+      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+      "All special charecters are not allowed except - . , / ( ) [ ]"
+    ),
+  endDate: 
       date()
         .max(new Date(), "Must be today or earlier than today")
         .when("isCurrent", {
@@ -83,27 +82,27 @@ export const ValidationsRegistry = {
               ),
           then: () => date(),
         }),
-    isCurrent: boolean().notRequired(),
-    school   : string()
-      .trim()
-      .required("School name is required")
-      .matches(
-        /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-        "All special charecters are not allowed except - . , / ( ) [ ]"
-      ),
-    startDate: date()
-      .max(new Date(), "Must be today or earlier than today")
-      .required("Start date is required"),
-  },
-  profileExperience: {
-    designation: string()
-      .trim()
-      .required("Designation is required")
-      .matches(
-        /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-        "All special charecters are not allowed except - . , / ( ) [ ]"
-      ),
-    endDate: 
+  isCurrent: boolean().notRequired(),
+  school   : string()
+    .trim()
+    .required("School name is required")
+    .matches(
+      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+      "All special charecters are not allowed except - . , / ( ) [ ]"
+    ),
+  startDate: date()
+    .max(new Date(), "Must be today or earlier than today")
+    .required("Start date is required"),
+};
+const profileExperience = {
+  designation: string()
+    .trim()
+    .required("Designation is required")
+    .matches(
+      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+      "All special charecters are not allowed except - . , / ( ) [ ]"
+    ),
+  endDate: 
       date()
         .max(new Date(), "Must be today or earlier than today")
         .when("isCurrent", {
@@ -128,16 +127,16 @@ export const ValidationsRegistry = {
               ),
           then: () => date(),
         }),
-    isCurrent: boolean().notRequired(),
-    location : string()
-      .trim()
-      .required("Location is required")
-      .matches(
-        /^[a-zA-Z0-9\s-.,/()[\]]+$/,
-        "All special charecters are not allowed except - . , / ( ) [ ]"
-      )
-      .required(),
-    organization: 
+  isCurrent: boolean().notRequired(),
+  location : string()
+    .trim()
+    .required("Location is required")
+    .matches(
+      /^[a-zA-Z0-9\s-.,/()[\]]+$/,
+      "All special charecters are not allowed except - . , / ( ) [ ]"
+    )
+    .required(),
+  organization: 
       string()
         .trim()
         .required("Organization name is required")
@@ -145,18 +144,18 @@ export const ValidationsRegistry = {
           /^[a-zA-Z0-9\s-.,/()[\]]+$/,
           "All special charecters are not allowed except - . , / ( ) [ ]"
         ),
-    startDate: 
+  startDate: 
     date()
       .max(new Date(), "Must be today or earlier than today")
       .required("Start date is required"),
-  },
-  profileRegistration: {
-    departmentId: string().required("Department is required"),
-    regDate: 
+};
+const profileRegistration = {
+  departmentId: string().required("Department is required"),
+  regDate: 
       date()
         .max(new Date(), "Registration date must be today or earlier than today")
         .required("Registration date is required"),
-    regNo: 
+  regNo: 
       string()
         .trim()
         .required("Registration No. is required")
@@ -164,21 +163,27 @@ export const ValidationsRegistry = {
           /^[a-zA-Z0-9\s-/]+$/,
           "Special charecters are not allowed except - and /"
         ),
-    registrationDocument: mixed()
-      .test("fileSize", "File size must be less than 5MB", (value) => {
-        if (!value) return true; 
-        return value.size <= 5242880;
-      })
-      .test(
-        "fileType",
-        "Only PDF and Doc files allowed",
-        (value) => {
-          if (!value) return true; // Skip validation if no file selected
+  registrationDocument: mixed()
+    .test("fileSize", "File size must be less than 5MB", (value) => {
+      if (!value) return true; 
+      return value.size <= 5242880;
+    })
+    .test(
+      "fileType",
+      "Only PDF and Doc files allowed",
+      (value) => {
+        if (!value) return true; // Skip validation if no file selected
   
-          const supportedTypes = ["application/pdf", "application/msword"];
+        const supportedTypes = ["application/pdf", "application/msword"];
 
-          return supportedTypes.includes(value.type);
-        }
-      )
-  }
+        return supportedTypes.includes(value.type);
+      }
+    )
+};
+
+export {
+  profileBaic,
+  profileEducation,
+  profileExperience,
+  profileRegistration
 };
