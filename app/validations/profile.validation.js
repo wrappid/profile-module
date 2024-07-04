@@ -29,17 +29,27 @@ const profileBaic = {
       string()
         .trim()
         .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
-  photo: mixed().when("myfile", {
-    isType   : (value) => typeof value === "string",
-    // Allow null for strings
-    otherwise: (schema) =>
-      schema
-        .test("fileSize", "File size must be less than 5MB", (value) => {
-          if (!value) return true; // Allow empty files
-          return value.size <= 5 * 1024 * 1024; // Check for 5MB limit
-        }), 
-    then: (schema) => schema.nullable(true),
-  }),
+  photo: mixed()
+    .test("fileSize", "Logo size is too large", (value) => {
+      if (!value) {
+        return true; // Allow empty value (optional logo)
+      }
+      if(typeof value === "string"){
+        return true;
+      }
+      return value.size <= 5 * 1024 * 1024; // Check if file size is less than 5MB
+    })
+    .test("fileType", "Invalid logo format", (value) => {
+      if (!value) {
+        return true; // Allow empty value (optional logo)
+      }
+      if(typeof value === "string"){
+        return true;
+      }
+      const supportedTypes = ["image/jpeg", "image/png"];
+
+      return supportedTypes.includes(value.type);
+    }),
 };
 const profileEducation =  {
   board: 
