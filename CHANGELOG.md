@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.15](https://https//github.com/Rxefy/profile-module/compare/v0.0.14...v0.0.15) (2024-07-05)
+
+
+### Features
+
+* **global:** :sparkles: validaion files structuring ([12a850c](https://https//github.com/Rxefy/profile-module/commit/12a850c5215f6fe31091b376b1e4e8f60b6cae2b)), closes [#63](https://https//github.com/Rxefy/profile-module/issues/63)
+
+
+### Bug Fixes
+
+* **global:** :sparkles: profile  logo validation fix ([a1225c5](https://https//github.com/Rxefy/profile-module/commit/a1225c59ca776b663f76f2463c5b1f18bf679773)), closes [#63](https://https//github.com/Rxefy/profile-module/issues/63)
+
 ### [0.0.14](https://https//github.com/Rxefy/profile-module/compare/v0.0.13...v0.0.14) (2024-06-28)
 
 
