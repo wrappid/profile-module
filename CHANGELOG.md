@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.16](https://https//github.com/Rxefy/profile-module/compare/v0.0.15...v0.0.16) (2024-07-22)
+
+
+### Bug Fixes
+
+* **core:** :bug: profile completeness element value ([5c69e03](https://https//github.com/Rxefy/profile-module/commit/5c69e039925af6fd47dd5a8e2546bc997ac6ab50)), closes [#65](https://https//github.com/Rxefy/profile-module/issues/65)
+
 ### [0.0.15](https://https//github.com/Rxefy/profile-module/compare/v0.0.14...v0.0.15) (2024-07-05)
 
 
