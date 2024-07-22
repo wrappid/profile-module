@@ -206,15 +206,17 @@ export default function ProfileCompletenessCard() {
                   key={`missingData-${index}`}
                   styleClasses={[
                     // --- CoreClasses.DISPLAY.INLINE_BLOCK,
-                    CoreClasses.MARGIN.M1
+                    CoreClasses.MARGIN.M1, CoreClasses.POSITION.POSITION_RELATIVE, CoreClasses.DISPLAY.INLINE_FLEX
+
                   ]}
                 >
                   <CoreChip
                     avatar={
                       <CoreAvatar
-                        styleClasses={[CoreClasses.COLOR.TEXT_WHITE, CoreClasses.BG.BG_ERROR]}
-                        label={report?.missingData[data]}
-                      />
+                        styleClasses={[CoreClasses.BG.BG_ERROR, CoreClasses.COLOR.TEXT_WHITE]}
+                      >
+                        {report?.missingData[data]}
+                      </CoreAvatar>
                     }
                     label={data}
                     size="small"
@@ -235,15 +237,16 @@ export default function ProfileCompletenessCard() {
                   key={`providedData-${index}`}
                   styleClasses={[
                     // --- CoreClasses.DISPLAY.INLINE_BLOCK,
-                    CoreClasses.MARGIN.M1
+                    CoreClasses.MARGIN.M1, CoreClasses.POSITION.POSITION_RELATIVE, CoreClasses.DISPLAY.INLINE_FLEX
                   ]}
                 >
                   <CoreChip
                     avatar={
                       <CoreAvatar
-                        styleClasses={[CoreClasses.COLOR.TEXT_WHITE, CoreClasses.BG.BG_SUCCESS]}
-                        label={report?.providedData[data]}
-                      />
+                        styleClasses={[CoreClasses.BG.BG_SUCCESS, CoreClasses.COLOR.TEXT_WHITE]}
+                      >
+                        {report?.providedData[data]}
+                      </CoreAvatar>
                     }
                     label={data}
                     size="small"
