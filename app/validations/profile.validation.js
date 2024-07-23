@@ -30,7 +30,7 @@ const profileBaic = {
         .trim()
         .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
   photo: mixed()
-    .test("fileSize", "Logo size is too large", (value) => {
+    .test("fileSize", "Image is too large. Maximum size allowed is 5MB", (value) => {
       if (!value) {
         return true; // Allow empty value (optional logo)
       }
