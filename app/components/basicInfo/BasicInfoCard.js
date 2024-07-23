@@ -58,7 +58,7 @@ export default function BasicInfoCard(props) {
           .replace(/\w\S*/g, function (txt) {
             return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
           })
-        : "N/A";
+        : "Unknown";
     }
 
     switch (genderTmp) {
