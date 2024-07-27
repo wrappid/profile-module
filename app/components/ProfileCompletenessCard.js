@@ -8,6 +8,7 @@ import {
   CoreChip,
   CoreDivider,
   CoreIcon,
+  CoreTypographyOverline,
   CoreTypographyBody2,
   CoreCircularProgress,
   CoreContainedButton,
@@ -174,11 +175,29 @@ export default function ProfileCompletenessCard() {
         <CoreCard>
           <CoreCardHeader
             avatar={
-              <CoreCircularProgress
-                variant="determinate"
-                value={report?.quotient}
+              <CoreBox styleClasses={[CoreClasses.POSITION.POSITION_RELATIVE, CoreClasses.DISPLAY.INLINE_FLEX]}>
+                <CoreCircularProgress
+                  variant="determinate"
+                  value={report?.quotient}
                 // size={100}
-              />
+                />
+
+                <CoreBox styleClasses={[
+                  CoreClasses.POSITION.TOP_50,
+                  CoreClasses.POSITION.BOTTOM_0,
+                  CoreClasses.POSITION.START_0,
+                  CoreClasses.POSITION.END_0,
+                  CoreClasses.POSITION.POSITION_ABSOLUTE,
+                  CoreClasses.DISPLAY.FLEX,
+                  CoreClasses.ALIGNMENT.ALIGN_ITEMS_CENTER,
+                  CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER
+                ]}>
+                  <CoreTypographyOverline styleClasses={[CoreClasses.TEXT.TEXT_WEIGHT_MEDIUM, CoreClasses.COLOR.TEXT_PRIMARY]}>
+                    {`${report?.quotient}%`}
+                  </CoreTypographyOverline>
+                </CoreBox>
+              </CoreBox>
+              
             }
             title="Setup your Rxefy account"
             subheader="You still have information missing on your profile"
