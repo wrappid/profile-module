@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.17](https://https//github.com/Rxefy/profile-module/compare/v0.0.16...v0.0.17) (2024-07-28)
+
+
+### Bug Fixes
+
+* **core:** :bug: add progress percentage in circularProgressBar ([5bfc2a1](https://https//github.com/Rxefy/profile-module/commit/5bfc2a1bbaa99689c52aecd13426264c8a9368db)), closes [#68](https://https//github.com/Rxefy/profile-module/issues/68)
+
 ### [0.0.16](https://https//github.com/Rxefy/profile-module/compare/v0.0.15...v0.0.16) (2024-07-22)
 
 
