@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.18](https://https//github.com/Rxefy/profile-module/compare/v0.0.17...v0.0.18) (2024-07-29)
+
+
+### Bug Fixes
+
+* **utils:** :white_check_mark: date validation ([6750f69](https://https//github.com/Rxefy/profile-module/commit/6750f69c1aa597ebb687ce705da9aa1d72fde98f)), closes [#63](https://https//github.com/Rxefy/profile-module/issues/63)
+
 ### [0.0.17](https://https//github.com/Rxefy/profile-module/compare/v0.0.16...v0.0.17) (2024-07-28)
 
 
