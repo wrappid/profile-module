@@ -1,32 +1,23 @@
 import moment from "moment";
 import * as yup from "yup";
 
-export const getContactInfo = {
+const getContactInfo = {
   body: yup.object<any>().noUnknown().strict(),
   query: yup.object<any>().noUnknown().strict(),
 };
 
-export const getAddressTypeSchema = {
+const getAddressTypeSchema = {
   body: yup.object<any>().noUnknown().strict(),
   query: yup.object<any>().noUnknown().strict(),
 };
 
-export const getPersonContacts = {
-  body: yup.object<any>().noUnknown().strict(),
-  query: yup.object<any>().noUnknown().strict(),
+const getPersonContacts = {
+  body: yup.object().shape({}).noUnknown().strict(),
+  query: yup.object().shape({}).noUnknown().strict(),
 };
 
-export const getRegistrationInfo = {
-  body: yup.object<any>().noUnknown().strict(),
-  query: yup.object<any>().noUnknown().strict(),
-};
 
-export const departmentGET = {
-  body: yup.object<any>().noUnknown().strict(),
-  query: yup.object<any>().noUnknown().strict(),
-};
-
-export const putUpdateExperience: yup.ObjectSchema<{
+const putUpdateExperience: yup.ObjectSchema<{
   body: {
     description?: string;
     designation?: string;
@@ -65,7 +56,7 @@ export const putUpdateExperience: yup.ObjectSchema<{
     .strict(),
 });
 
-export const putBasicDetails: yup.ObjectSchema<{
+const putBasicDetails: yup.ObjectSchema<{
   bio?: string;
   dob?: Date;
   firstName?: string;
@@ -101,24 +92,7 @@ export const putBasicDetails: yup.ObjectSchema<{
     .matches(/^[a-zA-Z\s]+$/, "Only alphabets are allowed for this field "),
 });
 
-export const putRegistrationDetails: yup.ObjectSchema<{
-  body: {
-    regDate?: string;
-    regNo?: string;
-    regYear?: string;
-  };
-}> = yup.object({
-  body: yup
-    .object({
-      regDate: yup.string(),
-      regNo: yup.string(),
-      regYear: yup.string(),
-    })
-    .noUnknown()
-    .strict(),
-});
-
-export const postAddEducation: yup.ObjectSchema<{
+const postAddEducation: yup.ObjectSchema<{
   body: {
     board?: string;
     degree?: string;
@@ -153,7 +127,7 @@ export const postAddEducation: yup.ObjectSchema<{
     .strict(),
 });
 
-export const postUpdateEducation: yup.ObjectSchema<{
+const postUpdateEducation: yup.ObjectSchema<{
   body: {
     board?: string;
     degree?: string;
@@ -192,7 +166,7 @@ export const postUpdateEducation: yup.ObjectSchema<{
     .strict(),
 });
 
-export const putDeleteEducation: yup.ObjectSchema<{
+const putDeleteEducation: yup.ObjectSchema<{
   body: {
     isActive?: boolean;
   };
@@ -200,7 +174,7 @@ export const putDeleteEducation: yup.ObjectSchema<{
   body: yup.object({ isActive: yup.boolean() }).noUnknown().strict(),
 });
 
-export const postAddExperience: yup.ObjectSchema<{
+const postAddExperience: yup.ObjectSchema<{
   body: {
     description?: string;
     designation?: string;
@@ -235,7 +209,7 @@ export const postAddExperience: yup.ObjectSchema<{
     .strict(),
 });
 
-export const putDeleteExperience: yup.ObjectSchema<{
+const putDeleteExperience: yup.ObjectSchema<{
   body: {
     isActive?: boolean;
   };
@@ -243,19 +217,15 @@ export const putDeleteExperience: yup.ObjectSchema<{
   body: yup.object({ isActive: yup.boolean() }).noUnknown().strict(),
 });
 
-export const profileValidation = {
+export {
   getContactInfo,
   getAddressTypeSchema,
   getPersonContacts,
-  getRegistrationInfo,
-  departmentGET,
   putUpdateExperience,
   putBasicDetails,
-  putRegistrationDetails,
   postAddEducation,
   postUpdateEducation,
   putDeleteEducation,
   postAddExperience,
   putDeleteExperience,
 };
-export default profileValidation;

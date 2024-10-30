@@ -4,11 +4,8 @@ import * as profileController from "./controllers/profile.controller";
 import {
   getContactInfo,
   getAddressTypeSchema,
-  departmentGET,
   getPersonContacts,
-  getRegistrationInfo,
   putBasicDetails,
-  putRegistrationDetails,
   postAddEducation,
   postUpdateEducation,
   putDeleteEducation,
@@ -25,16 +22,6 @@ const ControllersRegistry = {
   getContactInfo: [
     CoreMiddlewaresRegistry.validation(getContactInfo),
     profileController.getContactInfo,
-  ],
-  // Doctor
-  getDepartment: [
-    CoreMiddlewaresRegistry.validation(departmentGET),
-    profileController.getDepartment,
-  ],
-  // Doctor
-  getRegistrationInfo: [
-    CoreMiddlewaresRegistry.validation(getRegistrationInfo),
-    profileController.getRegistrationInfo,
   ],
   getPersonContacts: [
     CoreMiddlewaresRegistry.validation(getPersonContacts),
@@ -60,12 +47,6 @@ const ControllersRegistry = {
   putDeleteExperience: [
     CoreMiddlewaresRegistry.validation(putDeleteExperience),
     profileController.putDeleteExperience,
-  ],
-  // Doctor
-  putRegistrationDetails: [
-    CoreMiddlewaresRegistry.validation(putRegistrationDetails),
-    CoreMiddlewaresRegistry.fileHandler({ filename: "registrationDocument" }),
-    profileController.putRegistrationDetails,
   ],
   putUpdateEducation: [
     CoreMiddlewaresRegistry.validation(postUpdateEducation),
