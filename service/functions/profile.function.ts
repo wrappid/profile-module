@@ -59,26 +59,6 @@ const getAddressTypeFunc = async (req: any, res: any) => {
   }
 };
 
-const getDepartmentFunc = async (req: any, res: any) => {
-  try {
-    const data = await databaseActions.findAll("application", "Departments", {
-      where: { ...req.query },
-    });
-
-    if (data.length > 1) {
-      console.log("Departments fetched successfully");
-      return {
-        data,
-        message: "Departments fetched successfully",
-        status: 200,
-      };
-    }
-  } catch (err) {
-    console.log(err);
-    throw err;
-  }
-};
-
 const getPersonContactsFunc = async (req: any, res: any) => {
   try {
     const person = await databaseActions.findOne("application", "Persons", {
@@ -160,178 +140,6 @@ const putBasicDetailsFunc = async (req: any, res: any) => {
   }
 };
 
-const getRegistrationInfoFunc = async (req: any, res: any) => {
-  try {
-    const userID = req.user.userId;
-
-    console.log("User ID = " + userID);
-
-    /**
-     * TODO: put another model data to patient if required
-     */
-    const doctorDetails = await databaseActions.findOne(
-      "application",
-      "DoctorDetails",
-      {
-        include: [
-          {
-            as: "Persons",
-            model: databaseProvider.application.models.Persons,
-            where: { userId: userID },
-          },
-        ],
-      }
-    );
-
-    const personDocs = doctorDetails
-      ? await databaseActions.findOne("application", "PersonDocs", {
-        where: {
-          personId: doctorDetails?.dataValues?.Persons?.id,
-          type: "Registration Document",
-        },
-      })
-      : null;
-
-    const temp = { ...doctorDetails?.dataValues };
-
-    delete temp.Persons;
-    temp["departmentId"] = doctorDetails?.dataValues?.Persons?.departmentId;
-    temp["registrationDocument"] = personDocs?.docUrl;
-
-    if (doctorDetails) {
-      return {
-        data: temp,
-        message: "Registration info fetched successfully",
-        status: 200,
-      };
-    } else {
-      return { message: "Person registration info not found", status: 204 };
-    }
-  } catch (err) {
-    console.error(err);
-    throw err;
-  }
-};
-
-const putRegistrationDetailsFunc = async (req: any, res: any) => {
-  try {
-    const del_urls: any = [];
-    let file_url: any = null;
-    const personId: any = req.params.id;
-
-    if (
-      req.files["registrationDocument"] &&
-      req.files["registrationDocument"][0]
-    ) {
-      //eslint-disable-next-line  no-undef
-      file_url = req.files["registrationDocument"][0].location;
-      // await getUrl(
-      //   req.file["registrationDocument"][0].filename
-      //     ? req.file["registrationDocument"][0].filename
-      //     : req.file["registrationDocument"][0].key
-      //     ? req.file["registrationDocument"][0].key
-      //     : req.file["registrationDocument"][0].originalname
-      // );
-    }
-    console.log("File URL", file_url);
-
-    const docData = await databaseActions.findOne(
-      "application",
-      "DoctorDetails",
-      { where: { doctorId: req.params.id } }
-    );
-
-    del_urls.push(file_url);
-
-    const data = req.body;
-    await databaseProvider.application.sequelize.transaction(
-      async (transaction: any) => {
-        data.personDocs = [];
-
-        if (!docData) {
-          console.log("Docotr details not found");
-          await databaseActions.create(
-            "application",
-            "DoctorDetails",
-            {
-              ...data,
-              doctorId: personId,
-              updatedBy: req.user.userId,
-            },
-            { transaction: transaction }
-          );
-        } else {
-          console.log("Docotr details found: ", docData.id);
-        }
-
-        if (file_url) {
-          const [nrows] = await databaseActions.update(
-            "application",
-            "PersonDocs",
-            {
-              docUrl: file_url,
-              updatedBy: req.user.userId,
-            },
-            { where: { personId: personId } },
-            { transaction: transaction }
-          );
-
-          if (nrows == 0) {
-            const nPersonDocs = await databaseActions.create(
-              "application",
-              "PersonDocs",
-              {
-                docUrl: file_url,
-                personId,
-                type: "Registration Document",
-                updatedBy: req.user.userId,
-              },
-              { transaction: transaction }
-            );
-
-            console.log("Registration file entry made:", nPersonDocs.id);
-          } else {
-            console.log("Registration file URL updated");
-          }
-        } else {
-          console.log("No registration file given");
-        }
-
-        if (data.departmentId) {
-          await databaseActions.update(
-            "application",
-            "Persons",
-            {
-              departmentId: data.departmentId,
-              updatedBy: req.user.userId,
-            },
-            { where: { id: personId } },
-            { transaction: transaction }
-          );
-
-          console.log("Department updated");
-        }
-
-        await databaseActions.update(
-          "application",
-          "DoctorDetails",
-          {
-            ...data,
-            updatedBy: req.user.userId,
-          },
-          { where: { doctorId: personId } },
-          { transaction: transaction }
-        );
-      }
-    );
-
-    console.log("Registration detail updated");
-    return { message: "Registration details updated", status: 200 };
-  } catch (err) {
-    console.log(err);
-    throw err;
-  }
-};
 
 const postAddEducationFunc = async (req: any, res: any) => {
   try {
@@ -534,14 +342,11 @@ const putDeleteExperienceFunc = async (req: any, res: any) => {
 export {
   getAddressTypeFunc,
   getContactInfoFunc,
-  getDepartmentFunc,
-  getRegistrationInfoFunc,
   postAddEducationFunc,
   postAddExperienceFunc,
   putBasicDetailsFunc,
   putDeleteEducationFunc,
   putDeleteExperienceFunc,
-  putRegistrationDetailsFunc,
   putUpdateEducationFunc,
   putUpdateExperienceFunc,
   getPersonContactsFunc,

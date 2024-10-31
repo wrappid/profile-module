@@ -1,4 +1,4 @@
-import profileValidations from "./validations/profile.validation";
+import * as profileValidations from "./validations/profile.validation";
 
 const ValidationsRegistry = { ...profileValidations };
 

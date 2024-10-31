@@ -30,25 +30,6 @@ const getAddressType = async (req: any, res: any) => {
   }
 };
 
-/**
- *
- * @param {*} req
- * @param {*} res
- */
-
-const getDepartment = async (req: any, res: any) => {
-  try {
-    const { status, ...restData }: any = await profileFunction.getDepartmentFunc(
-      req,
-      res
-    );
-
-    res.status(status).json(restData);
-  } catch (error: any) {
-    console.error("Error:: ", error);
-    res.status(500).json({ message: error.message });
-  }
-};
 
 const getPersonContacts = async (req: any, res: any) => {
   try {
@@ -71,18 +52,6 @@ const getPersonContacts = async (req: any, res: any) => {
  * @returns
  */
 
-const getRegistrationInfo = async (req: any, res: any) => {
-  try {
-    const result = await profileFunction.getRegistrationInfoFunc(req, res);
-    const { status, message, data } = result;
-
-    res.status(status).json({ data, message: message });
-  } catch (error: any) {
-    console.error("Registration info fetched Error:: ", error);
-    res.status(500).json({ message: error.message });
-  }
-};
-
 const putBasicDetails = async (req: any, res: any) => {
   try {
     const result: any = await profileFunction.putBasicDetailsFunc(req, res);
@@ -95,20 +64,6 @@ const putBasicDetails = async (req: any, res: any) => {
   }
 };
 
-const putRegistrationDetails = async (req: any, res: any) => {
-  try {
-    const result: any = await profileFunction.putRegistrationDetailsFunc(
-      req,
-      res
-    );
-    const { status, message } = result;
-
-    res.status(status).json({ message: message });
-  } catch (error: any) {
-    console.error("Error :: ", error);
-    res.status(500).json({ message: error.message });
-  }
-};
 
 const postAddEducation = async (req: any, res: any) => {
   try {
@@ -185,11 +140,8 @@ const putDeleteExperience = async (req: any, res: any) => {
 export {
   getContactInfo,
   getAddressType,
-  getDepartment,
   getPersonContacts,
-  getRegistrationInfo,
   putBasicDetails,
-  putRegistrationDetails,
   postAddEducation,
   putUpdateEducation,
   putDeleteEducation,
