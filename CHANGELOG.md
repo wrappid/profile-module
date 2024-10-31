@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.20](https://https//github.com/Rxefy/profile-module/compare/v0.0.19...v0.0.20) (2024-10-31)
+
+
+### Features
+
+* **config:** :wastebasket: removed unnecessary APIs ([e0395d7](https://https//github.com/Rxefy/profile-module/commit/e0395d70b463a6ecf66aceceeb9a5408bccbdd12)), closes [#73](https://https//github.com/Rxefy/profile-module/issues/73)
+
 ### [0.0.19](https://https//github.com/Rxefy/profile-module/compare/v0.0.18...v0.0.19) (2024-10-22)
 
 ### [0.0.18](https://https//github.com/Rxefy/profile-module/compare/v0.0.17...v0.0.18) (2024-07-29)
