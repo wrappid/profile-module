@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.21](https://https//github.com/Rxefy/profile-module/compare/v0.0.20...v0.0.21) (2024-11-14)
+
+
+### Bug Fixes
+
+* :bug: some border style property name changed, update this to resolve style changes ([0b1ecd9](https://https//github.com/Rxefy/profile-module/commit/0b1ecd9f009c1b6a49aa79712c4b5d8d1c72be69))
+
 ### [0.0.20](https://https//github.com/Rxefy/profile-module/compare/v0.0.19...v0.0.20) (2024-10-31)
 
 
