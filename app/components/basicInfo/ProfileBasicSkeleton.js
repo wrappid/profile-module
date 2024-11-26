@@ -4,7 +4,7 @@ export default function ProfileBasicSkeleton() {
   return (
     <CoreGrid>
       <CoreBox
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
+        styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER]}
         gridProps={{ gridSize: 2 }}
       >
         <CoreSkeleton variant="circular" height={70} width={70} />

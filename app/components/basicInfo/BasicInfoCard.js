@@ -79,7 +79,7 @@ export default function BasicInfoCard(props) {
     <CoreGrid styleClasses={[CoreClasses.MARGIN.ML1, CoreClasses.MARGIN.MT_N5]}>
       <CoreBox
         gridProps={{ gridSize: { md: 0.9, xs: 12 } }}
-        styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.BORDER.BORDER_COLOR_PRIMARY]}
+        styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_CENTER, CoreClasses.BORDER.BORDER_COLOR_PRIMARY]}
       >
         <CoreAvatar
           styleClasses={[CoreClasses.DATA_DISPLAY.AVATAR_LARGE]}
@@ -97,7 +97,7 @@ export default function BasicInfoCard(props) {
           direction="row"
           spacing={1}
           divider={true}
-          styleClasses={[CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}
+          styleClasses={[CoreClasses.DISPLAY.FLEX, CoreClasses.ALIGNMENT.JUSTIFY_CONTENT_FLEX_START]}
         >
           <CustomIconTooltipText
             tip={getDOB(dob)}
