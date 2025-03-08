@@ -9,7 +9,7 @@ import {
 
 const getContactInfoFunc = async (req: any, res: any) => {
   try {
-    const userID = req.user.userId;
+    const userID = req.user.userID;
 
     console.log("User ID = " + userID);
 
@@ -33,7 +33,7 @@ const getContactInfoFunc = async (req: any, res: any) => {
 
     console.log("Contact info fetched successfully");
     return { data, message: "Contact info fetched successfully", status: 200 };
-  } catch (err:any) {
+  } catch (err: any) {
     console.error(err);
     throw err;
   }
@@ -62,7 +62,7 @@ const getAddressTypeFunc = async (req: any, res: any) => {
 const getPersonContactsFunc = async (req: any, res: any) => {
   try {
     const person = await databaseActions.findOne("application", "Persons", {
-      where: { userId: req.user.userId },
+      where: { userId: req.user.userID },
     });
     const personId = person.id;
     const contactType = req.params.contactType;
@@ -121,7 +121,7 @@ const putBasicDetailsFunc = async (req: any, res: any) => {
           "Persons",
           {
             ...data,
-            updatedBy: req.user.userId,
+            updatedBy: req.user.userID,
           },
           {
             transaction: transaction,
@@ -156,9 +156,9 @@ const postAddEducationFunc = async (req: any, res: any) => {
           {
             ...data,
             _status: coreConstant.entityStatus.ACTIVE,
-            createdBy: req.user.userId,
+            createdBy: req.user.userID,
             personId: personId,
-            updatedBy: req.user.userId,
+            updatedBy: req.user.userID,
           },
           { transaction: transaction }
         );
@@ -189,7 +189,7 @@ const putUpdateEducationFunc = async (req: any, res: any) => {
           "PersonEducations",
           {
             ...data,
-            updatedBy: req.user.userId,
+            updatedBy: req.user.userID,
           },
           { where: { id: req.params.id } },
           { transaction: transaction }
@@ -220,7 +220,7 @@ const putDeleteEducationFunc = async (req: any, res: any) => {
           {
             _status: coreConstant.entityStatus.DELETED,
             isActive: false,
-            updatedBy: req.user.userId,
+            updatedBy: req.user.userID,
           },
           { where: { id: educationId } },
           { transaction: transaction }
@@ -255,9 +255,9 @@ const postAddExperienceFunc = async (req: any, res: any) => {
           {
             ...data,
             _status: coreConstant.entityStatus.ACTIVE,
-            createdBy: req.user.userId,
+            createdBy: req.user.userID,
             personId: personId,
-            updatedBy: req.user.userId,
+            updatedBy: req.user.userID,
           },
           { transaction: transaction }
         );
@@ -288,7 +288,7 @@ const putUpdateExperienceFunc = async (req: any, res: any) => {
           "PersonExperiences",
           {
             ...data,
-            updatedBy: req.user.userId,
+            updatedBy: req.user.userID,
           },
           { where: { id: req.params.id } },
           { transaction: transaction }
@@ -319,7 +319,7 @@ const putDeleteExperienceFunc = async (req: any, res: any) => {
           {
             _status: coreConstant.entityStatus.DELETED,
             isActive: false,
-            updatedBy: req.user.userId,
+            updatedBy: req.user.userID,
           },
           { where: { id: experienceId } },
           { transaction: transaction }
