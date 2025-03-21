@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.31](https://https//github.com/Rxefy/profile-module/compare/v0.0.30...v0.0.31) (2025-03-21)
+
 ### [0.0.30](https://https//github.com/Rxefy/profile-module/compare/v0.0.29...v0.0.30) (2025-02-20)
 
 ### [0.0.29](https://https//github.com/Rxefy/profile-module/compare/v0.0.28...v0.0.29) (2025-02-18)
